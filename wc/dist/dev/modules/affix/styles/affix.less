@@ -1,0 +1,25 @@
+@import "../../../lib/ui/styles/.variables.less";
+@import (reference) "../../../vendor/bootstrap/less/mixins.less";
+
+@media screen {
+  .affix-stuck {
+    position: fixed !important;
+    margin-top: 0;
+    margin-bottom: 0;
+    z-index: 900;
+  }
+
+  .affix-stuck--shadow {
+    &.affix-stuck-top {
+      .box-shadow(0 4px 10px -5px @color-affix-shadow);
+    }
+    &.affix-stuck-bottom {
+      .box-shadow(0 -4px 10px -5px @color-affix-shadow);
+    }
+  }
+
+  .x-layout-top-fixed,
+  .x-layout-bottom-fixed {
+    position: fixed;
+  }
+}

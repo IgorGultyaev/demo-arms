@@ -1,0 +1,15 @@
+.x-debug-model-browser {
+  width: 100%;
+  white-space: nowrap;
+}
+.x-debug-model-master,
+.x-debug-model-details {
+  border: solid 1px #ccc;
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+}
+.x-debug-model-details {
+  border-top: 0;
+  margin-left: -1px;
+}

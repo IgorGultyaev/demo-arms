@@ -1,0 +1,15 @@
+@import ".variables.less";
+
+.x-pe-readonly {
+	width: 100%;
+	margin:  0;
+}
+
+.x-pe-readonly.-invalid {
+  border: 1px solid @color-danger;
+  background-color: @color-danger-light;
+}
+input[type=checkbox].x-pe-readonly.-invalid {
+  outline: 2px solid @color-danger;
+  background-color: @color-danger-light;
+}

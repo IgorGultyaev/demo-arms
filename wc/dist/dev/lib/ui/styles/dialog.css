@@ -1,0 +1,114 @@
+/* PLACEHOLDER */
+.modal {
+  max-height: none;
+}
+.modal-body {
+  overflow: auto;
+  max-height: 400px;
+}
+.x-dialog > .modal-body {
+  padding: 0;
+}
+.x-dialog > .modal-body .x-menu-bar.x-menu--contrast {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.x-dialog.x-dialog--flex-height > .modal-body {
+  overflow: visible;
+  max-height: none;
+}
+.x-dialog > .modal-body--padding {
+  padding: 20px;
+}
+.x-dialog > .modal-body-text {
+  padding: 20px;
+}
+.x-dialog > .modal-footer {
+  margin-top: 0;
+}
+.modal-footer {
+  text-align: right;
+}
+.modal-footer .btn {
+  float: none;
+}
+.close.modal-btn-close,
+.modal-btn-close {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 16px;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+}
+.close.modal-btn-close:after,
+.modal-btn-close:after {
+  /*display: inline-block; */
+  /* Fix for clickability issue in WebKit */
+  content: ' ';
+}
+.close.modal-btn-close:before,
+.modal-btn-close:before {
+  content: "\e60c";
+  /* close (light cross) */
+}
+.close.modal-btn-close:hover:before,
+.modal-btn-close:hover:before {
+  content: "\ea0d";
+}
+.modal-content > .modal-btn-close {
+  margin-top: 12px;
+  margin-right: 12px;
+  margin-left: 12px;
+  z-index: 1;
+  position: relative;
+}
+.modal-header {
+  background-color: #E8EDDA;
+  border-radius: 0 0 0 0;
+  color: #52534F;
+}
+.modal-footer {
+  border-radius: 0 0 0 0;
+  background-color: #7ab800;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.modal ~ .modal {
+  z-index: 1060;
+}
+.modal ~ .modal ~ .modal {
+  z-index: 1070;
+}
+.modal ~ .modal ~ .modal ~ .modal {
+  z-index: 1080;
+}
+.modal-backdrop ~ .modal-backdrop {
+  z-index: 1050;
+}
+.modal-backdrop ~ .modal-backdrop ~ .modal-backdrop {
+  z-index: 1060;
+}
+.modal-backdrop ~ .modal-backdrop ~ .modal-backdrop ~ .modal-backdrop {
+  z-index: 1070;
+}
+@media (min-width: 768px) {
+  .modal ~ .modal {
+    padding-top: 10px;
+    padding-left: 20px;
+  }
+  .modal ~ .modal ~ .modal {
+    padding-top: 20px;
+    padding-left: 40px;
+  }
+  .modal ~ .modal ~ .modal ~ .modal {
+    padding-top: 30px;
+    padding-left: 60px;
+  }
+}

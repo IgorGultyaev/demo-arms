@@ -1,0 +1,522 @@
+// variables
+@slick-row-height: 32px;
+@slick-header-height: 26px;
+@slick-header-half-height: @slick-header-height / 2;
+
+
+@import (inline) "../../../vendor/slick/content/slick.grid.css";
+@import (reference) "icons.less";
+@import (reference) ".grid.less";
+@import (reference) ".variables.less";
+
+@import (inline) "../../../vendor/slick/content/slick.grid.css";
+@import (reference) "icons.less";
+@import (reference) ".grid.less";
+@import (reference) ".variables.less";
+
+.x-headless-compensate {
+	margin-top: @slick-header-half-height;
+	margin-bottom: @slick-header-half-height;
+}
+
+/*
+  Override common slick styles
+*/
+.slick-cell, .slick-header, .slick-header-column, .slick-row {
+	.box-sizing(content-box);
+}
+
+.slick-header, .slick-headerrow, .slick-viewport {
+	font-size: @grid-font-size;
+}
+
+.slick-viewport {
+	// bugfix for IE9, see http://track.rnd.croc.ru/issue/WC-716
+	max-height: 100%;
+
+	> .grid-canvas {
+		min-height: 0.1px; // canvas should be always visible to display horizontal scroll-bar
+	}
+}
+
+// cells
+.slick-cell {
+	padding: @grid-cell-padding;
+	border: 0;
+	border-right: 1px solid @grid-border;
+}
+
+.slick-cell:last-child {
+	border: 0;
+}
+
+.slick-cell.active {
+	border: 1px dotted @grid-row-active-text;
+	margin: 2px;
+	padding: @grid-cell-padding - 3px; // 1px (border) + 2px (margin)
+	// the same: more elegant, but 'outline-offset' doesn't work in IE
+	//  outline: 1px dotted @grid-active-text;
+	//  outline-offset: -3px;
+}
+
+// rows
+.slick-row {
+	background-image: none;
+}
+
+// NOTE: 0 row is even, 1 row - is odd in SlickGrid, so we should reverse odd <-> even
+.slick-row.even,
+.slick-row.even > .slick-cell {
+	background-color: @grid-row-odd-bg;
+}
+
+.slick-row.even > .slick-cell.selected {
+	background-color: @grid-row-odd-selected-bg;
+}
+
+.slick-row.odd,
+.slick-row.odd > .slick-cell {
+	background-color: @grid-row-even-bg;
+}
+
+.slick-row.odd > .slick-cell.selected {
+	background-color: @grid-row-even-selected-bg;
+}
+
+.slick-row.active,
+.slick-row.active.even > .slick-cell,
+.slick-row.active.odd > .slick-cell {
+	color: @grid-row-active-text;
+	background-color: @grid-row-active-bg;
+}
+
+.slick-row.active > .slick-cell.editable {
+	color: @color-text; // set default color of text for inline PE
+}
+
+// header
+.slick-header {
+	border: 0;
+	background: @grid-header-bg;
+}
+
+.slick-header-column,
+.slick-header-column.ui-state-default {
+	color: @grid-header-text;
+	background: @grid-header-bg;
+	border: 0;
+	border-right: 1px solid @grid-border;
+	padding: (@grid-cell-padding - 2px) @grid-cell-padding;
+}
+
+.slick-header-column:last-child {
+	//border: 0;
+	border-right-color: transparent;
+}
+
+// NOTE: don't use '.slick-header-column:hover' - it doesn't work while moving column header
+.slick-header-column.ui-state-hover {
+	background: @grid-header-hover-bg;
+}
+
+.slick-header-column.slick-sortable-placeholder {
+	background: @grid-border;
+}
+
+// --- old style ---
+//.slick-sort-indicator {
+//  .x-icon; // mixin .x-icon rules
+//  .x-icon-alone;
+//  float: none;
+//  position: absolute;
+//  right: floor(@grid-cell-padding/2);
+//  width: auto;
+//  height: auto;
+//  margin: 0;
+//  background: @grid-header-bg;
+//}
+//.slick-sort-indicator-asc {
+//  .x-icon-angle-bracket-top;
+//}
+//.slick-sort-indicator-desc {
+//  .x-icon-angle-bracket-bottom;
+//}
+
+.slick-sort-indicator {
+	width: auto;
+	margin: -2px 0 0 0;
+	background: @grid-header-bg;
+	position: absolute;
+	left: @grid-cell-padding;
+}
+
+.slick-sort-indicator-asc:after {
+	content: '\2191'; // &uarr;
+}
+
+.slick-sort-indicator-desc:after {
+	content: '\2193'; // &darr;
+}
+
+.slick-header-column.slick-header-column-sorted > .slick-column-name {
+	margin-left: 0.6em;
+}
+
+.slick-header-column.ui-state-hover > .slick-sort-indicator {
+	background: @grid-header-hover-bg;
+}
+
+/* Grouping */
+.slick-group-title {
+	display: block;
+}
+
+// reset column styles in group titles
+.slick-group > .slick-cell {
+	cursor: auto;
+}
+
+.slick-group-toggle {
+	cursor: pointer;
+	width: 10px;
+	height: 100%;
+	margin-right: 5px;
+	display: block;
+	float: left;
+
+	&.expanded {
+		background: url(../../../vendor/slick/content/images/collapse.gif) no-repeat center center;
+	}
+
+	&.collapsed {
+		background: url(../../../vendor/slick/content/images/expand.gif) no-repeat center center;
+	}
+
+	&.expanded.loading,
+	&.collapsed.loading,
+	&.loading {
+		background: url(../../../content/images/waiting_8.gif) no-repeat center center;
+	}
+}
+
+/* Inline edit */
+.slick-cell.active.editable {
+	padding: 0;
+	border: 0;
+	margin: 0;
+}
+
+.x-pe-inline-container {
+	//  position: absolute;
+	//  z-index: @zindex-dropdown;
+	border: 0;
+}
+
+/* Validation */
+.slick-cell.-invalid {
+	&:after {
+		.iconfont;
+		content: @x-icon-warning-triangle;
+		color: @color-danger;
+		font-size: 12px;
+		position: absolute;
+		right: 2px;
+		top: 3px;
+	}
+
+	&.active:after {
+		right: 0; // +2px margin
+		top: 0; // +2px margin + 1px ???
+	}
+}
+
+// the same as .slick-cell.-invalid but orange:
+.slick-cell.-warning {
+	&:after {
+		.iconfont;
+		content: @x-icon-warning-triangle;
+		color: @color-warning;
+		font-size: 12px;
+		position: absolute;
+		right: 2px;
+		top: 3px;
+	}
+
+	&.active:after {
+		right: 0; // +2px margin
+		top: 0; // +2px margin + 1px ???
+	}
+}
+
+.slick-row.active {
+	.slick-cell.-warning:after {
+		color: #ffeccc;
+	}
+}
+
+/*
+  CROC specific classes
+*/
+// whole grid
+.x-grid {
+	#grid > .unfilled;
+	overflow: visible !important; // SlickGrid set 'overflow: hidden' by code, so use !important to override it
+	min-height: @slick-row-height * 5 + @slick-header-height; //186px;
+
+	.x-cmd-link {
+		color: #0088cc;
+		text-decoration: none;
+		&:hover {
+			color: #f36700;
+			text-decoration: none;
+		}
+	}
+}
+
+// multi-line rows (with line breaks)
+.x-grid-miltiline-rows .slick-cell {
+	white-space: normal;
+}
+
+// grid inside dialog
+.modal-body .x-grid {
+	height: @slick-row-height * 10 + @slick-header-height; //346px;
+}
+
+// peObjectList
+.x-grid.x-pe-object-list-grid {
+	height: @slick-row-height * 5 + @slick-header-height; //186px;
+}
+
+// row states
+.slick-row {
+	&.-modified-item,
+	&.-new-item,
+	&.-removed-item,
+	&.-disabled-item {
+		> .x-slick-cell-iconic {
+			#grid > .iconic;
+		}
+	}
+
+	&.-modified-item {
+		> .x-slick-cell-iconic {
+			#grid > .iconic-modified;
+		}
+	}
+
+	&.-new-item {
+		> .x-slick-cell-iconic {
+			#grid > .iconic-new;
+		}
+	}
+
+	&.-removed-item {
+		> .slick-cell {
+			color: @color-text-disabled !important;
+		}
+
+		> .x-slick-cell-iconic {
+			#grid > .iconic-removed;
+		}
+	}
+
+	&.-disabled-item {
+		> .slick-cell {
+			color: @color-text-disabled !important;
+		}
+	}
+
+	&.-invalid {
+		> .x-slick-cell-iconic {
+			#grid > .iconic-invalid;
+		}
+	}
+	&.-warning {
+		> .x-slick-cell-iconic {
+			#grid > .iconic-warning;
+		}
+	}
+	// override warning icon color for active row
+	&.active.-warning {
+		> .x-slick-cell-iconic:before {
+			color: #ffeccc;
+		}
+	}
+
+	&.-nonselectable {
+		> .slick-cell {
+			color: @color-text-disabled !important;
+		}
+		> .x-slick-cell-checkbox {
+			cursor: default;
+
+			> input[type=checkbox] {
+				color: @color-darkgray;
+			}
+		}
+
+	}
+
+	& {
+		> .x-slick-cell-iconic.editable {
+			#grid > .uniconic;
+		}
+	}
+}
+
+// reorder
+.x-slick-cell-reorder {
+	cursor: move;
+	background-image: url("../../../vendor/slick/content/images/drag-handle.png");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+// checkboxes
+.x-slick-cell-checkbox {
+	-o-text-overflow: clip;
+	text-overflow: clip;
+	cursor: pointer;
+}
+
+.x-slick-cell-checkbox > input[type="checkbox"],
+.slick-column-name > input[type="checkbox"] {
+	.box-shadow(none);
+	margin: 0;
+	vertical-align: middle;
+}
+
+// Column filter
+.slick-column-filter {
+	.x-icon; // mixin .x-icon rules
+	.x-icon-alone;
+	.x-icon-filter;
+	position: absolute;
+	right: calc(@grid-cell-padding/2);
+	width: auto;
+	height: auto;
+	line-height: inherit;
+	margin: 0;
+	background: @grid-header-bg;
+	cursor: pointer;
+	display: none; // TODO: turn off for touch devices
+}
+
+.slick-header-column-active > .slick-column-filter {
+	display: inline;
+}
+
+.slick-header-column.ui-state-hover > .slick-column-filter {
+	display: inline;
+	background: @grid-header-hover-bg;
+}
+
+.slick-header-column-filtered > .slick-column-filter {
+	display: inline;
+	color: @color-active;
+}
+
+.x-grid-column-filter.popup {
+	//min-width: inherit;
+	min-width: 150px;
+	max-width: 300px;
+	//position: fixed;
+
+	> .x-pe {
+		margin: 5px;
+		padding: 0;
+	}
+
+	> .x-menu-bar {
+		padding: 5px;
+		> .x-menu {
+			float: right;
+		}
+	}
+
+	&.x-column-filter-condition-vert {
+		> .x-pe-enum-dropdown-select2 {
+			padding: 5px;
+			.select2-selection__rendered {
+				padding-left: 6px;
+				padding-right: 26px;
+			}
+		}
+		> .x-pe {
+			margin: 0;
+			padding: 5px;
+		}
+	}
+
+	&.x-column-filter-condition-hor {
+		max-width: 380px;
+		display: table;
+		> .x-pe {
+			float: left;
+			max-width: 180px;
+
+			> .x-pe-enum.x-pe-enum-dropdown {
+				width: inherit;
+				margin: 0;
+				padding: 0;
+				max-width: 180px;
+			}
+		}
+
+		.x-pe-enum-dropdown {
+			.select2-selection__rendered {
+				padding-left: 6px;
+				padding-right: 26px;
+			}
+			padding: 5px;
+			float: left;
+			width: 166px;
+		}
+
+	}
+}
+
+// column filter for affixed header
+.slick-header.affix-stuck ~ .x-grid-column-filter.popup {
+	position: fixed;
+}
+
+.slick-range-decorator {
+	border: 2px solid @color-main-dark !important;
+}
+
+.x-list-slick > .x-list-paging > .x-list-paginator {
+	border-top: 1px solid @grid-border;
+}
+
+.x-empty-list {
+	.x-list-state-message {
+		text-align: center;
+		width: 100%;
+		top: 100px;
+		z-index: 1;
+		height: 0;
+		margin: 0;
+		padding: 0;
+	}
+	div.slick-viewport {
+		overflow-y: hidden;
+	}
+	.x-grid {
+		background: white;
+		// this is a scroll bar under the slick grid viewport
+		div.slick-viewport~div[hideFocus] {
+			&+div:not([class]),+div[class=""],+div[class="affix-stuck--shadow"] {
+				bottom: 0px;
+				position: absolute;
+			}
+		}
+	}
+}
+
+.x-column-filter-dropdown {
+	.select2-search {
+		display: none;
+	}
+}

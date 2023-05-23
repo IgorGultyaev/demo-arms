@@ -1,0 +1,52 @@
+/* Common wizard styles */
+@import ".variables.less";
+
+/* default navigation item */
+.x-wizard-nav-item {
+  background-color: @color-tone;
+  border-left: 0;
+  border-right: 0;
+  border-color: @color-border;
+  color: @text-color;
+  &:focus,
+  &:hover {
+	color: @text-color;
+	background-color: @color-tone;
+	outline-style: none;
+
+	> .x-wizard-page-name {
+	  outline: 0;
+	  border: 0;
+	  border-bottom: 3px solid @color-submain;
+	}
+  }
+  &.active,
+  &.active:hover {
+	cursor: default;
+	font-weight: bold;
+	border-color: @color-border;
+	color: @text-color;
+	> .x-wizard-page-name {
+	  border: 0;
+	}
+  }
+}
+
+/* Page navigation ("next" button) */
+.x-wizard-page-nav {
+  width: 100%;
+  background-color: transparent;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-bottom: 10px;
+  &:before,
+  &:after {
+	display: table;
+	content: " ";
+  }
+  &:after {
+	clear: both;
+  }
+}

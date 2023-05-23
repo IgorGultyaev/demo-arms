@@ -1,0 +1,15 @@
+{{#if drafts.length}}
+{{#each drafts}}
+<div class="row">
+    <div class="col-md-10">
+		<a href="#" class="x-navigation" {{command-bind ../commands.Restore draft=draft}}>{{draft.title}}</a>
+        <p class="text-muted">{{createdFormatted}} {{description}}</p>
+    </div>
+    <div class="col-md-2 text-right"><a href="#" {{command-bind ../commands.Remove draft=draft}}>{{res "delete"}}</a></div>
+</div>
+{{/each}}
+{{else}}
+        <span>{{res "drafts.no_drafts"}}</span>
+{{/if}}
+
+

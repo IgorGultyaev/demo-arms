@@ -1,0 +1,64 @@
+<div class="modal-header">
+    <a class="modal-btn-close close" data-dismiss="modal"></a>
+    <h4>{{header}}</h4>
+</div>
+<div class="modal-body modal-body--padding">
+	<form role="form">
+		{{#if currentAuthProvider}}
+			<div class="row">
+				{{#compare authTypes.count ">" 1}}
+					<div class="col-sm-6">
+						<div class="x-login-auth-method">
+							<label class="control-label">{{res "loginDialog.choose_auth_method"}}:</label>
+							<br/>
+							<div {{data-bind-block name="radioGroup" group="authType" prop="currentAuthType"}}>
+							{{#each authTypes}}
+								<div class="radio" >
+									<label>
+										<input type="radio" name="authType" value="{{name}}" {{data-bind checkedIfValue="currentAuthType"}}>
+										{{title}}
+									</label>
+								</div>
+							{{/each}}
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6" id="{{push-id}}">
+						{{#observe this target=":pop-id"}}
+							<div class="x-login-dialog-provider">
+								{{render currentAuthProvider target=".x-login-dialog-provider"}}
+							</div>
+						{{/observe}}
+					</div>
+				{{/compare}}
+				{{#compare authTypes.count "===" 1}}
+					<div class="col-sm-12" id="{{push-id}}">
+						{{#observe this target=":pop-id"}}
+							<div class="x-login-dialog-provider">
+								{{render currentAuthProvider target=".x-login-dialog-provider"}}
+							</div>
+						{{/observe}}
+					</div>
+				{{/compare}}
+			</div>
+			{{#if security.persistentCookie}}
+			<div class="form-group x-login-dialog-rememberMe">
+				<div class="checkbox">
+					<label>
+						<input id="rememberMe" type="checkbox">{{res "loginDialog.remember_me"}}
+						{{data-bind target="#rememberMe" checked="rememberMe"}}
+					</label>
+					<span class="text-info x-icon x-icon-help x-icon-alone" style="margin-left:5px;vertical-align: middle" data-toggle="tooltip" title="{{res 'loginDialog.remember_me_hint'}}"></span>
+				</div>
+			</div>
+			{{/if}}
+		{{/if}}
+        <div class="x-login-dialog-status-message" {{data-bind visibility="status"}}>
+        	{{icon name="info"}}<span {{data-bind text="status"}}></span>
+		</div>
+    </form>
+</div>
+<div class="modal-footer x-menu--contrast">
+    {{view class="ui.MenuPresenter" viewModel=menu tag="div" cssClass="pull-right"}}
+</div>
+

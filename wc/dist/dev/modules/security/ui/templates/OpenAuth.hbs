@@ -1,0 +1,3 @@
+{{#each openAuthProviders}}
+	<button type="button" class="btn btn-default btn-block login-button-{{this.name}}" {{command-bind ../cmdLogin provider=this.name}}>{{res 'loginDialog.login_via'}} {{name}}</button>
+{{/each}}

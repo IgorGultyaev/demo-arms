@@ -1,0 +1,22 @@
+/* PLACEHOLDER */
+.x-pe-object {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.x-pe-object.-invalid {
+  border: 1px solid #f26a60;
+  background-color: #F2DEDE;
+}
+.x-pe-object.x-pe-inline {
+  min-width: 20em;
+}
+.x-pe-object-presentation-container {
+  padding-left: 12px;
+  margin-right: 26px;
+  line-height: 32px;
+  height: 34px;
+  border: 1px solid #ccc;
+  border-right-width: 0;
+  background: #fff;
+}

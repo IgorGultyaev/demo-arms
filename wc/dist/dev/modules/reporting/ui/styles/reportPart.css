@@ -1,0 +1,62 @@
+/* PLACEHOLDER */
+.x-report-menu-container {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.x-report-content-container {
+  background-color: #fff;
+  padding: 10px;
+}
+.x-report-table {
+  background-color: #fff;
+}
+.x-report-state-container {
+  height: 200px;
+}
+.x-report-state-message {
+  text-align: center;
+  top: 45%;
+  position: relative;
+  font-size: 24px;
+  line-height: normal;
+}
+.x-report-page .btn-toolbar {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.x-report-page .navbar {
+  border-right: none;
+  clear: left;
+  margin-bottom: 0;
+}
+.x-report-page .navbar-inner {
+  border-radius: 0;
+}
+.x-report-page .x-breadcrumb {
+  margin-bottom: 0;
+  padding: 2px 15px;
+  width: 100%;
+}
+.x-report-page .x-breadcrumb a {
+  color: white;
+}
+.x-report-page .x-breadcrumb a:hover {
+  color: #52534F;
+}
+.x-report-page .x-report-content-container {
+  border: none;
+}
+@media (max-width: 768px) {
+  .x-report-page .navbar-right {
+    padding-left: 15px;
+  }
+  .x-report-page .navbar-left {
+    padding-left: 15px;
+  }
+}
+.x-report .x-editor-errors {
+  min-height: 50px;
+}
+table.x-report-table > thead > tr.affix-stuck > th {
+  border-top: 0;
+}

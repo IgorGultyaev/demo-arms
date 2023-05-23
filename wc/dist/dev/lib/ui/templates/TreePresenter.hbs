@@ -1,0 +1,5 @@
+<div class="x-tree {{presenter.options.cssClass}}">
+	{{#each presenter.templates}}
+		{{template ../presenter.templates key=@index context=../this}}
+	{{/each}}
+</div>

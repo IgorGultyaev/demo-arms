@@ -1,0 +1,124 @@
+@import ".variables.less";
+@import (reference) "icons.less";
+
+// bootstrap modal styles customization
+.modal {
+  max-height: none;
+}
+.modal-body {
+  overflow: auto;
+  max-height: 400px;
+}
+
+.x-dialog {
+  > .modal-body {
+    .x-menu-bar.x-menu--contrast {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    padding: 0;
+  }
+  &.x-dialog--flex-height {
+    > .modal-body {
+      // Remove 'overflow' and 'max-height' from .modal-body
+      // NOTE: We can NOT set `overflow-y: visible` only. See https://www.w3.org/TR/css3-box/#overflow:
+      //   The computed values of ‘overflow-x’ and ‘overflow-y’ are the same as their specified values, except that some
+      //   combinations with ‘visible’ are not possible: if one is specified as ‘visible’ and the other is ‘scroll’ or
+      //   ‘auto’, then ‘visible’ is set to ‘auto’.
+      overflow: visible;
+      max-height: none;
+    }
+  }
+  > .modal-body--padding {
+    padding: 20px
+  }
+  > .modal-body-text {
+    padding: 20px
+  }
+  > .modal-footer {
+    margin-top: 0;
+  }
+}
+
+.modal-footer {
+  text-align: right;
+  .btn {
+    float: none;
+  }
+}
+
+.close.modal-btn-close,
+.modal-btn-close {
+  .x-icon();
+  .x-icon-close();
+  font-size: 2em;
+  &:hover {
+    .x-icon-cancel-circle();
+  }
+}
+
+.modal-content > .modal-btn-close {
+  margin-top: @title-padding;
+  margin-right: @title-padding;
+  margin-left: @title-padding;
+  z-index: 1;
+  position: relative;
+}
+
+.modal-header {
+  background-color: @color-submain;
+  border-radius: @border-radius-base @border-radius-base 0 0;
+  color: @color-black;
+}
+.modal-footer {
+  border-radius: 0 0 @border-radius-base @border-radius-base;
+  background-color: @color-main;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+// Nested dialogs
+// NOTE: support up to 3 nested dialogs, 4 and more are not supported
+@modal-nested-padding: 10px;
+// затемнение предыдущих диалогов
+.modal {
+  ~ .modal {
+    z-index: @zindex-modal + 10;
+    ~ .modal {
+      z-index: @zindex-modal + 20;
+      ~ .modal {
+        z-index: @zindex-modal + 30;
+      }
+    }
+  }
+}
+.modal-backdrop {
+  ~ .modal-backdrop {
+    z-index: @zindex-modal;
+    ~ .modal-backdrop {
+      z-index: @zindex-modal + 10;
+      ~ .modal-backdrop {
+        z-index: @zindex-modal + 20;
+      }
+    }
+  }
+}
+// "лесенка"
+@media (min-width: @screen-sm-min) {
+  .modal {
+    ~ .modal {
+      padding-top: @modal-nested-padding;
+      padding-left: @modal-nested-padding * 2; // this will divide by 2 because of 'margin: auto' for nested .modal-dialog
+      ~ .modal {
+        padding-top: @modal-nested-padding * 2;
+        padding-left: @modal-nested-padding * 4;
+        ~ .modal {
+          padding-top: @modal-nested-padding * 3;
+          padding-left: @modal-nested-padding * 6;
+        }
+      }
+    }
+  }
+}
+

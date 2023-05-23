@@ -1,0 +1,10 @@
+<div class="x-app-navbar noprint" role="navigation">
+    <a class="x-app-navbar-brand pull-left hidden-xs hidden-sm" href="{{xconfig "root"}}">{{xconfig "appName"}}</a>
+    <ul class="x-app-navbar-nav x-sys-menu pull-left" id="sysMenu">{{#if sysMenu}}{{render sysMenu target="#sysMenu" trackStatus=true}}{{/if}}</ul>
+    <div class="pull-left hidden-xs" id="areasMenu">{{#if navMenuPresenter}}{{render navMenuPresenter target="#areasMenu" trackStatus=true}}{{/if}}</div>
+    <ul class="x-app-navbar-nav pull-right">
+        <li id="langMenu" class="x-lang-menu">{{#if langMenu}}{{render langMenu target="#langMenu"}}{{/if}}</li>
+        <li id="authMenu">{{#if authMenu}}{{render authMenu target="#authMenu"}}{{/if}}</li>
+        <li id="onlineBeacon">{{#if onlineBeacon}}{{render onlineBeacon target="#onlineBeacon"}}{{/if}}</li>
+    </ul>
+</div>

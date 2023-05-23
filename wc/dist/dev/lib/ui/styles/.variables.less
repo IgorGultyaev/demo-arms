@@ -1,0 +1,69 @@
+@import "../../../vendor/bootstrap/less/variables.less";
+
+// for icons.less:
+@icon-font-path: '../../../content/fonts/';
+@icon-font-name: 'icomoon';
+
+//@font-family-base:        'PT Sans', sans-serif;
+//@headings-font-family:    'PT Sans', sans-serif;
+//@dropdown-link-active-bg: @color-warning;
+
+@color-green:         #7ab800;
+@color-darkgreen:     #699906;
+
+@color-black:         #52534F;
+@color-darkgray:      #ccc;   // the same sa BS's @input-border
+@color-danger:        #f26a60;
+@color-danger-light:  #F2DEDE;
+@color-warning:	      #fdab1c;
+@color-tone:          #F4F3F3;
+@color-info:          #5677fc;
+
+// CROC theme:
+@color-main:          @color-green;
+@color-main-dark:     @color-darkgreen;
+@color-submain:       #E8EDDA;
+@color-highlighted:   #fdecb2;
+
+@color-content:       #fff;
+@color-text:          @color-black;
+@color-hover:         #f36700;
+@color-text-disabled: @text-muted;
+@color-inverted-text: #fff;
+@color-active:        @color-warning;
+@color-border:        @color-darkgray;
+
+@font-family: 'PT Sans', sans-serif;
+
+@x-app-navbar-padding-vertical: 15px;
+@x-app-navbar-line-height: 20px;
+@x-app-navbar-height: 2*@x-app-navbar-padding-vertical + @x-app-navbar-line-height + 2px;
+
+@title-padding: 12px;
+
+// Bootstrap overrides:
+@input-border-focus:      @color-warning;
+@text-color:              @color-black;
+@font-family-base:        @font-family;
+@headings-font-family:    @font-family;
+@dropdown-link-active-bg: @color-warning;
+@modal-title-padding:     @title-padding; // default is 15px
+
+// remove border-radius from Bootstrap
+@border-radius-base: 0;
+@border-radius-small: 0;
+@border-radius-large: 0;
+
+// recolor bootstrap primary button
+@btn-primary-bg: @color-main;
+@btn-primary-border: @color-main;
+@btn-primary-color: @color-inverted-text;
+
+@zindex-topmost: 10000;
+
+
+// modules:
+// affix:
+@color-affix-shadow: #a9a9a9;
+
+@import ".variables-override.less";

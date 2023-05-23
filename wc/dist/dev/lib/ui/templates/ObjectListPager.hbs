@@ -1,0 +1,41 @@
+{{#if (or hasMoreItems options.showPageSize)}}
+	<div class="x-list-paginator">
+		{{#if message}}
+			<div class="text-info"><span class="x-icon x-icon-info"></span>{{message}}</div>
+		{{/if}}
+
+		{{#if-not options.hidePageStat}}
+			{{#if isAsyncCounting}}
+				<span class="x-list-paginator_stat">Подсчет количества записей... {{icon name="loading" addCssClass="x-icon-waiting-small" }}</span>
+			{{else}}
+				<span class="x-list-paginator_stat">{{pageStat}}</span>
+
+				{{#if options.showPageSize}}
+					{{#if pageSizeMenu}}
+						<div id="{{push-id}}" class="x-list-paginator_page_size-input">
+							{{render pageSizeMenu target=":pop-id"}}
+						</div>
+					{{else}}
+						<input class="form-control x-list-paginator_page_size-input" type="number" {{data-bind
+							value="pageRowCount"}} min="1" max="50000"/>
+					{{/if}}
+					<span class="x-list-paginator_stat x-list-paginator_page_size">{{pageSizeTitle}}</span>
+				{{/if}}
+
+				{{#if hasMoreItems}}
+					{{#if-menu menu}}
+						<div id="{{push-id}}" class="x-menu-bar">
+							{{part (object cssClass="center-block -inline-block") class="ui.MenuPresenter"
+								   viewModel=menu
+								   target=":pop-id"}}
+							<span style="vertical-align: top; display: inline-block;">
+						<input class="form-control x-list-paginator_goto-input" type="number" {{data-bind
+							value="currentPage"}} min="1" max="{{lastPage}}"/>
+					</span>
+						</div>
+					{{/if-menu}}
+				{{/if}}
+			{{/if}}
+		{{/if-not}}
+	</div>
+{{/if}}

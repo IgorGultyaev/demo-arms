@@ -1,0 +1,10 @@
+<div class="x-popupview-header x-part-title">
+    {{#if-menu menu}}
+        <div id="{{push-id}}" class="pull-right x-popupview-header-menu">{{part class="ui.MenuPresenter" viewModel=menu target=":pop-id" itemPresentation="icon"}}</div>
+    {{/if-menu}}
+    {{title}}
+</div>
+<div class="x-popupview-content" id="{{push-id}}" style="{{#if @view.options.height}}height:{{@view.options.height}}px;{{/if}}{{#if @view.options.width}}width:{{@view.options.width}}px;{{/if}}">
+    {{render body tag="div" target=":pop-id" trackStatus=true}}
+</div>
+

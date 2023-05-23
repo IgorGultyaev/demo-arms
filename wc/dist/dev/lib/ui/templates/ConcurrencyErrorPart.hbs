@@ -1,0 +1,9 @@
+<div class="x-context-part x-context-part--{{severity}} x-concurrency-error-part">
+    {{#if isBusy}}
+        {{waiting-icon size=16 cssClass="pull-right"}}
+    {{/if}}
+    <p>{{res "concurrencyErrorPart.prompt"}}</p>
+    <div class="x-menu-bar">
+        <div id="{{push-id}}">{{part class="ui.MenuPresenter" viewModel=menu target=":pop-id"}}</div>
+    </div>
+</div>

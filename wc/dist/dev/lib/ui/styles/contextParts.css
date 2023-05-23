@@ -1,0 +1,115 @@
+@media (min-width: 768px) {
+}
+/* abstract context part style */
+.x-context-part {
+  min-height: 75px;
+  padding: 8px 10px;
+  border-width: 2px 0;
+  border-style: solid;
+  background-color: #F4F3F3;
+  transition: background-color 0.5s linear;
+  -webkit-transition: background-color 0.5s linear;
+  -moz-transition: background-color 0.5s linear;
+  -o-transition: background-color 0.5s linear;
+}
+/* context parts carousel */
+.x-context-parts-carousel {
+  min-height: 75px;
+  background-color: #F4F3F3;
+}
+.x-context-parts-carousel.active {
+  /* Info */
+  /* Warnings */
+  /* Errors */
+}
+.x-context-parts-carousel.active .x-context-part {
+  transition: none;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+}
+.x-context-parts-carousel.active .x-context-part--info {
+  background-color: #7ab800;
+}
+.x-context-parts-carousel.active .x-context-part--warning {
+  background-color: #fdab1c;
+}
+.x-context-parts-carousel.active .x-context-part--critical,
+.x-context-parts-carousel.active .x-context-part--error {
+  background-color: #f26a60;
+}
+.x-context-parts-carousel .x-carousel-body {
+  cursor: pointer;
+}
+/* context parts carousel navigation buttons area */
+.x-context-part-nav {
+  clear: right;
+  margin-top: 8px;
+  margin-right: 5px;
+}
+/* context parts carousel buttons */
+.x-context-part-buttons {
+  margin-right: 2px;
+  margin-top: 2px;
+}
+.x-context-part-btn {
+  padding: 5px;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #52534F;
+}
+.x-context-part-btn:hover {
+  color: #52534F;
+}
+.x-context-part-btn:active {
+  padding: 6px 3px 4px 7px;
+  color: #ccc;
+}
+.x-context-part-btn.-off {
+  color: #ccc;
+}
+.x-context-part-btn.-off:active {
+  color: #52534F;
+}
+/* errors/infos/parts badges */
+.x-context-parts-badge {
+  height: 5px;
+}
+.x-context-parts-badge + .x-context-parts-carousel {
+  margin-top: -5px;
+}
+/* Info */
+.x-context-parts-badge--info {
+  background-color: #699906;
+}
+.x-context-part--info {
+  border-color: #699906;
+}
+/* Warnings */
+.x-context-parts-badge--warning {
+  background-color: #fdab1c;
+}
+.x-context-part--warning {
+  border-color: #fdab1c;
+}
+/* Errors */
+.x-context-parts-badge--critical,
+.x-context-parts-badge--error {
+  background-color: #ab190e;
+}
+.x-context-part--critical,
+.x-context-part--error {
+  color: #ab190e;
+  border-color: #ab190e;
+}
+/* concurency error resolving part */
+.x-context-part .x-menu-item:hover,
+.x-context-part .x-menu-item:focus {
+  background-color: #ccc;
+}
+/* unpinned parts badge */
+.x-context-parts-badge.affix-stuck--shadow {
+  -webkit-box-shadow: 0px -1px 10px 0px #a9a9a9;
+  box-shadow: 0px -1px 10px 0px #a9a9a9;
+}

@@ -1,0 +1,29 @@
+@import "fonts.less";
+@import "../../../../node_modules/@croc/webclient/dist/lib/ui/styles/.variables.less";
+@import "../../../../node_modules/@croc/webclient/dist/lib/ui/styles/.mixins.less";
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: @color-tone;
+}
+
+.x-area {
+  background-color: @color-content;
+  .box-shadow(0 0 3px rgba(0,0,0,.15));
+}
+
+.clearfloat {
+	clear: both;
+}
+
+.footer-stub {
+	height: 50px;
+}
+
+.container {
+	@media (max-width: @screen-xs-max) {
+		padding: 0;
+	}
+}

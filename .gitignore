@@ -1,0 +1,11 @@
+# Project exclude paths
+/target/
+/wc/dist/dev/app/domain/model-ext.js
+/wc/dist/dev/app/domain/model-ext.js.map
+/wc/dist/dev/app/app.js
+/wc/dist/dev/app/app.js.map
+/wc/node_modules/
+/wc/src/app/domain/model-ext.js
+/wc/src/app/domain/model-ext.js.map
+/wc/src/app/app.js
+/wc/src/app/app.js.map

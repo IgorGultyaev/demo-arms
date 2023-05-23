@@ -1,0 +1,18 @@
+<div class="x-list-settings-body">
+    <div class="x-list-settings-content">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" {{data-bind checked="groupChecked"}}/>{{res "objectList.columnsSettings.columnTitle"}}
+            </label>
+        </div>
+        <hr style="width:100%;margin: 0">
+        {{#each columns}}
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" {{data-bind checked="visible"}}/>
+                    {{{title}}}
+                </label>
+            </div>
+        {{/each}}
+    </div>
+</div>

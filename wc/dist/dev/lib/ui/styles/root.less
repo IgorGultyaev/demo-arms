@@ -1,0 +1,397 @@
+/* Bootstrap */
+@import "../../../vendor/bootstrap/less/bootstrap_cust.less";
+
+@import ".variables.less";
+@import ".mixins.less";
+@import "icons.less";
+
+/* See http://dev.w3.org/csswg/css-size-adjust/ */
+html {
+	font-family: @font-family;
+	-webkit-text-size-adjust: auto;
+	-moz-text-size-adjust: auto;
+	-ms-text-size-adjust: auto;
+}
+body {
+    font-family: @font-family;
+}
+/* suppress default touch action like double-tap zoom (see: http://www.w3.org/Submission/pointer-events/#the-touch-action-css-property) */
+a, button {
+    -ms-touch-action: none;
+    -webkit-touch-callout: none;
+    /* Android: remove tab highlighting: */
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+a.disabled {
+  cursor: default !important;
+  color: grey;
+  &:hover {
+    text-decoration: none;
+    color: @color-darkgray;
+  }
+}
+
+/* IE 10-11-Edge: remove clear button from input
+   also see .has-clear-btn */
+input[type="text"]::-ms-clear {
+	display: none;
+}
+
+.x-pe-object-dropdown {
+	input::-ms-clear {
+		display: none;
+	}
+}
+
+select,
+input[type="text"],
+input[type="password"],
+input[type="month"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    /* remove Android input's ugly overlay */
+    -webkit-user-modify: read-write-plaintext-only;
+}
+
+.hidden {
+	.-hidden();
+}
+.-hidden {
+	display: none !important;
+}
+.-inline {
+	display: inline !important;
+}
+.-inline-block {
+	display: inline-block !important;
+}
+
+.x-reset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	text-decoration: none;
+	font-size: 100%;
+	list-style: none;
+}
+
+.text-strikethrough {
+	text-decoration: line-through !important;
+}
+.text-italic {
+	font-style: italic !important;
+}
+.text-bold {
+	font-weight: bold !important;
+}
+
+a:hover, a:focus {
+  color: @color-hover;
+  text-decoration: none;
+}
+
+/* waiting */
+.x-waiting-container {
+    color:darkgray;
+    cursor:wait;
+    text-align: center;
+}
+.x-waiting-container-large {
+    padding: 20px;
+}
+
+/* фикс пропадания divider при использовании box-sizing:border-box в site.app.css*/
+.dropdown-menu .divider {
+    border-bottom: 0;
+}
+
+/* задизейбленный пункт без команды в выпадающем меню */
+.dropdown-menu > li.disabled > div {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 20px;
+    white-space: nowrap;
+    color: @color-darkgray;
+}
+.dropdown-menu {
+  margin: 0;
+}
+.affix-stuck-bottom .dropdown-menu {
+    bottom: 100%;
+    top: inherit;
+    -webkit-border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+    -webkit-box-shadow: 0 0 0;
+    box-shadow: 0 0 0;
+}
+
+
+.x-menu-bar {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 3px 10px;
+
+  &:before,
+  &:after {
+    display: table;
+    content: " ";
+  }
+  &:after {
+    clear: both;
+  }
+}
+.x-menu-bar--centered {
+	margin: 0 auto;
+	width: initial;
+}
+
+@media print {
+    .noprint { display:none !important; }
+}
+
+.x-breadcrumb {
+  .breadcrumb();
+  border-radius: 0;
+  margin-bottom: 7px;
+  list-style: none;
+  background-color: transparent;
+}
+
+.x-part-title {
+  color: @color-black;
+  background-color: @color-tone;
+  font-size: @font-size-h3;
+  font-weight: 500;
+  line-height: 1.1;
+  padding: @title-padding;
+}
+
+.x-part-subtitle {
+  font-size: @font-size-h4;
+  font-style: italic;
+  margin-top: 5px;
+}
+
+.x-region-content {
+  padding: 15px;
+}
+
+// BOOTSTRAP OVERRIDES
+.alert {
+  margin-bottom: 0;
+}
+
+.table {
+  margin-bottom: 0px;
+  > thead {
+    > tr {
+      > th,
+      > td {
+        background-color: @color-black;
+        color: @color-inverted-text;
+        font-weight: normal;
+      }
+    }
+  }
+}
+
+.table-bordered {
+  border: 0;
+  > thead > tr {
+    > th,
+    > td {
+      border-bottom-style:none;
+      border-top-style: none;
+    }
+    > th:first-child {
+      border-left-color: @color-black;
+    }
+    > th:last-child {
+      border-right-color: @color-black;
+    }
+  }
+
+  > thead > tr:not(:first-child){
+    > th,
+    > td {
+      border-top-style: solid;
+    }
+  }
+
+  > tbody > tr:first-child {
+    > td,
+    > th {
+      border-top: none;
+    }
+  }
+}
+
+.btn-primary {
+  &:focus, &:hover {
+    outline: 0;
+    background-color: darken(@color-main, 5%);
+  }
+}
+.btn-link {
+  &:hover,
+  &:focus {
+    color: @color-warning;
+    text-decoration: none;
+  }
+}
+// Тултипы в диалогах и попапах могут обрезаться, если у родителя overflow != visible (см. WC-734)
+// Указываем позиционирование относительно всего окна, в этом случае overflow родителя не влияет.
+.modal-content .tooltip,
+.popup .tooltip {
+	position: fixed;
+}
+// END OF BOOTSTRAP OVERRIDES
+
+/*
+Styles for centering elements.
+See: http://css-tricks.com/centering-in-the-unknown/
+*/
+/* This parent can be any width and height */
+/*.block {*/
+    /*text-align: center;*/
+/*}*/
+
+/* The ghost, nudged to maintain perfect centering */
+/*.block:before {*/
+    /*content: '';*/
+    /*display: inline-block;*/
+    /*height: 100%;*/
+    /*vertical-align: middle;*/
+    /*margin-right: -0.25em; *//* Adjusts for spacing */
+/*}*/
+
+/* The element to be centered, can
+   also be of any width and height */
+/*.centered {*/
+    /*display: inline-block;*/
+    /*vertical-align: middle;*/
+/*}*/
+
+// The cross to clear an input
+.clear-btn {
+  display: inline-block;
+  position: relative;
+  z-index: 3;
+  right: 1px;
+  margin: 0 0 0 -1.2em;
+  font-size: 1.5em;
+  width: 1em;
+  line-height: 1;
+  outline: 0;
+  cursor: pointer;
+  color: @color-text-disabled;
+  background-color: @color-content;
+  text-align: center;
+  vertical-align: middle;
+
+  &:hover {
+    color: @input-color;
+  }
+
+  &.disabled {
+    display: none;
+  }
+}
+
+input.has-clear-btn,
+.has-clear-btn > input {
+  padding-right: 1.6em;
+  &::-ms-clear {
+    display: none;
+  }
+}
+
+input.has-clear-btn ~ .clear-btn {
+  margin-top: @padding-base-vertical  + 1px; // padding + border
+}
+
+input.has-clear-btn.-invalid ~ .clear-btn {
+  background-color: @color-danger-light;
+}
+
+// checkbox via icons (works in WebKit only)
+input[type='checkbox'] {
+	.iconic-checkbox;
+	.x-icon-checkbox-unchecked;
+	&:checked {
+		.x-icon-checkbox-checked;
+	}
+	&:indeterminate {
+		.x-icon-checkbox-partial;
+	}
+	-webkit-appearance: none;
+}
+// radio via icons (works in WebKit only)
+input[type='radio'] {
+	.iconic-checkbox;
+	.x-icon-radio-unchecked;
+	&:checked {
+		.x-icon-radio-checked;
+	}
+	-webkit-appearance: none;
+}
+
+// children behave as if they have .container CSS class (from BS)
+.has-bs-grid {
+	> * {
+		.container-fixed();
+	}
+}
+
+.x-region {
+	position: relative;
+}
+.x-region-debug {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: none;
+	z-index: @zindex-tooltip;
+	font-size: 20px;
+	padding: 5px;
+	color: fade(@color-black, 50%);
+}
+.x-region:hover > .x-region-debug {
+	display: block;
+}
+
+// error debug info in dialog
+.x-modal-error-info {
+	max-height: 400px;
+	margin: 0;
+	border: 0;
+}
+
+.x-app-init-message-smile {
+  text-align: left;
+  padding-bottom: 10px;
+  font-size: 2em;
+}
+
+span.highlight {
+  background-color: #ff0;
+  color: #000;
+  padding: 1px 0;
+}
+
+// многострочный текст
+div.multiline-text {
+	word-wrap: break-word; 		/* IE 5.5-7 */
+	white-space: pre-wrap;
+}

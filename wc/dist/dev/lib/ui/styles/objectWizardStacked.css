@@ -1,0 +1,57 @@
+/* Stacked wizard styles */
+/* PLACEHOLDER */
+.x-wizard-stacked {
+  /* Stacked wizard navigation styles: begin */
+  /* top navigation (pass pages) */
+  /* bottom navigation (future pages) */
+}
+.x-wizard-stacked .popover {
+  /* page summary popover */
+  max-width: 400px;
+}
+.x-wizard-stacked .popover-content {
+  /* page summary popover content */
+  margin-right: 14px;
+  overflow: hidden;
+}
+.x-wizard-stacked > .x-wizard-top-nav.list-group {
+  /* no gap after past pages list */
+  margin-bottom: 0;
+}
+.x-wizard-stacked > .x-wizard-top-nav > .x-wizard-nav-item {
+  cursor: pointer;
+  z-index: auto;
+}
+.x-wizard-stacked > .x-wizard-top-nav > .x-wizard-nav-item.active,
+.x-wizard-stacked > .x-wizard-top-nav > .x-wizard-nav-item.active:hover {
+  background-color: #F4F3F3;
+}
+.x-wizard-stacked > .x-wizard-top-nav > .x-wizard-nav-item.active:hover {
+  cursor: default;
+}
+.x-wizard-stacked > .x-wizard-top-nav > .x-wizard-nav-item:hover {
+  /* overwrite bs style a.list-group-item:hover */
+  background-color: #e8e6e6;
+}
+.x-wizard-stacked > .x-wizard-top-nav > .x-wizard-nav-item:hover > .x-wizard-page-name {
+  border: 0;
+}
+.x-wizard-stacked > .x-wizard-bottom-nav.list-group {
+  /* no gap after past pages list */
+  margin-bottom: 0;
+}
+.x-wizard-stacked > .x-wizard-bottom-nav > .x-wizard-nav-item {
+  z-index: auto;
+}
+.x-wizard-stacked > .x-wizard-bottom-nav > .x-wizard-nav-item:last-child {
+  border-bottom: 0;
+}
+/* Brief page data */
+.x-wizard-page-brief {
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  margin-left: 24px;
+}

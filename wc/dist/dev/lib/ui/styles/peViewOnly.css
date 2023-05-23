@@ -1,0 +1,17 @@
+/* PLACEHOLDER */
+.x-pe-viewonly {
+  min-width: 1px;
+  min-height: 1px;
+  line-height: 2em;
+  font-style: italic;
+  outline: none;
+}
+.x-pe-viewonly.-empty {
+  color: #777777;
+}
+.x-pe-viewonly.-invalid {
+  color: #f26a60;
+}
+.x-pe-viewonly.-invalid > a {
+  color: #f26a60;
+}

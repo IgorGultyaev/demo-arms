@@ -1,0 +1,51 @@
+@import ".variables.less";
+@import ".mixins.less";
+
+.popup {
+  z-index: @zindex-dropdown;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: @dropdown-bg;
+  border: 1px solid @dropdown-fallback-border; // IE8 fallback
+  border: 1px solid @dropdown-border;
+  .box-shadow(0 6px 12px rgba(0,0,0,.175));
+}
+
+.x-popupview {
+	//padding: 0;
+	font-size: 13px;
+	border: 0;
+	overflow: auto;
+	.box-shadow(0px 10px 30px 15px rgba(0, 0, 0, .1));
+}
+
+.x-popupview-header {
+  background-color: @color-content;
+  padding-bottom: 2px;
+  font-size: 20px;
+
+  margin: 0 auto;
+  text-align: center;
+  min-height: 50px;
+}
+.x-popupview-header-menu {
+  padding: 0;
+  margin: -5px 0 0;
+  .x-icon {
+    font-size: 18px;
+    color: @color-black;
+    vertical-align: text-top;
+  }
+}
+
+.x-popupview-content {
+    overflow: auto;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.x-popupview-content .row {
+    margin-right: 0px;
+    margin-left: 0px;
+}

@@ -1,0 +1,26 @@
+@import ".variables.less";
+
+.x-pe-object {
+  width: 100%;
+  margin:  0;
+  padding: 0;
+
+  &.-invalid {
+    border: 1px solid @color-danger;
+    background-color: @color-danger-light;
+  }
+
+  &.x-pe-inline {
+    min-width: 20em;
+  }
+}
+
+.x-pe-object-presentation-container {
+  padding-left: @padding-base-horizontal;
+  margin-right: 26px;
+  line-height: 32px;
+  height: 34px;
+  border: 1px solid #ccc;
+  border-right-width: 0;
+  background: @color-content;
+}

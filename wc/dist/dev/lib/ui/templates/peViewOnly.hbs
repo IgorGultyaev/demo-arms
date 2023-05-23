@@ -1,0 +1,12 @@
+{{#if isEmpty}}
+<div id="{{id}}" class="x-pe-viewonly -empty" {{#if options.focusable}}tabindex="0"{{/if}}>
+    {{template options.partialTemplates.['empty']}}
+</div>
+{{else}}
+<div id="{{id}}" class="x-pe-viewonly" {{#if options.focusable}}tabindex="0"{{/if}}>
+    {{template options.partialTemplates.['data']}}
+</div>
+{{/if}}
+{{#if options.showCopy}}
+    <button class="btn-copy btn-copy-prop-view" tabindex="-1" type="button"></button>
+{{/if}}

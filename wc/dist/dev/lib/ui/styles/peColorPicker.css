@@ -1,0 +1,13 @@
+/* PLACEHOLDER */
+@media (min-width: 768px) {
+}
+.x-pe-colorpicker {
+  width: 100%;
+}
+.x-pe-colorpicker > input.-invalid {
+  background-color: #F2DEDE;
+  border-color: #f26a60;
+}
+.x-pe-colorpicker.x-pe-inline {
+  min-width: 8em;
+}

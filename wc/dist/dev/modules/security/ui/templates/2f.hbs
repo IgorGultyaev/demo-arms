@@ -1,0 +1,10 @@
+<form onsubmit='return false'>
+    <div class='x-login-2f-dialog-body--prompt'>{{prompt}}
+        <span {{data-bind text='left'}}></span>
+    </div>
+    <div class='x-login-2f-dialog-body--hint'>{{hint}}</div>
+    <div class="input-group password-group">
+        <span class="input-group-addon"><span class="x-icon x-icon-key" aria-hidden="true"></span></span>
+        <input class="form-control" type="password" name="pin" {{data-bind valueLive='secret'}}>
+    </div>
+</form>

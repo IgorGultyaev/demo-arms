@@ -1,0 +1,20 @@
+{{#if header}}
+    <div class="modal-header">
+        {{#if-not options.noCloseButton}}<a class="modal-btn-close close" data-dismiss="modal"></a>{{/if-not}}
+        <h4>{{header}}</h4>
+    </div>
+{{else}}
+    {{#if-not options.noCloseButton}}<a class="modal-btn-close close" data-dismiss="modal"></a>{{/if-not}}
+{{/if}}
+<div class="modal-body">
+    {{#if body}}
+        {{render body target=".modal-body"}}
+    {{/if}}
+</div>
+{{#if-menu menu}}
+{{#if-not options.hideMenu}}
+    <div class="modal-footer x-menu--contrast">
+        {{view class="ui.MenuPresenter" viewModel=menu tag="div" cssClass="pull-right"}}
+    </div>
+{{/if-not}}
+{{/if-menu}}

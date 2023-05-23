@@ -1,0 +1,50 @@
+@import (reference) ".variables.less";
+@import (reference) ".mixins.less";
+@import "../../../vendor/bootstrap-datetimepicker/less/bootstrap-datetimepicker.less";
+
+@datetimepicker-width: 250px;
+
+.x-pe-datetime {
+	width: @datetimepicker-width;
+	min-width: @datetimepicker-width;
+
+	> .x-pe-datetime-input.-invalid {
+		background-color: @color-danger-light;
+		border-color: @color-danger;
+	}
+
+	> .x-pe-datetime-buttons {
+		cursor: pointer;
+		background: @color-content;
+
+		&:hover {
+			background: darken(@color-content, 10%);
+		}
+	}
+}
+
+.bootstrap-datetimepicker-widget.dropdown-menu {
+	width: @datetimepicker-width;
+	min-width: @datetimepicker-width;
+
+	.x-icon {
+		color: @color-text;
+	}
+
+	.picker-switch .x-icon:hover {
+		background: @gray-lighter;
+	}
+}
+
+.popup {
+	.bootstrap-datetimepicker-widget {
+		position: static !important;
+		float: none !important;
+		margin: 0;
+		.box-shadow(none);
+		&:before, &:after {
+			content: none;
+		}
+	}
+}
+

@@ -1,0 +1,24 @@
+{{#if-not options.hideMenuRow}}
+<div class="x-list-menu-row-container {{options.menuRowCssClass}}" id="{{push-id}}">
+    {{#observe this target=":pop-id"}}
+        {{#if-menu list.menuSelection}}
+        <div id="{{push-id}}" class="pull-left" {{data-bind transparent="isReloading" target=":peek-id"}}>
+            {{part class="ui.MenuPresenter" viewModel=list.menuSelection target=":pop-id" dropup=true}}
+            {{data-bind text="this.list().get('selection').count()" target=".x-list-menu-selection-counter" ignore-missing-target="true"}}
+            {{data-bind text="this.list().get('items').count()" target=".x-list-menu-total-counter" ignore-missing-target="true"}}
+        </div>
+        {{else}}
+            {{#unless options.hideRowsStats}}
+            <div class="x-menu-item" style="cursor: auto; user-select: text;">
+                <span class='hidden-xs'>{{res "total"}}&nbsp;</span><span {{data-bind text="this.list().get('items').count()"}} class='x-list-menu-total-counter'></span>
+            </div>
+            {{/unless}}
+        {{/if-menu}}
+        {{#if-menu list.menuRow}}
+        <div id="{{push-id}}" class="pull-right" {{data-bind transparent="isReloading" target=":peek-id"}}>
+            {{part class="ui.MenuPresenter" viewModel=list.menuRow target=":pop-id" dropup=true}}
+        </div>
+        {{/if-menu}}
+    {{/observe}}
+</div>
+{{/if-not}}

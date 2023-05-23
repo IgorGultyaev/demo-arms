@@ -1,0 +1,23 @@
+{{#compare options.vt "!==" "object"}}
+    {{{formattedHtml}}}
+{{else}}
+    {{#if-not options.many}}
+        {{#if commands.View}}
+            <a href="{{format value formatter=this.['urlFormatter']}}" {{#if-not options.focusableLink}}tabIndex="-1"{{/if-not}} {{command-bind commands.View object=value}}>{{formattedValue}}</a>
+        {{else}}
+            {{formattedValue}}
+        {{/if}}
+    {{else}}
+        {{#if options.['formatter']}}
+            {{format formatter=options.['formatter']}}<br/>
+        {{else}}
+            {{#each value}}
+                {{#if ../commands.View}}
+                    <a href="{{format this formatter=../['urlFormatter']}}" {{#if-not ../options.focusableLink}}tabIndex="-1"{{/if-not}} {{command-bind ../commands.View object=this}}>{{format formatter=../options.['itemFormatter']}}</a><br/>
+                {{else}}
+                    {{format formatter=../options.['itemFormatter']}}<br/>
+                {{/if}}
+            {{/each}}
+        {{/if}}
+    {{/if-not}}
+{{/compare}}

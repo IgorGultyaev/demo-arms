@@ -1,0 +1,34 @@
+{{#if count}}
+    {{#if canPin}}
+    <div class="x-context-parts-badge" {{data-bind cssClass="badgeCssClass"}}></div>
+    {{/if}}
+    <div class="x-context-parts-carousel x-carousel" id="{{push-id}}">
+        <div class="pull-right x-context-part-buttons">
+            {{#if commands.PinContextParts}}
+                {{#if canPin}}
+                <a href="#" class="x-context-part-btn" id="{{push-id}}">
+                    <span class="x-icon x-icon-pushpin x-icon-alone"></span>
+                    {{toggleClass -off="isUnpinned" target=":peek-id"}}
+                    {{command-bind commands.PinContextParts target=":pop-id"}}
+                </a>
+                {{/if}}
+            {{/if}}
+            {{#if commands.CloseContextPart}}
+                <a href="#" class="x-context-part-btn" id="{{push-id}}">
+                    <span class="x-icon x-icon-clear x-icon-alone"></span>
+                    {{command-bind commands.CloseContextPart target=":pop-id"}}
+                </a>
+            {{/if}}
+        </div>
+        <div class="pull-right x-context-part-nav" {{data-bind visibility="this.count() > 1"}}>
+            {{> carousel-controls}}
+        </div>
+        <div class="x-carousel-body" id="{{push-id}}">
+            {{#observe this target=":pop-id"}}
+                {{#if current}}
+                    {{render current tag="div"}}
+                {{/if}}
+            {{/observe}}
+        </div>
+    </div>
+{{/if}}

@@ -1,0 +1,5 @@
+﻿/* fix the horizontal padding for inputs with the 'clear' button */
+input.has-clear-btn:focus ~ .clear-btn,
+.has-clear-btn > input:focus ~ .clear-btn {
+    display: none;
+}

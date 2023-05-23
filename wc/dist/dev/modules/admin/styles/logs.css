@@ -1,0 +1,201 @@
+body {
+	font-family: 'Roboto', Arial, 'Liberation Sans', 'DejaVu Sans', sans-serif;
+	font-size: 12px;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+pre {
+	font-family: 'Roboto Mono', Consolas, Monaco, Ubuntu Mono, monospace;
+}
+#top-panel {
+	position: fixed;
+	top: 45px;
+	left: 0;
+	right: 0;
+	bottom: 320px;
+	overflow: auto;
+	background-color: white;
+}
+#bottom-panel {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 100%;
+	height: 310px;
+	width: 100%;
+	background-color: #F1F1F1;
+	padding: 0;
+	font-size: 12px;
+}
+.divider {
+	position: fixed;
+	bottom: 310px;
+	left: 0;
+	right: 0;
+	height: 10px;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	background-color: #fafafa;
+	cursor: row-resize;
+	z-index: 1;
+	box-sizing: content-box;
+}
+.divider > div {
+	margin: auto;
+	width: 24px;
+	height: 1px;
+	background-color: #ccc;
+	position: relative;
+}
+.divider .line-1 {
+	top: 3px;
+}
+.divider .line-2 {
+	top: 4px;
+}
+.divider .line-3 {
+	top: 5px;
+}
+#overlay {
+	position: fixed;
+	z-index: 99999;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	cursor: row-resize;
+	opacity: 0;
+}
+#log-table-header {
+	height: 44px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: #eee;
+	padding: 5px;
+	font-size: 12px;
+	border-bottom: solid 1px #ccc;
+}
+#log-table {
+	border-collapse: collapse;
+	margin: auto;
+	width: 99%;
+	table-layout: fixed;
+}
+th.severity {
+	width: 40px;
+}
+th.category {
+	width: 110px;
+}
+th.message {}
+th.timestamp {
+	width: 90px;
+}
+
+#log-table tbody tr td {
+	border-top: 1px #e9e9e9 solid;
+	line-height: 25px;
+}
+.message-row:hover {
+	background-color: #f8f8f8;
+	cursor: pointer;
+}
+.message-row.selected {
+	background-color: #dfdfdf;
+}
+.message {
+	font-size: 13px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	padding-right: 10px;
+}
+td.severity {
+	text-align: center;
+}
+td.severity .x-icon {
+	font-size: 12px;
+}
+td.timestamp {
+	text-align: right;
+	padding-right: 8px;
+	font-size: 12px;
+	color: #999;
+	vertical-align: top;
+}
+.action-panel {
+	position: fixed;
+	height: 30px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	border-top: solid 1px #ccc;
+	padding: 5px 5px 5px 10px;
+}
+.message-info {
+	position: absolute;
+	bottom: 35px;
+	top: 0;
+	left: 0;
+	right: 0;
+	overflow: auto;
+}
+.message-info > .tabs {
+	position: absolute;
+	bottom: 10px;
+	left: 0;
+	right: 0;
+	list-style-type: none;
+	border-top: 1px solid #ddd;
+	margin: 0;
+	padding-left: 15px;
+}
+.message-info > .tabs > li {
+	float: left;
+	position: relative;
+	padding-right: 5px;
+	margin:0;
+}
+.message-info > .tabs > li > a.active {
+	border-top: 1px solid #f1f1f1;
+	background-color: #f1f1f1;
+}
+.message-info > .tabs > li > a {
+	position: relative;
+	top: 2px;
+	text-decoration: none;
+	color: #333;
+	border: 1px solid #ddd;
+	border-top: none;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	padding: 4px;
+	background-color: #e1e1e1;
+}
+.message-info > .content {
+	width: 100%;
+	bottom: 30px; /* same sa action-panel's height */
+	top: 0;
+	position: absolute;
+	overflow: auto;
+	margin: 0;
+	padding: 10px;
+	display: none;
+}
+.message-info > .content.active {
+	display: block;
+}
+pre.details {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background-color: transparent;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+pre.details dd {
+	color: #888;
+	margin-bottom: 15px;
+}

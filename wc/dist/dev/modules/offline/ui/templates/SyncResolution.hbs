@@ -1,0 +1,17 @@
+<div class="x-part-title">{{res "offline.sync.title"}}</div>
+{{#if hasErrors}}
+	<div class="alert alert-warning x-syncresolution-alert">
+		{{res "offline.sync.total_errors_occurred"}}: {{errorCountOriginal}}<br>
+		{{res "offline.sync.errors_to_resolve_left"}}: {{errorCountCurrent}}
+	</div>
+	{{render carousel cssClass="x-syncresolution-carousel" tag="div"}}
+	<div class="x-menu-bar x-syncresolution-menu-container">
+		{{view class="ui.MenuPresenter" viewModel=menu tag="div"}}
+		{{data-bind text="getCmdNextTitle" target="#x-sync-resolution-cmd-next"}}
+	</div>
+	<div style="margin-left: 10px;">{{res "offline.sync.affected_objects"}}:</div>
+	{{render list}}
+{{else}}
+	<div class="alert alert-info x-syncresolution-alert">{{res "offline.sync.no_errors"}}</div>
+	<button type="button" class='btn btn-default btn-lg x-syncresolution-btn' {{command-bind commands.Close}}>{{res "close"}}</button>
+{{/if}}

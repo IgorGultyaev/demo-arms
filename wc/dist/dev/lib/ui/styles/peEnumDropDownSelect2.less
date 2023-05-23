@@ -1,0 +1,194 @@
+@import (reference) ".variables.less";
+@import (reference) ".mixins.less";
+@import (reference) "icons.less";
+
+@select2-arrow-width: 24px;
+
+.x-pe-enum-dropdown-select2 {
+
+	.select2-container {
+		/* multi-editor */
+		.select2-selection--multiple {
+			padding: 0 @padding-base-horizontal/2;
+
+			.select2-search__field input {
+				font-size: @font-size-base;
+				font-family: inherit;
+				padding: @padding-base-vertical @padding-base-horizontal/2;
+			}
+
+			.select2-selection__choice {
+				///padding-top: 4px;
+				//padding-bottom: 4px;
+				//margin-top: 5px;
+				//margin-bottom: 5px;
+				border-radius: 0;
+				border-color: @input-border;
+				background: @gray-lighter;
+			}
+		}
+
+	  	// это надо?
+		.select2-selection__placeholder {
+			margin-right: @select2-arrow-width;
+		}
+		/* single-editor */
+		.select2-selection--single {
+			height: 34px;
+			line-height: 32px;
+		  	.select2-selection__rendered {
+			  	line-height: inherit;
+				padding-left: @padding-base-horizontal;
+			}
+		}
+	 	.select2-selection__arrow {
+		    top: 11px;
+		  	right: 10px;
+		  	width: 20px;
+		  	height: 0;
+
+	  		> b {
+			  width: @select2-arrow-width;
+			  border: none;
+			  //padding-top: 8px;
+
+			  .iconfont();
+			  &:before {
+			  	content: @x-icon-angle-bracket-bottom;
+			  }
+			}
+		}
+		&.select2-container--open {
+			.select2-selection__arrow {
+				> b {
+					&:before {
+						content: @x-icon-angle-bracket-top;
+					}
+				}
+			}
+		}
+
+		/* both editors */
+		.select2-selection {
+			border-radius: 0;
+			border-color: @input-border;
+			background: @input-bg;
+			filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+		}
+	}
+	.select2-selection__clear {
+		font-size: 1.5em;
+	  	font-weight: normal !important;
+		width: 1em;
+		line-height: 1;
+		outline: 0;
+		cursor: pointer;
+	  	color: @color-text-disabled;
+		background-color: transparent;
+		text-align: center;
+		vertical-align: middle;
+		margin-top: 6px;
+	  	margin-right: 5px;
+
+		&:hover {
+			color: @input-color;
+		}
+		&.disabled {
+			display: none;
+		}
+	}
+	.select2-selection--multiple {
+		min-height: 34px;
+		.select2-selection__rendered {
+			padding-left: @padding-base-horizontal - 6;	// as .select2-selection--multiple has padding-left=6px
+		}
+		.select2-selection__clear {
+			text-align: right;
+			margin-right: 0;
+			height: 22px;
+		}
+	}
+
+
+	/* active editor */
+	.select2-container--focus, .select2-container--open {
+		/* border around active element */
+		.select2-selection {
+			@color-rgba: rgba(red(@input-border-focus), green(@input-border-focus), blue(@input-border-focus), .6);
+			border: 1px solid @input-border-focus;
+			outline: 0;
+			.box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @{color-rgba}");
+			.transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+		}
+	}
+
+	/* disabled */
+	.select2-container--disabled {
+		.select2-selection {
+			background-color: @input-bg-disabled;
+		}
+	}
+
+	/* invalid state */
+	&.-invalid {
+		> .select2-container {
+			.select2-selection {
+				border: 1px solid @color-danger;
+				background-color: @color-danger-light;
+			}
+		}
+
+		> .select2-container--focus {
+			.select2-selection {
+				border: 1px solid @color-danger;
+			}
+		}
+	}
+}
+//select2-search__field
+
+/* dropdown */
+.select2-dropdown {
+	border-radius: 0;
+	border: 1px solid @input-border;
+
+	.select2-search {
+		input {
+			outline: 0;
+			background: @input-bg;
+			border-color: @input-border;
+		}
+	}
+
+	.select2-results__option--highlighted[aria-selected] {
+		background: @input-border-focus;
+	}
+
+	/*
+  	.select2-results__message {
+		background-color: transparent;
+		background-image: none !important; // NOTE: doesn't work in IE9 without !important;
+	}
+	*/
+    &.select2-dropdown--below {
+		-webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, .15);
+		box-shadow: 0 4px 10px rgba(0, 0, 0, .15);
+	}
+
+	&.select2-dropdown--above {
+		-webkit-box-shadow: 0 -4px 10px rgba(0, 0, 0, .15);
+		box-shadow: 0 -4px 10px rgba(0, 0, 0, .15);
+	}
+}
+
+// overrides for inplace mode
+.select2-dropdown.select2-dropdown-inplace {
+	left: inherit;
+	display: none;
+	position: inherit;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+.select2-container--open .select2-dropdown.select2-dropdown-inplace {
+	display: block;
+}

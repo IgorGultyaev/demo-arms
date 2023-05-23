@@ -1,0 +1,11 @@
+<div class="x-editor-fatal-error">
+    {{#if title}}
+    <div class="x-part-title x-editor-title">{{title}}</div>
+    {{/if}}
+    <div class="x-editor-fatal-error-content">
+        <div class="x-editor-fatal-error-text">{{message}}</div>
+        <div class="text-center">
+            <button type="button" class="btn btn-primary" {{command-bind CloseCommand}}>{{res "close"}}</button>
+        </div>
+    </div>
+</div>

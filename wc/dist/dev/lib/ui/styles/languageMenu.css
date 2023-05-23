@@ -1,0 +1,70 @@
+/* PLACEHOLDER */
+.flags-16 {
+  display: inline-block;
+  width: 13px;
+  height: 11px;
+  margin-top: 1px;
+  margin-right: .3em;
+  line-height: 14px;
+  /*vertical-align: text-top;*/
+  background: url(../../../content/images/flags.png) no-repeat;
+  background-position: 16px 16px;
+}
+.flags-24 {
+  display: inline-block;
+  width: 21px;
+  height: 16px;
+  margin-top: 1px;
+  margin-right: .3em;
+  line-height: 16px;
+  /*    vertical-align: text-top;*/
+  background: url(../../../content/images/flags.png) no-repeat;
+  background-position: 16px 16px;
+}
+.flags-32 {
+  display: inline-block;
+  width: 29px;
+  height: 20px;
+  margin-top: 1px;
+  margin-right: .3em;
+  line-height: 20px;
+  /*    vertical-align: text-top;*/
+  background: url(../../../content/images/flags.png) no-repeat;
+  background-position: 16px 16px;
+}
+.flags-16-ru {
+  background-position: 0px 0px;
+}
+.flags-16-gb {
+  background-position: -15px 0px;
+}
+.flags-16-us {
+  background-position: -28px 0px;
+}
+.flags-16-en {
+  background-position: -28px 0px;
+}
+.flags-24-ru {
+  background-position: 0px -11px;
+}
+.flags-24-gb {
+  background-position: -23px -11px;
+}
+.flags-24-us {
+  background-position: -44px -11px;
+}
+.flags-24-en {
+  background-position: -44px -11px;
+}
+.flags-32-ru {
+  background-position: 0px -27px;
+}
+.flags-32-gb {
+  background-position: -31px -27px;
+}
+.flags-32-us {
+  background-position: -60px -27px;
+}
+.flags-32-en {
+  background-position: -60px -27px;
+}

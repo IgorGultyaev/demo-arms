@@ -1,0 +1,14 @@
+<div class="x-notification">
+    <div class="x-notification-icon">
+        <span class="label {{bootstrap-severity-class severity}}">!</span>
+    </div>
+    <div class="x-notification-message">
+        <span class="ui-notify-close ui-notify-cross"><span class="x-icon x-icon-close"></span></span>
+		{{#if html}}{{{html}}}{{else}}{{message}}{{/if}}
+    </div>
+</div>
+{{#if hasMenu}}
+    <div class="x-menu--inverse x-notification-menu">
+		{{view class="ui.MenuPresenter" viewModel=menu}}
+    </div>
+{{/if}}

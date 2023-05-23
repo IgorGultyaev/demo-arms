@@ -1,0 +1,12 @@
+<div class="media">
+    <span class="pull-right"><a href="#"><span class="x-icon x-icon-close"></span></a></span>
+    <span class="pull-left label {{bootstrap-severity-class severity}}">!</span>
+    <div class="media-body">
+        {{#if html}}{{{html}}}{{else}}{{message}}{{/if}}
+    </div>
+</div>
+{{#if hasMenu}}
+    <div class="x-notification-menu" id="{{push-id}}">
+		{{view class="ui.MenuPresenter" viewModel=menu cssClass="x-menu-bar--centered" target=":pop-id"}}
+    </div>
+{{/if}}

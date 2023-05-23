@@ -1,0 +1,25 @@
+<div class="x-debug-model-browser">
+    <div class="x-debug-model-master" id="{{push-id}}">
+        {{render treePart target=":pop-id"}}
+    </div>
+    <div class="x-debug-model-details" id="{{push-id}}">
+        {{#observe detailsPart target=":pop-id"}}
+            <table class="table table-striped table-hover" style="width:100%">
+                {{#each currentProps}}
+                <tr>
+                    <td>
+                        {{key}}
+                    </td>
+                    <td>
+                        {{#if isValue}}
+                            {{value}}
+                        {{/if}}
+                    </td>
+                </tr>
+                {{else}}
+                    <tr><td><i>No properties</i></td></tr>
+                {{/each}}
+            </table>
+        {{/observe}}
+    </div>
+</div>

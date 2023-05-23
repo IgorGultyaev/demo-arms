@@ -1,0 +1,12 @@
+/* PLACEHOLDER */
+.x-pe-object-list {
+  border: 1px solid #ccc;
+}
+.x-pe-object-list > .x-list-menu-row-container {
+  border: 0px;
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+.x-pe-inline-container > .x-pe-object-list {
+  min-width: 400px;
+}

@@ -1,0 +1,21 @@
+@import ".variables.less";
+
+.x-pe-viewonly {
+	min-width: 1px; // need for :focusable
+	min-height: 1px; // need for :focusable
+	line-height: 2em;
+	font-style: italic;
+	outline: none;
+
+	&.-empty {
+		color: @text-muted;
+	}
+
+	&.-invalid {
+		color: @color-danger;
+
+		> a {
+			color: @color-danger;
+		}
+	}
+}

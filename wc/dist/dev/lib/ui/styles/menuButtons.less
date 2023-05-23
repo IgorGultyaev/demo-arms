@@ -1,0 +1,37 @@
+@import ".variables.less";
+
+.x-menu-buttons-inline {
+  padding: 0;
+  margin: 0;
+
+  &.input-group-btn > .btn {
+    position: relative;
+    margin-left: -1px; // fix buttons overlapping
+    font-size: @font-size-base; // override '.ui-widget button' from jquery-ui-bootstrap
+
+    &:focus,
+    &:hover {
+      z-index: 2;
+    }
+  }
+}
+
+.x-menu-btn .btn-group > button.dropdown-toggle:first-child > .caret {
+  margin-left: 3px;
+}
+
+.x-menu-btn-addon-left, .x-menu-btn-addon-right {
+  background-color: #eeeeee;
+}
+
+/* btn-group joined with other element to the left */
+.btn-group.x-menu-btn-addon-left > .btn:last-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* btn-group joined with other element to the right */
+.btn-group.x-menu-btn-addon-right > .btn:first-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}

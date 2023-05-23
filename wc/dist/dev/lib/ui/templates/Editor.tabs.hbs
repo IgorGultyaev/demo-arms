@@ -1,0 +1,10 @@
+<ul class='x-editor-tabs nav'>
+    {{#each pages}}
+        <li data-page={{name}} {{data-bind hidden="hidden"}}>
+            <a href='#' class="x-editor-tab">
+                <span class='x-icon x-icon-warning-triangle x-editor-error-badge' {{data-bind visibility="hasViolations"}}></span>
+                {{{tab.html}}}
+            </a>
+        </li>
+    {{/each}}
+</ul>

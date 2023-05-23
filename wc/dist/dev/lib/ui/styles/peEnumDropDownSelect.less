@@ -1,0 +1,38 @@
+@import ".variables.less";
+
+.x-pe-enum-dropdown-select {
+  > select {
+    cursor: pointer;
+  }
+  > select[disabled] {
+    cursor: not-allowed;
+  }
+  > .value-presentation {
+    padding-left: 12px;
+    overflow: hidden;
+    line-height: 28px;
+    height: 30px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  select[disabled] ~ .value-presentation {
+    cursor: not-allowed;
+    background-color: #eeeeee;
+  }
+
+  &.-invalid {
+    & > select,
+    & > .value-presentation {
+      border: 1px solid @color-danger;
+      background-color: @color-danger-light;
+    }
+  }
+
+  // inline
+  &.x-pe-inline {
+    > select {
+      padding-left: 1px;
+      padding-right: 1px;
+    }
+  }
+}

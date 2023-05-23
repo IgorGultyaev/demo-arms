@@ -1,0 +1,97 @@
+@import ".variables.less";
+@import ".mixins.less";
+
+@import (reference) "../../../vendor/bootstrap/less/mixins.less";
+@import (reference) "../../../vendor/bootstrap/less/forms.less";
+
+// NOTE: styles are used by peBooleanSwitch and peEnumSwitch
+// TODO: rename x-pe-bool-switch-label to x-pe-switch-label, x-pe-bool-switch to x-pe-switch
+
+.x-pe-bool-switch-label {
+  line-height: 2em;
+  vertical-align: middle;
+  font-size: 14px;
+  position: relative;
+  height: 100%;
+  text-align: center;
+  min-width: 45px;
+  padding: 0 5px;
+  margin: 0;
+  cursor: pointer;
+  font-weight: normal;
+  font-style: normal;
+  color: @text-color;
+  border-bottom: 3px solid transparent;
+
+  &:hover{
+    border-bottom: 3px solid @color-submain;
+  }
+  &:not(.selected) {
+    color: @color-darkgray;
+  }
+  &.selected {
+    border-bottom: 3px solid @color-main;
+  }
+}
+
+.x-pe-bool-switch {
+  white-space: nowrap;
+  height: 30px;
+  display: inline-block;
+  position:relative;
+  overflow: hidden;
+  max-width: 100%;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+
+  &:focus{
+    outline: 1px dotted @input-border-focus;
+  }
+
+  input {
+      position:absolute;
+      opacity:0;
+      filter:alpha(opacity=0);
+
+      &:focus{
+          outline: none;
+      }
+
+    &:disabled + .x-pe-bool-switch-label{
+        &.selected{
+            border-bottom-color: @color-darkgray;
+        }
+        &:not(.selected):hover{
+            border-bottom:0;
+        }
+    }
+  }
+
+  a {
+    display: block;
+    position: absolute;
+    left: 0;
+    padding: 0;
+    height: 3px;
+    bottom: 0;
+    background-color: @color-main;
+  }
+
+  &.-invalid {
+    border: 1px solid @color-danger;
+    //background-color: @color-danger-light;
+  }
+}
+
+// inline
+.x-pe-inline.x-pe-bool-switch {
+  .pe-inline-solid;
+  display: table;
+  padding: 4px;
+
+  a {
+    bottom: 5px;
+  }
+}

@@ -1,0 +1,68 @@
+@charset "UTF-8";
+/* PLACEHOLDER */
+.x-pe-binary {
+  outline: none;
+}
+.x-pe-binary .thumbnail {
+  width: auto;
+  height: auto;
+  /*max-height: 256px;*/
+  max-width: 256px;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  margin-bottom: 5px;
+  -webkit-transition: none !important;
+  transition: none !important;
+}
+.x-pe-binary form {
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 10px;
+}
+.x-pe-binary .x-pe-binary-uploadbutton {
+  position: relative;
+  overflow: hidden;
+}
+.x-pe-binary .x-pe-binary-uploadbutton > input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  transform: translate(-300px, 0) scale(4);
+  font-size: 23px;
+  direction: ltr;
+  cursor: pointer;
+}
+.x-pe-binary .x-pe-binary-button {
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+.x-pe-binary-hint {
+  display: inline;
+}
+.x-pe-binary.-invalid .x-pe-binary-uploadbutton {
+  background-color: #F2DEDE;
+  border-color: #f26a60;
+}
+.x-pe-binary-editable {
+  border: 2px dashed #ccc;
+  padding: 10px;
+}
+.x-pe-binary-editable.dragover {
+  background: #edfaf1;
+  border: 2px dashed #26b75d;
+  color: #26b75d;
+}
+/* Fix for IE 6: */
+* html .x-pe-binary-uploadbutton {
+  line-height: 24px;
+  margin: 1px -3px 0 0;
+}
+/* Fix for IE 7: */
+* + html .x-pe-binary-uploadbutton {
+  padding: 2px 15px;
+  margin: 1px 0 0 0;
+}

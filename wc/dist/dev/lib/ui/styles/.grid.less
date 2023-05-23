@@ -1,0 +1,75 @@
+@import (reference) ".variables.less";
+@import (reference) ".mixins.less";
+@import (reference) "icons.less";
+
+@grid-font-size: ceil(@font-size-base * 0.9); // ~13px
+@grid-cell-padding: 7px;
+@grid-row-odd-bg: @color-content;
+@grid-row-even-bg: @color-tone;
+@grid-row-odd-selected-bg: lighten(@color-active, 35%);
+@grid-row-even-selected-bg: lighten(@color-active, 30%);
+@grid-row-active-bg: @color-active;
+@grid-row-active-text: @color-inverted-text;
+@grid-border: @color-border;
+@grid-header-bg: @color-text;
+@grid-header-hover-bg: darken(@grid-header-bg, 5%);
+@grid-header-text: @color-inverted-text;
+
+#grid {
+  .unfilled() {
+    #gradient > .striped(rgba(255, 255, 255, 0.5), 135deg);
+    background-color: #fafafa;
+    background-size: 40px 40px;
+  }
+
+  // state icons
+  .iconic() {
+    &:before {
+      .iconfont;
+      padding: 2px;
+      display: inline;
+      vertical-align: text-top;
+      margin-left: -2px;
+      margin-right: 3px;
+    }
+  }
+
+  .uniconic() {
+    &:before {
+      content: none !important;
+    }
+  }
+
+  .iconic-modified() {
+    &:before {
+      content: @x-icon-edit;
+      color: #0068b4;
+    }
+  }
+
+  .iconic-new() {
+    &:before {
+      content: @x-icon-add;
+      color: @color-green;//#7ab800;
+    }
+  }
+
+  .iconic-removed() {
+    &:before {
+      content: @x-icon-remove;
+      color: #c2102e;
+    }
+  }
+
+  .iconic-invalid() {
+    &:before {
+      color: #c2102e;
+    }
+  }
+
+  .iconic-warning() {
+    &:before {
+      color: @color-warning;
+    }
+  }
+}

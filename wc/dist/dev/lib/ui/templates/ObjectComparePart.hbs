@@ -1,0 +1,35 @@
+{{#if title}}
+    <div class="x-part-title">{{title}}</div>
+{{/if}}
+{{#if isLoading}}
+	{{waiting-large}}
+{{else}}
+	{{#unbound this tag="div"}}
+		{{#if hint}}
+            <div class="alert alert-{{hintSeverity}}">{{hint}}</div>
+		{{/if}}
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+            <tr>
+                <th>{{res "objectResolution.column.property"}}</th>
+                <th>{{targetColumnTitle}}</th>
+                <th>{{sourceColumnTitle}}</th>
+            </tr>
+            </thead>
+            <tbody>
+			{{#each props}}
+                <tr>
+                    <td class="text-bold">{{title}}</td>
+					{{#if isPropEqual}}
+						<td class="text-muted text-center" colspan="2">{{{originalHtml}}}</td>
+					{{else}}
+						<td>{{{originalHtml}}}</td>
+						<td>{{{localHtml}}}</td>
+					{{/if}}
+                </tr>
+			{{/each}}
+            </tbody>
+        </table>
+	{{/unbound}}
+{{/if}}
+

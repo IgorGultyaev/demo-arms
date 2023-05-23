@@ -1,0 +1,17 @@
+{{#if-not presenter.options.hideMenuNode}}
+	<div class="x-tree-menu-node {{presenter.options.menuNodeCssClass}}">
+		{{#observe this target=".x-tree-menu-node"}}
+			{{#if-menu menuSelection}}
+				<div id="{{push-id}}" class="pull-left" {{data-bind transparent="this.root().state() === 'loading'" target=":peek-id"}}>
+					{{part class="ui.MenuPresenter" viewModel=menuSelection target=":pop-id" dropup=true}}
+					{{data-bind text="this.selection().count()" target=".x-tree-menu-selection-counter" ignore-missing-target="true"}}
+				</div>
+			{{/if-menu}}
+			{{#if-menu menuNode}}
+				<div id="{{push-id}}" class="pull-right" {{data-bind transparent="this.root().state() === 'loading'" target=":peek-id"}}>
+					{{part class="ui.MenuPresenter" viewModel=menuNode target=":pop-id" dropup=true}}
+				</div>
+			{{/if-menu}}
+		{{/observe}}
+	</div>
+{{/if-not}}

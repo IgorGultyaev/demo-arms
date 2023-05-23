@@ -1,0 +1,57 @@
+<div id="top-panel">
+    <div id="log-table-header">
+        {{#if-menu menu}}
+            <div id="{{push-id}}" style="display: inline-block;">
+            {{part class="ui.MenuButtonsPresenter" viewModel=this.menu target=":pop-id"}}
+            </div>
+        {{/if-menu}}
+        <label class="pull-right">
+            <input type="checkbox" {{data-bind checked="autoScroll"}}>
+            Auto-scroll
+        </label>
+    </div>
+	<table id="log-table">
+		<thead>
+			<tr>
+				<th class="severity"></th>
+                <th class="category"></th>
+				<th class="message"></th>
+				<th class="timestamp"></th>
+			</tr>
+		</thead>
+		<tbody id="{{push-id}}">
+			{{#each2 items match-attr="data-id" match-prop="id" target=":pop-id"}}
+			<tr class="message-row" data-id="{{id}}">
+				<td class="severity">{{severity-icon severity}}</td>
+				<td class="category">{{category}}</td>
+				<td class="message-body"><div class="message">{{message}}</div></td>
+				<td class="timestamp">{{timestampFormatted}}</td>
+			</tr>
+			{{/each2}}
+		</tbody>
+	</table>
+</div>
+{{part class="ui.PanelResizer"}}
+<div id="bottom-panel">
+	<div class="message-info">
+        <div class="content active" data-tab-content="info">
+            <pre class="details"></pre>
+        </div>
+        <div class="content" data-tab-content="stack">
+            <pre class="details"></pre>
+        </div>
+        <div class="content" data-tab-content="env">
+            <pre class="details"></pre>
+        </div>
+
+        <ul class="tabs">
+            <li><a href="#" data-tab-name="info" title="Show info" class="active">Info</a></li>
+            <li><a href="#" data-tab-name="stack" title="Show stacktrace">Stack</a></li>
+            <li><a href="#" data-tab-name="env" title="Show environment" class="">Env</a></li>
+        </ul>
+    </div>
+	<div class="action-panel">
+        <span>Total: </span><span {{data-bind text="this.get('items').count()"}}></span>
+    </div>
+</div>
+

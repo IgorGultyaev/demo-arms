@@ -1,0 +1,7 @@
+{{#with @view}}
+{{#if partsCarousel}}
+    <div class="x-list-parts-container" id="{{push-id}}">
+        {{render partsCarousel target=":pop-id"}}
+    </div>
+{{/if}}
+{{/with}}

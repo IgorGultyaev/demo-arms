@@ -1,0 +1,12 @@
+<form onsubmit="return false" class="container-fluid">
+{{#if sections}}
+    {{#each sections}}
+		{{template this.['template']}}
+    {{/each}}
+{{else}}
+    {{#observe-each editors tag="div"}}
+        {{> peContainer }}
+    {{/observe-each}}
+{{/if}}
+</form>
+

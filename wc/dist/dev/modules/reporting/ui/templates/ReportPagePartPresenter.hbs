@@ -1,0 +1,39 @@
+<div class="x-report x-report-page {{options.cssClass}}">
+	{{#if-menu menu}}
+    <div class="x-app-navbar navbar navbar-default noprint">
+        <div class="navbar-header">
+			<a class="x-app-navbar-brand hidden-xs" href="{{xconfig "startPath"}}">{{xconfig "appName"}}</a>
+		</div>
+
+        <div class="container">
+            <div class="nav navbar-nav btn-toolbar navbar-right x-menu--contrast">
+                <div id="{{push-id}}">{{part class="ui.MenuPresenter" viewModel=menu target=":pop-id" itemCssClass="navbar-btn"}}</div>
+            </div>
+        </div>
+
+		<div class="nav" style="width: 100%">
+            <ul class='x-breadcrumb noprint'></ul>
+		</div>
+	</div>
+	{{/if-menu}}
+    {{#if options.showTitle}}
+        {{#if title}}
+            <div class="x-part-title x-report-title">{{title}}</div>
+        {{/if}}
+    {{/if}}
+	<div class="x-report-content-container container" id="{{push-id}}">
+        {{#observe-wait this target=":pop-id" name="report" expr="isGenerating"}}
+            {{#if stateMessage}}
+                <div class="x-report-state-container">
+                    <p class="x-report-state-message {{bootstrap-severity-class presenter.stateSeverity prefix="text"}}">{{{stateMessage}}}</p>
+                </div>
+            {{else}}
+                <div {{data-bind html="reportContent"}}></div>
+            {{/if}}
+        {{else}}
+            {{waiting-large res="reportPart.building"}}
+        {{/observe-wait}}
+	</div>
+</div>
+<div class="footer-stub"></div>
+

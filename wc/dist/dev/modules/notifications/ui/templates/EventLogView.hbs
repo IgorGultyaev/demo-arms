@@ -1,0 +1,36 @@
+{{#if events.count}}
+	{{#each events}}
+        <div class="x-eventlog-item" {{command-bind ../commands.Select item=this}}>
+            <div class="pull-left x-eventlog-item--icon">
+				{{#compare this "===" ../activeItem}}
+                    <div class="pull-left x-eventlog-item--activetoken"></div>
+				{{/compare}}
+				{{notification-icon}}
+            </div>
+            <div class="x-eventlog-item--body">
+                <h5 class="x-eventlog-item--msg">{{message}}</h5>
+
+                <div class="pull-right text-muted">{{createdFormatted}}</div>
+				{{#compare this "===" ../activeItem}}
+					{{#if-menu menu}}
+						{{part class="ui.MenuPresenter" viewModel=menu}}
+					{{/if-menu}}
+				{{/compare}}
+				{{#compare kind "===" "process"}}
+					{{#if-menu menu}}
+						{{part class="ui.MenuPresenter" viewModel=menu}}
+					{{/if-menu}}
+				{{/compare}}
+            </div>
+			{{#compare this "===" ../activeItem}}
+                <div class="x-eventlog-item--remove">
+                    <a href="#" {{command-bind ../commands.Dismiss item=this}}>{{icon name="cancel"}}</a>
+                </div>
+			{{/compare}}
+        </div>
+	{{/each}}
+{{else}}
+    <span>{{res "notifications.no_notifications"}}</span>
+{{/if}}
+
+

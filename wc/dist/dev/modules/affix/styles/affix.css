@@ -1,0 +1,21 @@
+/* PLACEHOLDER */
+@media screen {
+  .affix-stuck {
+    position: fixed !important;
+    margin-top: 0;
+    margin-bottom: 0;
+    z-index: 900;
+  }
+  .affix-stuck--shadow.affix-stuck-top {
+    -webkit-box-shadow: 0 4px 10px -5px #a9a9a9;
+    box-shadow: 0 4px 10px -5px #a9a9a9;
+  }
+  .affix-stuck--shadow.affix-stuck-bottom {
+    -webkit-box-shadow: 0 -4px 10px -5px #a9a9a9;
+    box-shadow: 0 -4px 10px -5px #a9a9a9;
+  }
+  .x-layout-top-fixed,
+  .x-layout-bottom-fixed {
+    position: fixed;
+  }
+}

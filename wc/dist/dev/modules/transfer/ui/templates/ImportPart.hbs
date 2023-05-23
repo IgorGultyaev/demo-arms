@@ -1,0 +1,51 @@
+<div class="x-part-title x-transfer-title">{{title}}</div>
+<div class="x-transfer-body">
+	{{#if isProgress}}
+        <div class="progress x-transfer-progress">
+            <div class="progress-bar progress-bar-striped active progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{_progress}}%;">{{_progress}}%</div>
+        </div>
+	{{/if}}
+
+    <div class="x-pe-binary">
+        <form action="" method="POST" enctype="multipart/form-data">
+			{{#if-eq state 1}} {{!-- initial --}}
+                <div class="btn btn-default x-pe-binary-button x-pe-binary-uploadbutton">
+					{{icon name="add"}}<span>{{res "peBinary.selectFile"}}</span>
+                    <input type="file" name="file">
+                </div>
+			{{/if-eq}}
+			{{#if-eq state 2}} {{!-- uploading --}}
+                <button type="reset" class="btn btn-default cancel x-pe-binary-button" {{command-bind commands.UploadCancel}}>
+					{{icon name="stop"}}<span>{{res "peBinary.cancelUpload"}}</span>
+                </button>
+			{{/if-eq}}
+        </form>
+    </div>
+    <div class="alert alert-{{stateSeverity}}" role="alert">{{stateTitle}}</div>
+	{{#if isRunning}}
+        <div class="alert alert-info alert-dismissible x-transfer-hint" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			{{res "transfer.import.tip_on_importing"}}
+		</div>
+	{{/if}}
+	{{#if errorMessage}}
+        <div class="alert alert-warning x-transfer-hint" role="alert">{{errorMessage}}</div>
+	{{/if}}
+</div>
+{{#if detailPart}}
+	{{render detailPart}}
+{{/if}}
+<div class="x-transfer-menu-container x-menu-bar x-menu--contrast" id="{{push-id}}">
+	{{#observe this target=":pop-id"}}
+		{{#if-menu suspendMenu}}
+            <span id="{{push-id}}">
+				{{part class="ui.MenuPresenter" viewModel=suspendMenu target=":pop-id" dropup="true" tag="span" cssClass="-inline"}}
+            </span>
+		{{/if-menu}}
+		{{#if-menu menu}}
+            <span id="{{push-id}}">
+				{{part class="ui.MenuPresenter" viewModel=menu target=":pop-id" dropup="true" tag="span" cssClass="-inline"}}
+            </span>
+		{{/if-menu}}
+	{{/observe}}
+</div>

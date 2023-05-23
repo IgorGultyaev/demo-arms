@@ -1,0 +1,19 @@
+<div class="x-list-data-container" id="{{push-id}}">
+	{{#observe-wait this target=":pop-id" expr="isReloading"}}
+		{{#if list.stateMessage}}
+			<div class="x-empty-list">
+				<p class="x-list-state-message {{bootstrap-severity-class stateSeverity prefix="text"}}">
+					{{{list.stateMessage}}}
+				</p>
+				{{render dataPresenter tag="div" trackStatus=true}}
+			</div>
+		{{else}}
+			{{render dataPresenter tag="div" trackStatus=true}}
+		{{/if}}
+	{{else}}
+		<div {{#if fixedHeight}} style="height: {{fixedHeight}}px" {{/if}}
+			 class="x-headless-compensate">
+			{{waiting-large res="wait"}}
+		</div>
+	{{/observe-wait}}
+</div>

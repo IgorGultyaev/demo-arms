@@ -1,0 +1,56 @@
+{
+	"appName": "demo-arms",
+	"loader": {
+		"appCache": {
+			"enabled": false,
+			"include": [
+				"**/*.*",
+				"!**/*.json",
+				"!**/*.bak",
+				"!**/*.less",
+				"!content/images/waiting_*.gif"
+			]
+		},
+		"bootDir": "boot",
+		"scripts": [
+			"shim/console-shim.js",
+			"shim/es5-sham.js",
+			"shim/es5-shim.js",
+			"shim/html5shiv.js",
+			{
+				"if-match": {
+					"browser": "ie.8"
+				},
+				"include": [
+					"shim/respond.src.js"
+				]
+			}
+		],
+		"requirejs": {
+			"scriptPath": "vendor/require.js",
+			"loadAs": "inline"
+		},
+		"styles": [
+			"lib/ui/styles/root.css",
+			{
+				"if-match": {
+					"browser": "ie.9"
+				},
+				"include": "lib/ui/styles/common.ie9.css"
+			},
+			{
+				"if-match": {
+					"browser": "ie"
+				},
+				"include": "lib/ui/styles/common.ie.css"
+			},
+			"app/ui/styles/generic.css",
+			"app/ui/styles/root.css"
+		]
+	},
+	"defaultLanguage": "ru",
+	"supportedLanguages": {
+		"ru": {"title": "Русский"},
+		"en": {"title": "English"}
+	}
+}

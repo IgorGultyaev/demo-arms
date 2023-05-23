@@ -1,0 +1,8 @@
+<div class="x-context-part">
+    <p>{{message}}</p>
+    {{#if-menu menu}}
+    <div class="x-menu-bar">
+        <div id="{{push-id}}">{{part class="ui.MenuPresenter" viewModel=menu target=":pop-id"}}</div>
+    </div>
+    {{/if-menu}}
+</div>

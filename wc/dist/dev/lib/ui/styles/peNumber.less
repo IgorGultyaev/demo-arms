@@ -1,0 +1,61 @@
+@import ".variables.less";
+@import ".mixins.less";
+
+.x-pe-number {
+  > input.-invalid {
+    background-color: @color-danger-light;
+    border-color: @color-danger;
+  }
+
+  &.x-pe-inline {
+    min-width: 8em;
+  }
+  width: 100%;
+}
+
+.x-pe-number-spinner-vertical {
+  white-space: normal;
+  > .btn {
+    display: block;
+    line-height: @line-height-base/2;
+    padding: @padding-base-vertical/2 @padding-base-horizontal/2;
+    > .x-icon {
+      font-size: 9px;
+      line-height: inherit;
+    }
+  }
+}
+.x-pe-number-spinner-horizontal {
+  white-space: nowrap;
+  > .btn {
+    display: inline-block;
+    > .x-icon {
+      font-size: 10px;
+    }
+  }
+}
+
+.x-pe-number-spinner {
+  padding: 0;
+  background-color: @color-content;
+
+  > .btn {
+    margin: 0;
+    border: 0;
+    text-align: center;
+    vertical-align: middle;
+    color: @color-text;
+    background-color: transparent;
+    outline: none;
+
+    &:hover {
+      background-color: #f2f2f2;
+    }
+  }
+}
+
+.caret-up {
+  //border-width: 0 @caret-width-base @caret-width-base @caret-width-base;
+  border-top: 0;
+  border-bottom: @caret-width-base solid;
+}

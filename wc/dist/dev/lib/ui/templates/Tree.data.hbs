@@ -1,0 +1,38 @@
+<div class="x-tree-body">
+	<div class="x-tree-data" {{data-bind visibility="this.root().state() === 'loaded' && this.root().children().count()"}}>
+		<table class="x-tree-data-table">
+			{{#with presenter}}
+				<colgroup>
+					{{#if options.hasCheckboxes}}<col />{{/if}}
+					{{#if options.hasNumbering}}<col />{{/if}}
+					<col width="100%" />
+				</colgroup>
+				<thead style="display: none">
+				<tr>
+					{{#if options.hasCheckboxes}}<th></th>{{/if}}
+					{{#if options.hasNumbering}}<th></th>{{/if}}
+					<th></th>
+				</tr>
+				</thead>
+			{{/with}}
+			<tbody></tbody>
+		</table>
+	</div>
+	{{#observe this.root tag="div"}}
+		{{#compare state "===" "loading"}}
+			{{waiting-large}}
+		{{/compare}}
+		{{#compare state "===" "initial"}}
+			<p class="x-tree-state-message text-info">{{{../options.strings.not_loaded}}}</p>
+			{{command-bind ../commands.ReloadRoot target=".x-tree-state-message .x-cmd-link"}}
+		{{/compare}}
+		{{#compare state "===" "failed"}}
+			<p class="x-tree-state-message text-danger">{{{../options.strings.load_failed}}}{{#if message}}:<br>{{message}}{{/if}}</p>
+		{{/compare}}
+		{{#compare state "===" "loaded"}}
+			{{#if-not children.count}}
+				<p class="x-tree-state-message text-success">{{{../options.strings.no_data}}}</p>
+			{{/if-not}}
+		{{/compare}}
+	{{/observe}}
+</div>

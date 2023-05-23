@@ -1,0 +1,57 @@
+@import ".variables.less";
+//@import (reference) "../../../vendor/bootstrap/less/bootstrap_cust.less";
+//@import (reference) "../../../vendor/bootstrap/less/forms.less";
+//@import (reference) "../../../vendor/bootstrap/less/mixins/vendor-prefixes.less";
+
+/* x-pe-text */
+.x-pe-text {
+  width: 100%;
+  min-height: 28px;
+  background-color: @color-content;
+}
+// TODO: See http://track.rnd.croc.ru/issue/WC-959
+//.x-pe-string.-invalid {
+//	.has-error();
+//}
+
+.x-pe-text.-invalid,
+.x-pe-string-input.-invalid {
+  background-color: @color-danger-light;
+  border-color: @color-danger; // #ee5f5b;
+}
+
+/* x-pe-string */
+.x-pe-string {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: table;
+  background-color: @color-content;
+}
+
+.x-pe-string-textbox {
+  display: table-cell;
+  position: relative;
+  //z-index: 1;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.x-pe-string-input {
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+}
+
+.x-pe-string-counter {
+  font-size: 0.75em;
+  min-width: 5em;
+  padding: 1px;
+}
+
+/* inline */
+.x-pe-string.x-pe-inline,
+.x-pe-text.x-pe-inline {
+  min-width: 20em;
+}

@@ -1,0 +1,34 @@
+@import (reference) "../../../../lib/ui/styles/.variables.less";
+@import (reference) "../../../../lib/ui/styles/.grid.less";
+@import (reference) "../../../../lib/ui/styles/icons.less";
+
+.slick-row.-unsync-item > .x-slick-cell-iconic {
+	#grid > .iconic;
+
+	&:before {
+		content: @x-icon-sync;
+		color: #808080;
+	}
+}
+
+@x-syncresolution-margin-base: 10px;
+@x-syncresolution-margin-large: 20px;
+
+.x-syncresolution-menu-container {
+	margin: @x-syncresolution-margin-base 0;
+	border-top: 1px solid @color-border;
+	border-bottom: 1px solid @color-border;
+}
+
+.x-syncresolution-carousel {
+	margin: @x-syncresolution-margin-large;
+	font-size: larger;
+}
+
+.x-syncresolution-alert {
+	margin: @x-syncresolution-margin-base @x-syncresolution-margin-large;
+}
+
+.x-syncresolution-btn {
+	margin: @x-syncresolution-margin-base @x-syncresolution-margin-large;
+}

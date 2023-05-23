@@ -1,0 +1,20 @@
+{{#if-not presenter.options.hideMenuTree}}
+	<div class="x-tree-menu-tree {{presenter.options.menuTreeCssClass}}" id="{{push-id}}">
+		{{#observe this target=":pop-id" tag="div"}}
+				{{#if-menu menuTree}}
+					<div id="{{push-id}}" class="pull-left">
+						{{part class="ui.MenuPresenter" viewModel=menuTree target=":pop-id"}}
+					</div>
+				{{/if-menu}}
+				{{#if presenter.isSearchEnabled }}
+					<div class="pull-right">
+						<div class="x-menu" id="{{push-id}}">
+							{{part (object name="searchText" vt="string" nullable="true" changeTrigger="keyPressed"
+									   hideLetterCounter=true placeholder=(res "objectTree.search") debounce=250)
+								   class="ui.peString" target=":pop-id"}}
+						</div>
+					</div>
+				{{/if}}
+		{{/observe}}
+	</div>
+{{/if-not}}

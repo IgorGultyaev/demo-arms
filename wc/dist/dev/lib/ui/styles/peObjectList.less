@@ -1,0 +1,22 @@
+@import ".variables.less";
+@import "../../../vendor/bootstrap/less/mixins.less";
+
+.x-pe-object-list {
+  border: 1px solid @color-darkgray;
+
+  > .x-list-menu-row-container {
+    border: 0px;
+    border-top: 1px solid @color-darkgray;
+    background-color: @color-content;
+  }
+}
+
+// Experiment: peObjectList as an inline editor
+// NOTE: the commented selector doesn't work correctly, because .x-pe-inline class is applied
+// after the rendering of the grid in peObjectList, so the grid has incorrect size.
+// .x-pe-inline.x-pe-object-list {
+.x-pe-inline-container > .x-pe-object-list {
+  min-width: 400px;
+  //max-width: 100%;
+  //.box-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+}

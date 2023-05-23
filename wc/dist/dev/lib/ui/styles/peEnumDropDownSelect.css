@@ -1,0 +1,28 @@
+/* PLACEHOLDER */
+.x-pe-enum-dropdown-select > select {
+  cursor: pointer;
+}
+.x-pe-enum-dropdown-select > select[disabled] {
+  cursor: not-allowed;
+}
+.x-pe-enum-dropdown-select > .value-presentation {
+  padding-left: 12px;
+  overflow: hidden;
+  line-height: 28px;
+  height: 30px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+.x-pe-enum-dropdown-select select[disabled] ~ .value-presentation {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+}
+.x-pe-enum-dropdown-select.-invalid > select,
+.x-pe-enum-dropdown-select.-invalid > .value-presentation {
+  border: 1px solid #f26a60;
+  background-color: #F2DEDE;
+}
+.x-pe-enum-dropdown-select.x-pe-inline > select {
+  padding-left: 1px;
+  padding-right: 1px;
+}

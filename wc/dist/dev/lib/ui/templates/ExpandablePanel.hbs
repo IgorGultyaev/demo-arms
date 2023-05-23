@@ -1,0 +1,22 @@
+{{#unless isParentExpandable}}
+<div class="x-expandable">
+{{/unless}}
+{{#if boundExpanded}}
+    <div class="x-expandable--link">
+        <a href="#" {{command-bind commands.Collapse part=this}}>
+            <span class="x-icon x-icon-angle-bracket-bottom"></span>{{options.collapseTitle}}
+        </a>
+    </div>
+	<div id="{{push-id}}" class="x-expandable-body" style="width:100%;{{#if _expanding}}display:none{{/if}}">
+        {{render body target=":pop-id"}}
+    </div>
+{{else}}
+    <div class="x-expandable--link">
+        <a href="#" {{command-bind commands.Expand part=this}}>
+            <span class="x-icon x-icon-angle-bracket-right"></span>{{options.expandTitle}}
+        </a>
+    </div>
+{{/if}}
+{{#unless isParentExpandable}}
+</div>
+{{/unless}} 

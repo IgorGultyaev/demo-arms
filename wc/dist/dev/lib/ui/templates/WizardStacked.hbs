@@ -1,0 +1,70 @@
+<div class='x-editor-wizard x-wizard-stacked'>
+	{{#if title}}
+        <div class="x-part-title x-editor-title">
+            {{title}}
+            {{#if subtitle}}<div class="x-part-subtitle x-editor-subtitle">{{subtitle}}</div>{{/if}}
+        </div>
+	{{/if}}
+    {{#unless presenter.hideTopNav}}
+    <div class="x-wizard-top-nav list-group">
+        {{#observe this target=".x-wizard-top-nav"}}
+			{{#each presenter.topNavPages}}
+                <a href="#" class="x-wizard-nav-item list-group-item {{#if hasViolations}}x-page-tab-error {{/if}}"
+					{{command-bind ../commands.SwitchToPage}}
+					data-command-params="{pageName:'{{name}}'}"
+					data-page="{{name}}">
+					{{#if hasViolations}}
+                        <span class='x-icon x-icon-warning-triangle x-editor-error-badge' />
+					{{else}}
+                        <span class='x-icon x-icon-ok x-editor-ok-badge' />
+					{{/if}}
+					<span class="x-wizard-page-name">{{expr "this.editor.presenter.pageNumber(this)"}}.&nbsp;{{title}}</span>
+					<div class="x-wizard-page-brief">{{page-summary-brief page=this presenter=../presenter}}</div>
+                </a>
+			{{/each}}
+			{{#with currentPage}}
+            <div class="x-wizard-nav-item list-group-item {{#if hasViolations}}x-page-tab-error {{/if}} active" data-page="{{name}}">
+				{{#if hasViolations}}
+                    <span class='x-icon x-icon-warning-triangle x-editor-error-badge' />
+				{{else}}
+                    <span class='x-icon x-icon-angle-bracket-right' />
+				{{/if}}
+                <span class="x-wizard-page-name">{{expr "this.editor.presenter.pageNumber(this)"}}.&nbsp;{{title}}</span>
+            </div>
+			{{/with}}
+        {{/observe}}
+    </div>
+    {{/unless}}
+    <div class="x-editor-pages">
+        {{#each pages}}
+        <div class='x-editor-page' style='display:none;' data-page="{{name}}"></div>
+        {{/each}}
+    </div>
+	{{#if-menu menuPage}}
+        <div class='x-wizard-page-nav'>
+			{{view class="ui.MenuPresenter" viewModel=this.menuPage tag="div" cssClass="x-editor-menu" }}
+        </div>
+	{{/if-menu}}
+	<div class="x-wizard-bottom-nav list-group" id="{{push-id}}">
+        {{#observe this target=":pop-id"}}
+            {{#if isLinear}}
+                {{#each presenter.bottomNavPages}}
+                <div class="x-wizard-nav-item list-group-item {{#if hasViolations}}x-page-tab-error {{/if}}" data-page="{{name}}">
+                    <span class='x-icon x-icon-angle-bracket-right text-muted' />
+                    <span class="text-muted">{{expr "this.editor.presenter.pageNumber(this)"}}.&nbsp;{{title}}</span>
+                </div>
+                {{/each}}
+            {{/if}}
+        {{/observe}}
+	</div>
+    <div class="x-editor-parts-container" id="{{push-id}}">
+        {{render presenter.partsCarousel target=":pop-id"}}
+    </div>
+	{{#if-not presenter.options.hideMenu}}
+		{{#if-menu menu}}
+            <div class='x-editor-menu-container {{presenter.options.menuCssClass}}'>
+				{{view class="ui.MenuPresenter" viewModel=this.menu tag="div" cssClass="x-editor-menu"}}
+            </div>
+		{{/if-menu}}
+	{{/if-not}}
+</div>

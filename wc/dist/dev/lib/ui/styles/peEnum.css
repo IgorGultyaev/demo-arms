@@ -1,0 +1,12 @@
+/* PLACEHOLDER */
+.x-pe-enum {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+.x-pe-enum-dropdown {
+  width: 100%;
+}
+.x-pe-enum.x-pe-inline {
+  min-width: 12em;
+}

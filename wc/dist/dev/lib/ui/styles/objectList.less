@@ -1,0 +1,86 @@
+@import ".variables.less";
+@import ".mixins.less";
+
+.x-list-menu-container {
+  margin-bottom: 0;
+  border-top: 1px solid @color-darkgray;
+  border-bottom: 1px solid @color-darkgray;
+	margin-top: -1px;	// prevent border duplication (with upper element)
+}
+.modal-body .x-list-menu-container {
+  border: 0;
+}
+
+.x-list-menu-row-container {
+  padding-right: 20px;
+}
+
+.x-list-state-container {
+    min-height: 200px;
+}
+.x-list-state-message {
+    text-align: center;
+    top: 45%;
+    position: relative;
+    font-size: 24px;
+    line-height: normal;
+}
+
+/* Settings dialog */
+.x-list-settings-body {
+  display: table;
+  width: auto;
+  margin: 0 0 0 20px;
+}
+.x-list-settings-content {
+  padding: 10px;
+  display: inline-block;
+}
+.x-list .x-editor-errors {
+  min-height: 50px;
+}
+
+/* Counter of unsaved objects for 'Save' command*/
+.x-list-menu-pendingObjects {
+  color: @color-active;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 75%;
+  vertical-align: top;
+}
+
+.x-list-paginator {
+	min-height: 50px;
+	padding: 5px 0;
+	text-align: center;
+
+	.x-icon-waiting {
+		font-size: 32px;
+		color: darkgray;
+	}
+}
+.x-list-paginator_stat {
+	float: left;
+	margin-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+
+	.x-icon-waiting-small {
+		font-size: inherit;
+		color: darkgray;
+	}
+}
+.x-list-paginator_goto-input {
+	width: 60px;
+}
+.x-list-paginator_page_size {
+	float: right;
+	margin-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.x-list-paginator_page_size-input {
+	float: right;
+	margin: 3px 5px 0 0;
+	width: auto !important;
+}

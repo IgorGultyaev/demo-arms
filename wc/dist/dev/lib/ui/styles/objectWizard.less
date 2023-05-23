@@ -1,0 +1,64 @@
+@import ".variables.less";
+
+// Paged wizard
+.x-wizard-paged {
+
+  // top navigation
+  .x-wizard-top-nav {
+	padding: 0;
+	display: block;
+	margin: 0;
+	border: solid 1px @color-border;
+	border-left: 0;
+	border-right: 0;
+	background: @color-tone;
+  }
+
+  // navigation item
+  .x-wizard-nav-item {
+	border-right: 1px solid @color-border;
+	display: inline-block;
+	padding: 7px 14px;
+	position: relative;
+	&.active {
+	  background-color: @color-darkgray;
+	  margin-left: -4px;
+	  font-weight: bold;
+
+	  &:first-child {
+		margin-left: 0;
+	  }
+	}
+  }
+}
+
+// breadcrumb item arrow
+.x-wizard-paged-arrow {
+  border-color: transparent transparent transparent @color-darkgray;
+  border-style: solid;
+  border-width: 7px;
+  height: 0;
+  margin-top: -7px;
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  width: 0;
+  z-index: 2;
+
+  &:after {
+	border-color: transparent transparent transparent @color-tone;
+	border-style: solid;
+	border-width: 7px;
+	content: "";
+	height: 0;
+	left: -8px;
+	margin-top: -7px;
+	position: absolute;
+	top: 50%;
+	width: 0;
+  }
+}
+
+.x-wizard-nav-item.active > .x-wizard-paged-arrow:after {
+  border-color: transparent transparent transparent @color-darkgray;
+}

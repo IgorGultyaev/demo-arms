@@ -1,0 +1,39 @@
+@media (min-width: 768px) {
+}
+.slick-row.-unsync-item > .x-slick-cell-iconic:before {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 16px;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 2px;
+  display: inline;
+  vertical-align: text-top;
+  margin-left: -2px;
+  margin-right: 3px;
+}
+.slick-row.-unsync-item > .x-slick-cell-iconic:before {
+  content: "\e024";
+  color: #808080;
+}
+.x-syncresolution-menu-container {
+  margin: 10px 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.x-syncresolution-carousel {
+  margin: 20px;
+  font-size: larger;
+}
+.x-syncresolution-alert {
+  margin: 10px 20px;
+}
+.x-syncresolution-btn {
+  margin: 10px 20px;
+}

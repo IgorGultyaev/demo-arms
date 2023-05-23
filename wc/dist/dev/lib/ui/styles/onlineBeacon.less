@@ -1,0 +1,55 @@
+@import ".variables.less";
+
+.x-online-beacon-icon-clientoffline {
+	color: grey;
+}
+.x-online-beacon-icon-wait,
+.x-online-beacon-icon-serveroffline {
+	color: darkorange;
+}
+.x-online-beacon-icon-error {
+	color: darkred;
+}
+.x-online-beacon-icon-localsave {
+	color:rgb(95, 158, 160);
+}
+.x-online-beacon-icon-sync,
+.x-online-beacon-icon-online {
+	color: green;
+}
+
+.x-online-beacon {
+  .x-icon {
+    font-size: 1.5em;
+    vertical-align: text-bottom;
+  }
+
+  > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    line-height: 30px;
+  }
+
+  > a:focus {
+    outline: thin dotted white;
+  }
+
+  .dropdown-menu {
+    margin-top: 0px;
+  }
+
+  > span {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    line-height: 30px;
+  }
+
+  &.open > a,
+  &.open > a:hover,
+  &.open > a:focus {
+    color: @color-main;
+    background-color: white;
+  }
+}

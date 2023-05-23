@@ -1,0 +1,15 @@
+﻿/* animated gifs for ie css animation fallback */
+body:after {
+    content: url("../../../content/images/waiting_48.gif") url("../../../content/images/waiting_16.gif");
+    display:none;
+}
+.x-img-waiting-48 {
+	background: url("../../../content/images/waiting_48.gif") no-repeat center center;
+	min-width: 48px;
+	min-height: 48px;
+}
+.x-img-waiting-16 {
+    background: url("../../../content/images/waiting_16.gif") no-repeat center center;
+    min-width: 16px;
+    min-height: 16px;
+}

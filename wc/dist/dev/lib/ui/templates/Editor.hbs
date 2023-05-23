@@ -1,0 +1,35 @@
+<div class='{{options.cssRootClass}} {{#compare pages.count ">" 1}}x-editor--tabbed{{else}}x-editor--single{{/compare}}'>
+    {{#if siblingsCarousel}}
+        {{render siblingsCarousel tag="div" cssClass="x-editor-siblings-carousel pull-right"}}
+    {{/if}}
+    {{#if presenter.options.showTitle}}
+        <div class="x-part-title x-editor-title">
+            {{title}}{{#if presenter.options.showCopy}}<button class="btn-copy btn-copy-editor" tabindex="-1" type="button"></button>{{/if}}
+            {{#if subtitle}}<div class="x-part-subtitle x-editor-subtitle">{{subtitle}}</div>{{/if}}
+        </div>
+    {{/if}}
+    {{#compare pages.count ">" 1}}
+        <div class="x-editor-pages">
+            {{template presenter.options.partialTemplates.['tabs']}}
+            <div class='x-editor-tab-content'>
+                {{#each pages}}
+                <div id='{{name}}' data-page='{{name}}' class='x-editor-page' style="display:none"></div>
+                {{/each}}
+            </div>
+        </div>
+    {{else}}
+        {{#first pages}}
+            <div data-page='{{name}}' class='x-editor-page x-editor-pages'></div>
+        {{/first}}
+    {{/compare}}
+    <div class="x-editor-parts-container" id="{{push-id}}">
+        {{render presenter.partsCarousel target=":pop-id"}}
+    </div>
+    {{#if-not presenter.options.hideMenu}}
+    {{#if-menu menu}}
+            <div class="x-editor-menu-container {{presenter.options.menuCssClass}}">
+            {{view class="ui.MenuPresenter" viewModel=this.menu tag="div" cssClass="x-editor-menu" dropup=true}}
+        </div>
+    {{/if-menu}}
+    {{/if-not}}
+</div>

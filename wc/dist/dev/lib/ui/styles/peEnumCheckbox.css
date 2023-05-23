@@ -1,0 +1,72 @@
+/* PLACEHOLDER */
+@media (min-width: 768px) {
+}
+.x-pe-enum-checkbox {
+  padding: 3px;
+}
+.x-pe-enum-checkbox > label,
+.x-pe-enum-checkbox > .checkbox > label,
+.x-pe-enum-checkbox > .checkbox-inline > label {
+  font-weight: normal;
+}
+.x-pe-enum-checkbox.-invalid {
+  border-radius: 5px;
+  border: 1px solid #f26a60;
+  background-color: #F2DEDE;
+}
+.x-pe-enum-checkbox.x-pe-inline {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  height: auto;
+  background-color: #fff;
+  overflow: auto;
+}
+.x-pe-enum-checkbox.x-pe-inline:focus {
+  border-color: #fdab1c;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(253, 171, 28, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(253, 171, 28, 0.6);
+}
+.x-pe-enum-checkbox.x-pe-inline::-moz-placeholder {
+  color: #999;
+  opacity: 1;
+}
+.x-pe-enum-checkbox.x-pe-inline:-ms-input-placeholder {
+  color: #999;
+}
+.x-pe-enum-checkbox.x-pe-inline::-webkit-input-placeholder {
+  color: #999;
+}
+.x-pe-enum-checkbox.x-pe-inline::-ms-expand {
+  border: 0;
+  background-color: transparent;
+}
+.x-pe-enum-checkbox.x-pe-inline[disabled],
+.x-pe-enum-checkbox.x-pe-inline[readonly],
+fieldset[disabled] .x-pe-enum-checkbox.x-pe-inline {
+  background-color: #eeeeee;
+  opacity: 1;
+}
+.x-pe-enum-checkbox.x-pe-inline[disabled],
+fieldset[disabled] .x-pe-enum-checkbox.x-pe-inline {
+  cursor: not-allowed;
+}
+textarea.x-pe-enum-checkbox.x-pe-inline {
+  height: auto;
+}
+.modal-body > .x-pe-enum-checkbox {
+  padding: 6px 12px;
+}

@@ -1,0 +1,76 @@
+<div class="x-list-master-detail">
+	{{#if masterPart.filter}}
+		<div class="x-filter-container x-list-filter-container" id="{{push-id}}">
+			{{#with masterPart}}
+				{{#if options.filterCollapsable}}
+					{{part class="ui.ExpandablePanel" body=filter expandedProp="filterExpanded"
+						   expandTitle=options.expandFilterTitle collapseTitle=options.collapseFilterTitle
+						   target=":pop-id"}}
+				{{else}}
+					{{render filter}}
+				{{/if}}
+			{{/with}}
+		</div>
+	{{/if}}
+	{{#if-not options.hideMenuList}}
+		<div class="x-master-menu x-list-menu-container {{options.menuListCssClass}}" id="{{push-id}}">
+			{{#observe this target=":pop-id"}}
+				{{#if-menu masterPart.menuList}}
+					<div id="{{push-id}}" class="pull-left" style="display: inline-block;">
+						{{part class="ui.MenuPresenter" viewModel=masterPart.menuList target=":pop-id"}}
+						{{#if masterPart.commands.Save}}
+							{{data-bind text="this.list().commands.Save.canExecute() ? this.pendingItemsCount() : ''"
+										target=".x-list-menu-pendingObjects" ignore-missing-target="true"}}
+						{{/if}}
+					</div>
+				{{/if-menu}}
+				{{#if-menu masterPart.menuListAux}}
+					<div id="{{push-id}}" style="display: inline-block; float: right;">
+						{{part class="ui.MenuPresenter" viewModel=masterPart.menuListAux target=":pop-id"}}
+					</div>
+				{{/if-menu}}
+			{{/observe}}
+		</div>
+	{{/if-not}}
+
+	<div class='x-split'>
+		<div class='x-split-one'>
+			<div class='x-split-data'>{{render masterPart}}</div>
+			<div class="x-split-pager"></div>
+		</div>
+		<div class='x-split-two'>
+			<div class='x-split-data'>{{render detailPart}}</div>
+			<div class="x-split-pager"></div>
+		</div>
+	</div>
+
+	{{#if-not options.hideMenuRow}}
+		<div class="x-detail-menu x-list-menu-row-container {{options.menuRowCssClass}}" id="{{push-id}}">
+			{{#observe this target=":pop-id"}}
+				{{#if-menu detailPart.menuSelection}}
+					<div id="{{push-id}}" class="pull-left" {{data-bind transparent="isReloading" target=":peek-id"}}>
+						{{part class="ui.MenuPresenter" viewModel=detailPart.menuSelection target=":pop-id"
+							   dropup=true}}
+						{{data-bind text="this.detailPart.get('selection').count()"
+									target=".x-list-menu-selection-counter"
+									ignore-missing-target="true"}}
+						{{data-bind text="this.detailPart.get('items').count()" target=".x-list-menu-total-counter"
+									ignore-missing-target="true"}}
+					</div>
+				{{else}}
+					{{#unless options.hideRowsStats}}
+						<div class="x-menu-item" style="cursor: auto; user-select: text;">
+							<span class='hidden-xs'>{{res "total"}}&nbsp;</span><span {{data-bind
+							text="this.detailPart.get('items').count()"}} class='x-list-menu-total-counter'></span>
+						</div>
+					{{/unless}}
+				{{/if-menu}}
+				{{#if-menu detailPart.menuRow}}
+					<div id="{{push-id}}" class="pull-right" {{data-bind transparent="isReloading" target=":peek-id"}}>
+						{{part class="ui.MenuPresenter" viewModel=detailPart.menuRow target=":pop-id" dropup=true}}
+					</div>
+				{{/if-menu}}
+			{{/observe}}
+		</div>
+	{{/if-not}}
+</div>

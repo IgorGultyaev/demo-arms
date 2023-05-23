@@ -1,0 +1,149 @@
+@media (min-width: 768px) {
+}
+.x-pe-enum-dropdown-chosen {
+  /* active editor */
+  /* dropdown */
+  /* error style */
+  /* fix for issues:
+      https://github.com/harvesthq/chosen/issues/1600
+      https://github.com/harvesthq/chosen/issues/1352
+      https://github.com/harvesthq/chosen/issues/1167
+    see also in peObjectDropdownLookup.css
+    */
+  /* далее идут переопределения стилей choosen для того что бы дропдаун выдвигался в pe, а не поверх всего
+      c переходом на chosen v1.0 удалось обойтись без изменений chosen.js
+    */
+  /* конец переопределения стилей для дропдауна */
+}
+.x-pe-enum-dropdown-chosen .chosen-container {
+  font-size: 14px;
+  font-family: inherit;
+  /* multi editor */
+  /* single editor */
+  /* both editors */
+}
+.x-pe-enum-dropdown-chosen .chosen-container .chosen-choices {
+  background: #fff;
+  border-color: #ccc;
+  border-radius: 0px;
+  padding: 0 6px;
+}
+.x-pe-enum-dropdown-chosen .chosen-container .chosen-choices > li.search-choice {
+  margin: 5px 6px;
+  padding-bottom: 4px;
+  box-shadow: none;
+  background: #eeeeee;
+  border-radius: 0px;
+  border-color: #ccc;
+}
+.x-pe-enum-dropdown-chosen .chosen-container .chosen-choices > .search-field {
+  margin: 0 6px;
+}
+.x-pe-enum-dropdown-chosen .chosen-container .chosen-choices > .search-field > input[type="text"] {
+  min-height: 28px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #555555;
+}
+.x-pe-enum-dropdown-chosen .chosen-container .chosen-single {
+  background: #fff;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-color: #ccc;
+  padding: 6px 12px;
+  color: #555555;
+}
+.x-pe-enum-dropdown-chosen .chosen-container .chosen-single > div {
+  top: 8px;
+  width: 25px;
+}
+.x-pe-enum-dropdown-chosen .chosen-container .chosen-single > div > b {
+  background-color: transparent;
+  background-image: none !important;
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 16px;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.x-pe-enum-dropdown-chosen .chosen-container .chosen-single > div > b:before {
+  content: "\e601";
+}
+.x-pe-enum-dropdown-chosen .chosen-container .chosen-single abbr {
+  top: 11px;
+}
+.x-pe-enum-dropdown-chosen .chosen-container .chosen-choices,
+.x-pe-enum-dropdown-chosen .chosen-container .chosen-single {
+  min-height: 34px;
+  line-height: 1.42857143;
+}
+.x-pe-enum-dropdown-chosen .chosen-container-active {
+  /* border around active element */
+  /* opened editor style */
+  /* results in dropdown */
+}
+.x-pe-enum-dropdown-chosen .chosen-container-active > .chosen-single,
+.x-pe-enum-dropdown-chosen .chosen-container-active > .chosen-choices {
+  border: 1px solid #fdab1c;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(253, 171, 28, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(253, 171, 28, 0.6);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.x-pe-enum-dropdown-chosen .chosen-container-active.chosen-with-drop .chosen-single {
+  background-image: none !important;
+}
+.x-pe-enum-dropdown-chosen .chosen-container-active.chosen-with-drop .chosen-single div b:before {
+  content: "\e603";
+}
+.x-pe-enum-dropdown-chosen .chosen-container-active .chosen-results {
+  margin: 0 4px 4px 0;
+}
+.x-pe-enum-dropdown-chosen .chosen-container-active .chosen-results > li.highlighted {
+  background: #fdab1c;
+}
+.x-pe-enum-dropdown-chosen .chosen-container-active .chosen-results > li.no-results {
+  background-image: none;
+}
+.x-pe-enum-dropdown-chosen .chosen-container-active.chosen-container-single .chosen-results {
+  padding: 0 0 0 4px;
+}
+.x-pe-enum-dropdown-chosen .chosen-container-active.chosen-container-multi .chosen-results {
+  padding: 4px 0 0 4px;
+}
+.x-pe-enum-dropdown-chosen .chosen-container .chosen-drop {
+  margin-top: 0px;
+  border-radius: 0;
+  border-color: #ccc;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.x-pe-enum-dropdown-chosen .chosen-container .chosen-drop .chosen-search input[type="text"] {
+  border-color: #ccc;
+  background-color: #fff;
+  background-image: none !important;
+}
+.x-pe-enum-dropdown-chosen.-invalid .chosen-choices {
+  border: 1px solid #f26a60;
+  background-color: #F2DEDE;
+}
+.x-pe-enum-dropdown-chosen.-invalid .chosen-single {
+  border: 1px solid #f26a60;
+  background-color: #F2DEDE;
+}
+.x-pe-enum-dropdown-chosen ul.chosen-choices > li.search-field:first-child {
+  width: 100%;
+}
+.x-pe-enum-dropdown-chosen .chosen-container.chosen-with-drop > .chosen-drop {
+  box-sizing: border-box;
+  position: relative;
+}

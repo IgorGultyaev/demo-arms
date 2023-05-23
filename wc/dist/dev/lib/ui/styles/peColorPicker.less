@@ -1,0 +1,14 @@
+@import ".variables.less";
+@import ".mixins.less";
+
+.x-pe-colorpicker {
+  > input.-invalid {
+    background-color: @color-danger-light;
+    border-color: @color-danger;
+  }
+
+  &.x-pe-inline {
+    min-width: 8em;
+  }
+  width: 100%;
+}

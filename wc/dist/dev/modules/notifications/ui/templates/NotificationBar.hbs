@@ -1,0 +1,17 @@
+<div class="x-notification-bar x-carousel">
+    {{#compare items.count ">" 1}}
+    <div class="pull-right">
+        {{> carousel-controls }}
+    </div>
+    {{/compare}}
+    <div class="x-notification-bar-body">
+    {{#with current}}
+        {{#if html}}{{{html}}}{{else}}{{message}}{{/if}}
+        {{#if hasMenu}}
+            <div class="x-notification-bar-menu">
+                {{view class="ui.MenuButtonsPresenter" viewModel=menu itemCssClass="btn-link"}}
+            </div>
+        {{/if}}
+    {{/with}}
+    </div>
+</div>

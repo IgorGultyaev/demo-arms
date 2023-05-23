@@ -1,0 +1,26 @@
+@import (reference) "../../../vendor/bootstrap/less/mixins.less";
+@import (reference) "../../../vendor/bootstrap/less/forms.less";
+@import (reference) ".variables.less";
+
+// fix bootstrap .hidden-* style for <span>: { display: block !important; } -> { display: inline !important; }
+.responsive-visibility() {
+  span& { display: inline !important; }
+}
+.responsive-invisibility() {
+  span& { display: none !important; }
+}
+
+// fix color for WebKit-style focus
+.tab-focus() {
+  // Default
+  outline: thin dotted;
+  // WebKit
+  outline: 5px auto @color-active;
+  outline-offset: -2px;
+}
+
+.pe-inline-solid() {
+  .form-control;
+  height: auto;
+  background-color: @color-content;
+}

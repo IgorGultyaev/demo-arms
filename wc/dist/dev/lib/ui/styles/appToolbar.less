@@ -1,0 +1,287 @@
+@import ".variables.less";
+@import ".mixins.less";
+@import (reference) "../../../vendor/bootstrap/less/utilities.less";
+@import (reference) "../../../vendor/bootstrap/less/navs.less";
+@import (reference) "../../../vendor/bootstrap/less/navbar.less";
+//@import (reference) "../../../vendor/bootstrap/less/mixins/nav-divider.less";
+
+.x-app-navbar-brand {
+	.navbar-brand();
+}
+.x-app-navbar-nav {
+	.nav();
+	float: left;
+	margin: 0;
+	& > li {
+		float: left;
+		position: relative;
+		display: block;
+		& > a {
+			color: white;// NOTE: todo
+			line-height: @x-app-navbar-line-height;
+			padding: @x-app-navbar-padding-vertical;
+		}
+	}
+	& > li > .dropdown-menu {
+		margin-top: 0;
+	}
+	&.pull-right .dropdown-menu {
+		left: auto;
+		right: 0;
+	}
+}
+.x-app-navbar-nav.x-sys-menu {
+	> li > a {
+		padding: 9px 12px;
+	}
+}
+
+/* app main navbar */
+.x-app-navbar {
+	// NOTE: нельзя добавлялть "overflow: hidden", т.к. сломаются popup'ы SystemMenu
+	display: table;
+	background-color: @color-main;
+	width: 100%;
+	border-right: none;
+	border-left: none;
+	border-top: none;
+	border-bottom: 2px solid @color-main-dark;
+	border-radius: 0;
+	height: @x-app-navbar-height;
+
+	&.affix-stuck {
+		z-index: @zindex-navbar;
+		left: 0;
+		right: 0;
+	}
+
+	.x-app-navbar-brand,
+	.navbar-nav > li > a {
+		color: white;
+	}
+	.x-app-navbar-brand {
+		&:hover {
+			color: @color-black;
+		}
+		&:focus {
+			color: @color-black;
+			outline: thin dotted white;
+		}
+	}
+	.x-app-navbar-nav {
+		> li > a:hover,
+		> li > a:focus {
+			color: @color-black;
+			background-color: transparent;
+		}
+		> li > a:focus {
+			outline: thin dotted white;
+		}
+		> li > .x-menu-item.active {
+			&,
+			&:hover,
+			&:focus {
+				.box-shadow(none);
+				color: @color-main;
+				background-color: white;
+			}
+			&:focus {
+				outline: thin dotted @color-main;
+			}
+		}
+
+		> .open > a,
+		> .open > a:hover,
+		> .open > a:focus {
+			color: @color-main;
+			background-color: white;
+			outline-style: none;
+			z-index: @zindex-dropdown + 1; // avoid overlaying shadow from popup
+		}
+
+		.dropdown-menu {
+			border: 0;
+			border-radius: 0;
+		}
+	}
+}
+
+// AppNavMenuPresenter
+.x-app-navmenu {
+	display: inline-block;
+	height: @x-app-navbar-height;
+	white-space: nowrap;
+	padding: 0;
+	margin: 0 10px;
+
+	> .x-app-navmenu-btn {
+		font-size: 24px;
+		display: block;
+		float: left;
+		width: 20px;
+		margin-top: @navbar-padding-vertical - 1;
+		color: #eee;
+
+		&:hover {
+			color: @color-black;
+			background-color: transparent;
+		}
+	}
+	> .x-app-navmenu-container {
+		height: @x-app-navbar-height;
+		overflow: hidden;
+		float: left;
+
+		> .x-app-navmenu-menu {
+			//width: 1000px;
+			> li {
+				display: inline-block;
+				float: none;
+
+				> .x-menu-item {
+					border: 0;
+				}
+			}
+		}
+	}
+}
+
+// dark theme for app toolbar
+.x-app-navbar--dark {
+	background-color: @color-black;
+	border-bottom: 2px solid @color-black;
+
+	.x-app-navbar-brand {
+		&:hover,
+		&:focus {
+			color: @color-main;
+		}
+	}
+	.x-app-navbar-nav {
+		> li > a:hover,
+		> li > a:focus {
+			color: @color-main;
+		}
+
+		> li > .x-menu-item.active {
+			&:focus {
+				outline: thin dotted @color-black;
+			}
+		}
+	}
+	.x-app-navmenu {
+		> .x-app-navmenu-btn {
+			//color: #aaa;
+			&:hover {
+				color: @color-main;
+			}
+		}
+	}}
+
+// Bootstrap default theme
+.x-app-navbar--light {
+	.navbar-default();
+
+	// fix stucked shadow
+	&.affix-stuck--shadow.affix-stuck-top {
+		&.affix-stuck-top {
+			.box-shadow(0 1px 10px -5px @color-affix-shadow);
+		}
+	}
+
+	.x-app-navbar-nav > li > a {
+		color: @color-black;
+	}
+
+	.x-app-navbar-brand {
+		color: @color-black;
+		&:hover,
+		&:focus {
+			color: @color-main;
+		}
+	}
+	.x-app-navbar-brand,
+	.x-app-navbar-nav > li > a {
+		&:focus {
+			outline: thin dotted @navbar-default-link-active-bg;
+		}
+	}
+
+	.x-app-navbar-nav {
+		> li > a:hover,
+		> li > a:focus {
+			color: @color-main;
+		}
+
+		> li > .x-menu-item.active {
+			&,
+			&:hover,
+			&:focus {
+				color: @navbar-default-link-active-color;
+				background-color: @navbar-default-link-active-bg;
+			}
+
+			&:focus {
+				outline: thin dotted white;
+			}
+		}
+
+		> .open > a,
+		> .open > a:hover,
+		> .open > a:focus {
+			color: @color-main;
+			outline-style: none;
+		}
+	}
+	.x-app-navmenu {
+		> .x-app-navmenu-btn {
+			color: #aaa;
+			&:hover {
+				color: @color-main;
+			}
+		}
+	}
+}
+
+/* system menu */
+.x-sys-menu {
+	display: inline;
+	font-size: 32px;
+	margin-left: 10px;
+	margin-right: 10px;
+	list-style-type: none;
+	> .x-sys-menu-item {
+		//float: left;
+		> a {
+			padding: 9px 12px;
+
+			> .x-icon {
+				font-size: 32px;
+			}
+			> .badge {
+				position: absolute;
+				right: 0;
+				bottom: 5px;
+				font-size: 10px;
+				background-color: fade(@color-active, 80%);
+			}
+		}
+	}
+
+	> .x-popupview {
+		position: absolute;
+		top: @x-app-navbar-height - 2px;
+		left: auto;
+		width: @screen-xs-max - @padding-large-horizontal * 2;
+
+		@media (max-width: @screen-xs-max) {
+			left: 0;
+			right: 0;
+			width: auto;
+		}
+
+		> .x-popupview-content {
+			min-height: 200px;
+		}
+	}
+}

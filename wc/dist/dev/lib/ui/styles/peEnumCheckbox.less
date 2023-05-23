@@ -1,0 +1,55 @@
+@import ".variables.less";
+@import ".mixins.less";
+
+.x-pe-enum-checkbox {
+  padding: 3px;
+
+  > label,
+  > .checkbox > label,
+  > .checkbox-inline > label {
+    font-weight: normal;
+  }
+
+  &.-invalid {
+    border-radius: 5px;
+    border: 1px solid @color-danger;
+    background-color: @color-danger-light;
+  }
+
+//  &.x-pe-enum-checkbox-horizontal {
+//      .checkbox{
+//          display: inline-block;
+//          padding-left: 15px;
+//
+//          &:not(:last-of-type){
+//              margin-right: 30px;
+//          }
+//
+//          input[type="checkbox"]{
+//              float:none;
+//              width: 13px;
+//              height: 13px;
+//              margin-right:4px;
+//              vertical-align: bottom;
+//              position: relative;
+//              top: -3px;
+//              *overflow: hidden;
+//          }
+//
+//          +.checkbox{
+//              margin-top: 10px;
+//          }
+//      }
+//  }
+
+  //inline
+  &.x-pe-inline {
+    .pe-inline-solid;
+    overflow: auto;
+  }
+}
+
+.modal-body > .x-pe-enum-checkbox {
+  padding: 6px 12px;
+}
+

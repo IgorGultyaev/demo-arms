@@ -1,0 +1,18 @@
+<div class="x-part-title x-transfer-title">{{title}}</div>
+{{!--<select class="form-control" {{data-bind optionsSource="states" value="state"}} style="width:300px"></select>--}}
+<div class="x-transfer-body">
+	{{#compare progress '>=' 0}}
+        <div class="progress x-transfer-progress">
+            <div class="progress-bar progress-bar-striped active progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%;">{{progress}}%</div>
+        </div>
+	{{/compare}}
+</div>
+<div class="x-transfer-menu-container x-menu-bar x-menu--contrast" id="{{push-id}}">
+	{{#observe this target=":pop-id"}}
+		{{#if-menu menu}}
+            <div id="{{push-id}}">
+				{{part class="ui.MenuPresenter" viewModel=menu target=":pop-id" dropup="true" tag="span" cssClass="-inline"}}
+            </div>
+		{{/if-menu}}
+	{{/observe}}
+</div>

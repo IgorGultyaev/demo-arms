@@ -1,0 +1,142 @@
+@import "../../../../lib/ui/styles/.variables.less";
+@import "../../../../lib/ui/styles/.mixins.less";
+@import "../../../../vendor/notify/ui.notify.css";
+
+.ui-notify {
+	width: auto;
+	max-width: 600px;
+
+	@media (max-width: 610px) { // 600 (max-height) + 5 (left) + 5 (right)
+		right: 5px;
+	}
+}
+
+.ui-notify-cross {
+	margin: 0;
+	padding: 0 0 0 10px;
+	font-size: 14px;
+}
+
+.x-notification {
+	overflow: hidden;
+	color: @color-inverted-text;
+	padding-bottom: @padding-small-vertical;
+
+	& > .x-notification-icon {
+		max-width: 2em;
+		float: left;
+	}
+
+	& > .x-notification-message {
+		margin-left: 2em;
+	}
+}
+
+.x-notification-menu {
+	background-color: transparent !important;
+}
+
+.x-process-container {
+	.box-shadow(0 0 6px #000);
+	position: fixed;
+	z-index: @zindex-topmost;
+	margin: auto;
+	top: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+	background-color: @color-highlighted;
+	color: @color-text;
+	box-sizing: border-box;
+	font-family: "Helvetica Neue", sans-serif;
+	padding: 0.4em;
+	width: 30em;
+	overflow: hidden;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+
+	// NOTE: only the last process is visible
+	&:not(:last-of-type) {
+		display: none;
+	}
+}
+
+.x-notification-bar-container {
+	&.affix-stuck {
+		left: 0;
+		right: 0;
+	}
+}
+
+.x-notification-bar {
+	background-color: @color-highlighted;
+	padding: 10px;
+	text-align: center;
+	border-bottom: 2px solid darken(@color-highlighted, 5%);
+	min-height: 56px;
+}
+
+.x-notification-bar-menu {
+	background-color: transparent !important;
+	display: inline;
+	margin-left: 10px;
+
+	.x-menu-item-action {
+		color: @link-color;
+		&:hover:enabled {
+			background-color: darken(@color-highlighted, 5%);
+		}
+	}
+}
+
+// EventLog
+.x-eventlog-item {
+	position: relative;
+	background-color: @color-tone; //#eee;
+	margin-bottom: 3px;
+	overflow: hidden;
+	overflow-x: auto;
+	zoom: 1;
+	//cursor: pointer;
+
+	&:hover {
+		background-color: darken(@color-tone, 5%);
+	}
+}
+
+.x-eventlog-item--activetoken {
+	height: 50px;
+	width: 5px;
+	background-color: @color-active;
+	position: absolute;
+}
+
+.x-eventlog-item--icon {
+	height: 50px;
+	width: 50px;
+	background-color: @color-submain; //#ddd;
+	text-align: center;
+	vertical-align: middle;
+	margin: 0 5px 0 0;
+
+	& > .x-icon {
+		background-color: transparent;
+		font-size: 24px;
+		margin-top: 10px;
+		display: inline-block;
+	}
+}
+
+.x-eventlog-item--body {
+	padding: 5px;
+}
+
+.x-eventlog-item--msg {
+	margin: 0 0 5px 0;
+}
+
+.x-eventlog-item--remove {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+}

@@ -1,0 +1,37 @@
+/* PLACEHOLDER */
+.x-scroll-accelerators--show {
+  bottom: 0 !important;
+}
+.x-scroll-accelerators {
+  position: fixed;
+  right: 0;
+  bottom: -100px;
+  padding: 2px 5px;
+  z-index: 1035;
+  transition: all .5s ease;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+}
+.x-scroll-accelerator {
+  display: block;
+  color: rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  margin-bottom: 2px;
+}
+.x-scroll-accelerator:focus {
+  outline-style: none;
+  color: rgba(0, 0, 0, 0.3);
+}
+.x-scroll-accelerator:focus:hover {
+  outline-style: none;
+  color: #f36700;
+}
+.x-scroll-accelerator .x-icon {
+  font-size: 26px;
+}
+@media (max-width: 767px) {
+  .x-scroll-accelerator {
+    display: none;
+  }
+}

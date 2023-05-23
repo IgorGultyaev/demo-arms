@@ -1,0 +1,13 @@
+{
+    "answers": {
+        "appName": "demo-arms",
+	"serverProjectPath": "../target/classes/static", 
+        "useTypeScript": true,
+        "useLess": true,
+	"useLocalBowerrc": false,
+        "installDeps": false
+    },
+    "options": {
+        "onconflict": "force"
+    }
+}

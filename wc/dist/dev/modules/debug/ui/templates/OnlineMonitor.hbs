@@ -1,0 +1,33 @@
+<form role="form">
+    <legend>Online</legend>
+	{{#with dataFacade}}
+
+    <div class="checkbox">
+		<label>
+			<input type="checkbox" disabled="true" {{data-bind checked="networkOnline"}} />Network
+		</label>
+	</div>
+    <div class="checkbox">
+		<label>
+			<input type="checkbox" disabled="true" {{data-bind checked="serverOnline"}} />Server
+		</label>
+	</div>
+	<div class="form-group">
+        <label class="control-label">SaveMode: </label>
+        <select class="form-control" {{data-bind optionsSource="saveModes" value="saveMode"}}></select>
+	</div>
+    <div class="form-group">
+		<label class="control-label">SaveTarget: </label>
+		<input type="text" class="form-control" readonly {{data-bind value="saveTarget"}}>
+	</div>
+    <hr />
+    <div class="checkbox">
+		<label class="checkbox">
+			<input type="checkbox" {{data-bind checked="manuallyDisconnected"}} />Force disconnect
+		</label>
+	</div>
+	{{/with}}
+</form>
+
+<hr />
+<button type="button" class="btn btn-danger" {{command-bind commands.RecreateDataStore}}>Recreate DB</button>

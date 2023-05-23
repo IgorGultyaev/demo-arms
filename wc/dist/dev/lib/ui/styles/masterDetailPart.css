@@ -1,0 +1,41 @@
+/* PLACEHOLDER */
+.x-split .x-grid {
+  min-height: 32px;
+}
+.x-split .x-list-paging {
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  background-color: white;
+}
+.x-split .x-list-paging.x-split-paging-bottom {
+  position: absolute;
+  z-index: 900;
+}
+.x-split .x-list-paging > .x-list-paginator {
+  border-top: 1px solid #ccc;
+}
+.x-split .x-list-paginator {
+  padding-bottom: 1px;
+}
+.x-split .x-list-paginator .x-menu-bar {
+  padding-bottom: 0px;
+}
+.x-split .hsplitter {
+  margin-top: 5px;
+}
+.x-split .x-split-data {
+  overflow: auto;
+}
+.x-split .top_panel > .x-split-data {
+  padding-bottom: 15px;
+}
+.x-split .bottom_panel > .x-split-data {
+  padding-top: 5px;
+}
+.x-split .left_panel > .x-split-data {
+  padding-right: 15px;
+}
+.x-split .right_panel > .x-split-data {
+  padding-left: 15px;
+}

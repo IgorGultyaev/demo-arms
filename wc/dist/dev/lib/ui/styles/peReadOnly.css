@@ -1,0 +1,13 @@
+/* PLACEHOLDER */
+.x-pe-readonly {
+  width: 100%;
+  margin: 0;
+}
+.x-pe-readonly.-invalid {
+  border: 1px solid #f26a60;
+  background-color: #F2DEDE;
+}
+input[type=checkbox].x-pe-readonly.-invalid {
+  outline: 2px solid #f26a60;
+  background-color: #F2DEDE;
+}

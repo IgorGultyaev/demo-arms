@@ -1,0 +1,31 @@
+﻿<div class="alert alert-warning" {{data-bind visibility="hasChanges"}}>Changes not yet saved</div>
+<button type="button" class="btn btn-default" {{command-bind cmdReload}}>Reload</button>
+<table class="table table-bordered table-striped table-hover">
+	{{#each props}}
+	<tr>
+		<td>
+			<label>{{name}}</label>
+		</td>
+		<td>
+			<input type="text" {{data-bind value="value"}} style="margin:0px;height: 2em;" />
+            <a href="#" {{command-bind ../cmdRemoveProp}} data-command-params='{"prop":"{{name}}"}'>{{icon name="remove"}}</a>
+		</td>
+
+	</tr>
+
+	{{/each}}
+</table>
+<div class="row">
+	<div class="col-md-4">
+        <label>New property:</label>
+        <div class="input-group">
+            <input type="text" class="form-control" style="margin:0;" {{data-bind valueLive="newPropName"}} />
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-primary" {{command-bind cmdAddNew}}>Add</button>
+			</span>
+    	</div>
+	</div>
+</div>
+<br>
+<button type="button" class="btn btn-success" {{command-bind cmdSave}}>Save</button>
+<button type="button" class="btn btn-default" {{command-bind cmdCancel}}>Cancel</button>

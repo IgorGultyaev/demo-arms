@@ -1,0 +1,5 @@
+{{#each rootItems}}
+    <li class='x-sys-menu-item' {{data-bind hidden="hidden"}}>
+        <a class='dropdown-toggle' href="#" role='button' data-item-name='{{name}}' title='{{title}}' {{command-bind command canBeEmpty=true}}>{{{getHtml}}}<span class="badge" {{data-bind text="badge" visibility="badge"}}></span></a>
+    </li>
+{{/each}}

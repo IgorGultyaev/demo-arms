@@ -1,0 +1,155 @@
+@import "../../../vendor/fancytree/skin-common.less";
+
+// Redefine Fancytree variables:
+@fancy-image-dir: "../../../vendor/fancytree/skin-croc";
+@fancy-icon-width: 16px; // must be the same as the width of icons
+@fancy-icon-height: 16px;
+@fancy-font-size: @grid-font-size;
+ 
+@import (reference) ".grid.less";
+@import (reference) ".variables.less";
+
+.x-tree-data {
+  #grid > .unfilled;
+}
+
+@import (reference) ".grid.less";
+@import (reference) ".variables.less";
+
+.x-tree-data {
+  #grid > .unfilled;
+}
+
+table.fancytree-ext-table span.fancytree-node {
+  white-space: nowrap;
+}
+
+span.fancytree-title {
+  white-space: normal;
+  margin-left: @grid-cell-padding;
+  margin-right: 2*@fancy-icon-width + @fancy-icon-spacing; // extender + icon + margin before icon
+  cursor: default;
+  color: inherit;
+}
+
+span.fancytree-icon {
+  background: none;
+}
+
+table.fancytree-container {
+  width: 100%;
+  font-size: @grid-font-size;
+  // NOTE: don't remove background-color. It's invisible because colors are defined for the individual rows,
+  // but it affects runtime performance. I suppose the reason is complicated unfilled background (with the gradient)
+  background-color: @grid-row-odd-bg;
+  outline: none;
+
+  > tbody {
+    > tr {
+
+      &.-odd {
+        background: @grid-row-odd-bg;
+
+        &.fancytree-selected {
+          background: @grid-row-odd-selected-bg;
+        }
+      }
+
+      &.-even {
+        background: @grid-row-even-bg;
+
+        &.fancytree-selected {
+          background: @grid-row-even-selected-bg;
+        }
+      }
+
+      &.fancytree-focused {
+        //  more elegant, but 'outline-offset' doesn't work in IE
+        //outline: 1px dotted @grid-row-active-text;
+        //outline-offset: -3px;
+
+        > td > .fancytree-node > .fancytree-title {
+          outline: 1px dotted @grid-row-active-text;
+        }
+      }
+
+      &.fancytree-active,
+      &.fancytree-active.-odd,
+      &.fancytree-active.-even {
+        color: @grid-row-active-text;
+        background: @grid-row-active-bg;
+      }
+
+      > td {
+        padding: @grid-cell-padding;
+        border: 0;
+        border-right: 1px solid @grid-border;
+      }
+
+      > td:last-child {
+        border: 0;
+      }
+    }
+  }
+}
+
+/* node states */
+.fancytree-node {
+  &.-modified-item,
+  &.-new-item,
+  &.-removed-item {
+    > .fancytree-title {
+      #grid > .iconic;
+    }
+  }
+
+  &.-modified-item {
+    > .fancytree-title {
+      #grid > .iconic-modified;
+    }
+  }
+
+  &.-new-item {
+    > .fancytree-title {
+      #grid > .iconic-new;
+    }
+  }
+
+  &.-removed-item {
+    color: @color-text-disabled !important;
+    > .fancytree-title {
+      #grid > .iconic-removed;
+    }
+  }
+  // WC-1911 stop transition when class changed to anim (for IE 11)
+  > .fancytree-expander {
+	&.x-icon:not(.x-icon-anim-rotating) {
+	  -ms-animation: none;
+	}
+  }
+}
+
+// checkboxes
+span.fancytree-checkbox {
+	.iconic-checkbox;
+	.x-icon-checkbox-unchecked;
+	width: auto;
+	height: auto;
+	margin: 0;
+	vertical-align: middle;
+}
+.fancytree-selected span.fancytree-checkbox {
+	.x-icon-checkbox-checked;
+}
+.fancytree-partsel span.fancytree-checkbox {
+	.x-icon-checkbox-partial;
+}
+
+// inside dialog
+.modal-body {
+	.x-tree-data {
+		max-height: 500px;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+}

@@ -1,0 +1,167 @@
+@import (reference) ".variables.less";
+@import (reference) ".mixins.less";
+@import (reference) "icons.less";
+
+.x-pe-enum-dropdown-chosen {
+
+	.chosen-container {
+		font-size: @font-size-base;
+		font-family: inherit;
+
+		/* multi editor */
+		.chosen-choices {
+			background: @input-bg;
+			border-color: @input-border;
+			border-radius: 0px;
+			padding: 0 @padding-base-horizontal/2;
+
+			> li.search-choice {
+				margin: 5px @padding-base-horizontal/2;
+				padding-bottom: 4px;
+				box-shadow: none;
+				background: @gray-lighter;
+				border-radius: 0px;
+				border-color: @input-border;
+			}
+			> .search-field {
+				margin: 0 @padding-base-horizontal/2;
+				> input[type="text"] {
+					min-height: 28px;
+					font-size: @font-size-base;
+					font-family: inherit;
+					color: @input-color;
+				}
+			}
+		}
+
+		/* single editor */
+		.chosen-single {
+			background: @input-bg;
+			border-radius: 0;
+			.box-shadow(none);
+			border-color: @input-border;
+			padding: @padding-base-vertical @padding-base-horizontal;
+			color: @input-color;
+
+			> div {
+				top: 8px;
+				width: 25px;
+				> b {
+					background-color: transparent;
+					background-image: none !important; // NOTE: doesn't work in IE9 without !important
+					.iconfont();
+					&:before {
+						content: @x-icon-angle-bracket-bottom;
+					}
+				}
+			}
+			abbr {
+				top: 11px;
+			}
+		}
+
+		/* both editors */
+		.chosen-choices,
+		.chosen-single {
+			min-height: @input-height-base;
+			line-height: @line-height-base;
+		}
+	}
+
+	/* active editor */
+	.chosen-container-active {
+
+		/* border around active element */
+		> .chosen-single, > .chosen-choices {
+			@color-rgba: rgba(red(@input-border-focus), green(@input-border-focus), blue(@input-border-focus), .6);
+			border: 1px solid @input-border-focus;
+			outline: 0;
+			.box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @{color-rgba}");
+			.transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+		}
+
+		/* opened editor style */
+		&.chosen-with-drop {
+			.chosen-single {
+				background-image: none !important; // NOTE: doesn't work in IE9 without !important
+
+				div {
+					b {
+						&:before {
+							content: @x-icon-angle-bracket-top;
+						}
+					}
+				}
+			}
+		}
+
+		/* results in dropdown */
+		.chosen-results {
+			margin: 0 4px 4px 0;
+
+			> li.highlighted {
+				background: @input-border-focus;
+			}
+
+			> li.no-results {
+				background-image: none;
+			}
+		}
+		&.chosen-container-single {
+			.chosen-results {
+				padding: 0 0 0 4px;
+			}
+		}
+		&.chosen-container-multi {
+			.chosen-results {
+				padding: 4px 0 0 4px;
+			}
+		}
+	}
+
+	/* dropdown */
+	.chosen-container {
+		.chosen-drop {
+			margin-top: 0px;
+			border-radius: 0;
+			border-color: @input-border;
+			.box-shadow(none);
+
+			.chosen-search input[type="text"] {
+				border-color: @input-border;
+				background-color: @input-bg;
+				background-image: none !important; // NOTE: doesn't work in IE9 without !important
+			}
+		}
+	}
+
+	/* error style */
+	&.-invalid {
+		.chosen-choices {
+			border: 1px solid @color-danger;
+			background-color: @color-danger-light;
+		}
+		.chosen-single {
+			border: 1px solid @color-danger;
+			background-color: @color-danger-light;
+		}
+	}
+	/* fix for issues:
+      https://github.com/harvesthq/chosen/issues/1600
+      https://github.com/harvesthq/chosen/issues/1352
+      https://github.com/harvesthq/chosen/issues/1167
+    see also in peObjectDropdownLookup.css
+    */
+	ul.chosen-choices > li.search-field:first-child {
+		width: 100%
+	}
+
+	/* далее идут переопределения стилей choosen для того что бы дропдаун выдвигался в pe, а не поверх всего
+      c переходом на chosen v1.0 удалось обойтись без изменений chosen.js
+    */
+	.chosen-container.chosen-with-drop > .chosen-drop {
+		box-sizing: border-box;
+		position: relative;
+	}
+	/* конец переопределения стилей для дропдауна */
+}

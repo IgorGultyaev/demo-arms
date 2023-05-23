@@ -1,0 +1,46 @@
+<div class='x-editor-wizard x-wizard-paged'>
+    {{#if title}}
+        <div class="x-part-title x-editor-title">
+            {{title}}
+            {{#if subtitle}}<div class="x-part-subtitle x-editor-subtitle">{{subtitle}}</div>{{/if}}
+        </div>
+    {{/if}}
+	{{#if pages.count}}
+        <div class="x-wizard-top-nav">
+			{{#observe this target=".x-wizard-top-nav"}}
+                {{#each pages}}
+                    <a {{#compare name "!==" ../currentPage.name}}href="#"{{/compare}} data-page="{{name}}"
+                       class="x-wizard-nav-item {{#if hasViolations}}x-page-tab-error {{/if}}{{#if-eq name ../currentPage.name}}active{{/if-eq}}"
+                       {{command-bind ../commands.SwitchToPage}}
+                       data-command-params="{pageName:'{{name}}'}">
+                        <span class='x-icon x-icon-warning-triangle x-editor-error-badge' {{data-bind visibility="hasViolations"}} />
+                        <span class="x-wizard-page-name">{{expr "this.editor.presenter.pageNumber(this)"}}.&nbsp;{{title}}</span>
+                        {{#if-not-last total=../pages.count}}
+                            <span class="x-wizard-paged-arrow"></span>
+                        {{/if-not-last}}
+                    </a>
+                {{/each}}
+			{{/observe}}
+        </div>
+	{{/if}}
+    <div class="x-editor-pages">
+		{{#each pages}}
+            <div class='x-editor-page' style='display:none;' data-page="{{name}}"></div>
+		{{/each}}
+    </div>
+    {{#if-menu menuPage}}
+        <div class='x-wizard-page-nav'>
+            {{view class="ui.MenuPresenter" viewModel=this.menuPage tag="div" cssClass="x-editor-menu" }}
+        </div>
+    {{/if-menu}}
+    <div class="x-editor-parts-container" id="{{push-id}}">
+        {{render presenter.partsCarousel target=":pop-id"}}
+    </div>
+	{{#if-not presenter.options.hideMenu}}
+		{{#if-menu menu}}
+            <div class='x-editor-menu-container {{presenter.options.menuCssClass}}'>
+				{{view class="ui.MenuPresenter" viewModel=this.menu tag="div" cssClass="x-editor-menu"}}
+            </div>
+		{{/if-menu}}
+	{{/if-not}}
+</div>

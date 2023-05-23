@@ -1,0 +1,313 @@
+@import (reference) ".variables.less";
+@import (reference) "icons.less";
+@import (reference) "../../../vendor/bootstrap/less/mixins.less";
+@import (reference) "../../../vendor/bootstrap/less/buttons.less";
+@import (reference) "../../../vendor/bootstrap/less/button-groups.less";
+
+// MenuPresenter root
+.x-menu {
+	.box-shadow(none);
+	display: table;
+}
+.x-menu--inline {
+	display: inline !important;
+}
+.x-menu--inlineblock {
+	display: inline-block !important;
+}
+
+.x-menu.x-menu--vertical {
+	display: block;
+	> .x-menu-item,
+	> .x-menu-item-dropdown {
+		display: block;
+		width: 100%;
+		float: none;
+		text-align: left;
+		margin-top: 2px;
+		margin-left: 0; // no need for this gap between nav items
+	}
+	> .x-menu-item-dropdown > .x-menu-item {
+		float: none;
+		text-align: left;
+		width: 100%;
+	}
+}
+
+.x-menu-item {
+	.btn;
+	.box-shadow(none);
+	float: left;
+	position: relative;
+	background-color: transparent;
+	border: 1px solid transparent;
+	outline: 0;
+	border-radius: 0;
+	color: @color-black;
+
+	&:focus {
+		outline: 0;
+		background-color: darken(white, 5%);
+		//outline-style: none;
+		//border: 1px solid @color-black;
+		//outline: 1px dotted @color-black;
+	}
+	&:hover:enabled {
+		outline: 0;
+		//outline: 1px dotted @color-black;
+		background-color: darken(white, 5%);
+	}
+	&:active {
+		.box-shadow(none);
+	}
+}
+
+.x-menu {
+	// pressing effect (it should be only applied for MenuPresenter!):
+	.x-menu-item-action {
+		&:active:focus,
+		&:active:enabled {
+			.box-shadow(none);
+			padding: @padding-base-vertical + 1px @padding-base-horizontal - 1px @padding-base-vertical - 1px @padding-base-horizontal + 1px;
+			outline: 0;
+		}
+	}
+}
+
+.x-menu-item-default {
+	background-color: @color-main;
+	color: white;
+	&:focus,
+	&:hover:enabled {
+		color: white;
+		outline: 0;
+		background-color: darken(@color-main, 5%);
+
+		//outline: 1px dotted white;
+	}
+	&:hover:disabled {
+		color: white;
+	}
+	&:active:focus,
+	&:active {
+		color: white;
+	}
+}
+
+.x-menu-item-dropdown {
+	.btn-group;
+	float: left;
+}
+
+.x-menu-item-dropdown.open {
+	& > .x-menu-item.dropdown-toggle,
+	& > .x-menu-item.dropdown-toggle:active {
+		color: @color-main;
+		border: 1px solid @color-darkgray;
+		background-color: transparent;
+		box-shadow: none;
+		-webkit-box-shadow: none;
+		&:hover:enabled {
+			outline-style: none;
+		}
+	}
+	& > .dropdown-menu {
+		margin-top: -1px;
+		border-radius: 0;
+		&.-empty {
+			display: none;
+		}
+	}
+}
+
+// overwrite BS
+.dropdown-menu {
+	background-clip: border-box;
+	//min-width: 100%;
+
+	> li {
+		outline: 0;
+
+		> a:focus {
+			outline: 1px dotted white;
+			background-color: @color-active;
+			color: @color-inverted-text;
+		}
+		> a:hover,
+		> a:active {
+			outline: 0;
+			background-color: @color-active;
+			color: @color-inverted-text;
+		}
+
+		&.disabled {
+			> a,
+			> a:focus,
+			> a:hover,
+			> a:active {
+				color: @color-darkgray;
+			}
+		}
+
+		> a > .x-icon {
+			vertical-align: text-top;
+		}
+	}
+}
+
+.dropdown-toggle.disabled,
+.dropdown-toggle:disabled {
+	color: @color-darkgray;
+}
+
+// sub-menu in dropdown
+.dropdown-submenu {
+	display: table;
+
+	> a {
+		display: table-cell;
+
+		> span {
+			display: inline-block;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			max-width: 500px;
+
+			@media (max-width: @screen-md-max) {
+				max-width: 350px;
+			}
+			@media (max-width: @screen-xs-max) {
+				max-width: 250px;
+			}
+		}
+	}
+
+	> ul {
+		display: table-cell;
+		width: 1%;
+		white-space: nowrap;
+		padding: 0 0.3em 0 0;
+		cursor: default;
+
+		> li {
+			display: inline-block;
+			margin-left: 0.3em;
+			margin-right: 0.3em;
+			cursor: default;
+		}
+	}
+
+	> a:hover + ul,
+	> a:active + ul,
+	> a:focus + ul {
+		background-color: @color-active;
+		color: @color-inverted-text;
+	}
+}
+
+.x-menu--contrast {
+	background-color: @color-main;
+
+	.x-menu-item {
+		color: white;
+
+		&:focus,
+		&:hover:enabled,
+		&:active:focus,
+		&:active:enabled {
+			color: white;
+			background-color: darken(@color-main, 5%);
+		}
+	}
+	.x-menu-item-action {
+		color: white;
+	}
+	.x-menu-item-default {
+		color: white;
+		font-weight: bold;
+		&[disabled] {
+			font-weight: normal;
+		}
+	}
+	.x-menu-item-dropdown.open {
+		& > .x-menu-item.dropdown-toggle,
+		& > .x-menu-item.dropdown-toggle:active {
+			color: @color-main;
+			border: 1px solid white;
+			background-color: white;
+		}
+	}
+}
+
+.x-menu--inverse {
+	background-color: @color-black;
+	.x-menu-item {
+		color: white;
+
+		&:focus,
+		&:hover:enabled,
+		&:active:focus,
+		&:active:enabled {
+			color: white;
+			background-color: lighten(@color-black, 5%);
+		}
+	}
+	.x-menu-item-action {
+		color: white;
+	}
+	.x-menu-item-default {
+		background-color: transparent;
+		color: white;
+		font-weight: bold;
+		&[disabled] {
+			font-weight: normal;
+		}
+	}
+	.x-menu-item-dropdown.open {
+		& > .x-menu-item.dropdown-toggle,
+		& > .x-menu-item.dropdown-toggle:active {
+			color: @color-black;
+			border: 1px solid white;
+			background-color: white;
+		}
+	}
+}
+
+.x-menu-item {
+	> .x-icon {
+		// remove whitespace after icon...
+		.x-icon-alone;
+		vertical-align: text-top;
+	}
+	> .x-icon + span {
+		// ... but add whitespace before text - it hides with text when the width is small (hidden-xs)
+		margin-left: 0.5em;
+	}
+}
+
+.x-menu-item-badge {
+	content: ' ';
+	background: @color-warning;
+	display: inline-block;
+	vertical-align: top;
+	width: 5px;
+	height: 5px;
+	border-radius: 2.5px;
+	margin-right: -5px;
+}
+.x-menu-item-badge-warning:after {
+	.x-menu-item-badge;
+	background: @color-warning;
+}
+.x-menu-item-badge-error:after {
+	.x-menu-item-badge;
+	background: @color-danger;
+}
+.x-menu-item-badge-info:after {
+	.x-menu-item-badge;
+	background: @color-info;
+}
+.x-menu-item-badge-success:after {
+	.x-menu-item-badge;
+	background: @color-green;
+}

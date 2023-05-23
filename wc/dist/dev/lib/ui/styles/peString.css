@@ -1,0 +1,42 @@
+/* PLACEHOLDER */
+/* x-pe-text */
+.x-pe-text {
+  width: 100%;
+  min-height: 28px;
+  background-color: #fff;
+}
+.x-pe-text.-invalid,
+.x-pe-string-input.-invalid {
+  background-color: #F2DEDE;
+  border-color: #f26a60;
+}
+/* x-pe-string */
+.x-pe-string {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: table;
+  background-color: #fff;
+}
+.x-pe-string-textbox {
+  display: table-cell;
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.x-pe-string-input {
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+}
+.x-pe-string-counter {
+  font-size: 0.75em;
+  min-width: 5em;
+  padding: 1px;
+}
+/* inline */
+.x-pe-string.x-pe-inline,
+.x-pe-text.x-pe-inline {
+  min-width: 20em;
+}

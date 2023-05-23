@@ -1,0 +1,37 @@
+/* dropdown */
+.select2-dropdown {
+  border-radius: 0;
+  border: 1px solid #ccc;
+  /*
+  	.select2-results__message {
+		background-color: transparent;
+		background-image: none !important; // NOTE: doesn't work in IE9 without !important;
+	}
+	*/
+}
+.select2-dropdown .select2-search input {
+  outline: 0;
+  background: #fff;
+  border-color: #ccc;
+}
+.select2-dropdown .select2-results__option--highlighted[aria-selected] {
+  background: #fdab1c;
+}
+.select2-dropdown.select2-dropdown--below {
+  -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+.select2-dropdown.select2-dropdown--above {
+  -webkit-box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.15);
+}
+.select2-dropdown.select2-dropdown-inplace {
+  left: inherit;
+  display: none;
+  position: inherit;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.select2-container--open .select2-dropdown.select2-dropdown-inplace {
+  display: block;
+}

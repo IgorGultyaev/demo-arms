@@ -1,0 +1,55 @@
+@import ".variables.less";
+
+.x-filter-container {
+  background-color: @color-tone;
+}
+
+.x-editor-filter {
+  border: 0px;
+  background-color: @color-tone;
+
+  .x-editor-tabs {
+    background-color: transparent;
+    padding-left: 10px;
+    > li {
+      float: left;
+
+      // Actual tabs (as links)
+      > .x-editor-tab {
+        line-height: @line-height-base;
+        border: 0;//3px solid transparent;
+        border-radius: 0;
+        color: @color-black;
+        padding-bottom: 5px;
+        &:hover {
+          background-color: transparent;
+          border-bottom: 3px solid @color-submain;
+        }
+      }
+
+      // Active state, and it's :hover to override normal :hover
+      &.active > .x-editor-tab {
+        &,
+        &:hover,
+        &:focus {
+          color: @color-black;
+          background-color: transparent;
+		  border: 0;
+          border-bottom: 3px solid @color-main;
+          cursor: default;
+        }
+      }
+
+    }
+  }
+
+  .x-editor-page {
+    background-color: @color-tone;
+  }
+
+  .x-editor-tab-content {
+    > .x-editor-page {
+      padding-top: 0;
+    }
+  }
+}

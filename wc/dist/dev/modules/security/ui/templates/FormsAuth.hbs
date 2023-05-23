@@ -1,0 +1,7 @@
+<div class="form-group" id="{{push-id}}">
+	{{part (object name="userName" vt="string" nullable="false" changeTrigger="keyPressed" hideLetterCounter=true addonIcon="user" placeholder=(res "loginDialog.user_name")) class="ui.peString" target=":pop-id"}}
+</div>
+<div class="form-group" id="{{push-id}}">
+	{{part (object name="password" vt="string" nullable="false" changeTrigger="keyPressed" inputType="password" hideLetterCounter=true addonIcon="key" placeholder=(res "loginDialog.password")) class="ui.peString" target=":pop-id"}}
+</div>
+<button type="button" class="btn btn-default btn-block login-button-forms" {{command-bind cmdLogin}}>{{icon name="login"}}{{res "security.login"}}</button>

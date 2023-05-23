@@ -1,0 +1,19 @@
+{{#if-not options.hideMenuList}}
+<div class="x-list-menu-container {{options.menuListCssClass}}" id="{{push-id}}">
+	{{#observe this target=":pop-id"}}
+		{{#if-menu list.menuList}}
+			<div id="{{push-id}}" style="display: inline-block; float: left;">
+				{{part class="ui.MenuPresenter" viewModel=list.menuList target=":pop-id"}}
+				{{#if list.commands.Save}}
+					{{data-bind text="this.list().commands.Save.canExecute() ? this.pendingItemsCount() : ''" target=".x-list-menu-pendingObjects" ignore-missing-target="true"}}
+				{{/if}}
+			</div>
+		{{/if-menu}}
+		{{#if-menu list.menuListAux}}
+			<div id="{{push-id}}" style="display: inline-block; float: right;">
+				{{part class="ui.MenuPresenter" viewModel=list.menuListAux target=":pop-id"}}
+			</div>
+		{{/if-menu}}
+	{{/observe}}
+</div>
+{{/if-not}}

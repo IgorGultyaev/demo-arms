@@ -1,0 +1,50 @@
+<div class="x-report {{options.cssClass}}">
+    {{#if options.showTitle}}
+        {{#if title}}
+            <div class="x-part-title x-report-title">{{title}}</div>
+        {{/if}}
+    {{/if}}
+
+    {{#if filter}}
+        <div class="x-filter-container x-report-filter-container" id="{{push-id}}">
+            {{#if options.filterCollapsable}}
+                {{part class="ui.ExpandablePanel" body=filter expandedProp="filterExpanded" expandTitle=options.expandFilterTitle collapseTitle=options.collapseFilterTitle target=":pop-id"}}
+            {{else}}
+                {{render filter}}
+            {{/if}}
+        </div>
+    {{/if}}
+
+    <div class="x-report-menu-container x-menu-bar" id="{{push-id}}">
+        {{#observe this target=":pop-id"}}
+            {{#if-menu menu}}
+                <div id="{{push-id}}">{{part class="ui.MenuPresenter" viewModel=menu target=":pop-id"}}</div>
+            {{/if-menu}}
+        {{/observe}}
+    </div>
+
+	<div class="x-report-hint-container" id="{{push-id}}">
+		{{#observe this target=":pop-id"}}
+			{{#if hintMessage}}
+				<div class='alert alert-info fade in'>
+                    <a class='close pull-right' data-dismiss='alert' href='#'>&times;</a>
+					{{{hintMessage}}}
+				</div>
+			{{/if}}
+		{{/observe}}
+	</div>
+
+	<div class="x-report-content-container" id="{{push-id}}">
+    {{#observe-wait this target=":pop-id" name="report" expr="isGenerating"}}
+        {{#if stateMessage}}
+            <div class="x-report-state-container">
+                <p class="x-report-state-message {{bootstrap-severity-class presenter.stateSeverity prefix="text"}}">{{{stateMessage}}}</p>
+            </div>
+        {{else}}
+            <div {{data-bind html="reportContent"}}></div>
+        {{/if}}
+    {{else}}
+        {{waiting-large res="reportPart.building"}}
+    {{/observe-wait}}
+    </div>
+</div>

@@ -1,0 +1,11 @@
+{{#if list.filter}}
+<div class="x-filter-container x-list-filter-container" id="{{push-id}}">
+	{{#with list}}
+		{{#if options.filterCollapsable}}
+			{{part class="ui.ExpandablePanel" body=filter expandedProp="filterExpanded" expandTitle=options.expandFilterTitle collapseTitle=options.collapseFilterTitle target=":pop-id"}}
+		{{else}}
+			{{render filter}}
+		{{/if}}
+	{{/with}}
+</div>
+{{/if}}

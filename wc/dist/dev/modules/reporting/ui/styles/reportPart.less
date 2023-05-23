@@ -1,0 +1,80 @@
+@import "../../../../lib/ui/styles/.variables.less";
+
+.x-report {
+}
+
+.x-report-menu-container {
+  border-top: 1px solid @color-darkgray;
+  border-bottom: 1px solid @color-darkgray;
+}
+.x-report-content-container {
+  background-color: @color-content;
+  padding: 10px;
+}
+
+.x-report-table {
+	background-color: @color-content;
+}
+
+.x-report-state-container {
+    height: 200px;
+}
+
+.x-report-hint-container {
+}
+
+.x-report-state-message {
+    text-align: center;
+    top: 45%;
+    position: relative;
+    font-size: 24px;
+    line-height: normal;
+}
+
+.x-report-page {
+	.btn-toolbar {
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+	.navbar{
+		border-right: none;
+		clear:left;
+		margin-bottom: 0;
+	}
+	.navbar-inner {
+		border-radius: 0;
+	}
+	.x-breadcrumb{
+		margin-bottom: 0;
+		//background-color: transparent;
+		padding: 2px 15px;
+		width: 100%;
+		a {
+			color: white;
+		}
+		a:hover {
+			color: @color-black;
+		}
+	}
+	.x-report-content-container {
+		border: none;
+	}
+}
+
+@media (max-width: 768px) {
+	.x-report-page .navbar-right {
+		padding-left: 15px;
+	}
+	.x-report-page .navbar-left {
+		padding-left: 15px;
+	}
+}
+
+.x-report .x-editor-errors {
+    min-height: 50px;
+}
+
+//affix
+table.x-report-table > thead > tr.affix-stuck > th {
+	border-top: 0;
+}

@@ -1,0 +1,53 @@
+@import "../../../../lib/ui/styles/.variables.less";
+
+.x-login-dialog {
+	z-index: @zindex-modal + 1000;
+
+	.modal-body {
+		text-align: center;
+	}
+}
+
+.x-login-auth-method {
+	display: inline-block;
+	text-align: left;
+	margin-bottom: 20px;
+}
+
+.x-login-dialog-provider {
+	max-width: 24em;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 15px;
+}
+
+.x-login-dialog-status-message {
+	margin-top: 20px;
+	word-wrap: break-word;
+	overflow: auto;
+	max-height: 10em;
+}
+
+.login-button-Facebook {
+	background-color: #4a6fad;
+	color: #ffffff;
+	&:active, &:hover, &:focus {
+		background-color: #4a6fad;
+		color: #ffffff;
+	}
+}
+
+.x-login-2f-dialog {
+	z-index: @zindex-modal + 1100 !important;
+	> .modal-dialog {
+		width: 300px;
+	}
+
+	.x-dialog > .modal-body {
+		padding: 40px;
+		text-align: center;
+	}
+}
+.x-login-2f-dialog-body--hint {
+	margin-bottom: 15px;
+}

@@ -1,0 +1,51 @@
+/* Common wizard styles */
+/* PLACEHOLDER */
+/* default navigation item */
+.x-wizard-nav-item {
+  background-color: #F4F3F3;
+  border-left: 0;
+  border-right: 0;
+  border-color: #ccc;
+  color: #52534F;
+}
+.x-wizard-nav-item:focus,
+.x-wizard-nav-item:hover {
+  color: #52534F;
+  background-color: #F4F3F3;
+  outline-style: none;
+}
+.x-wizard-nav-item:focus > .x-wizard-page-name,
+.x-wizard-nav-item:hover > .x-wizard-page-name {
+  outline: 0;
+  border: 0;
+  border-bottom: 3px solid #E8EDDA;
+}
+.x-wizard-nav-item.active,
+.x-wizard-nav-item.active:hover {
+  cursor: default;
+  font-weight: bold;
+  border-color: #ccc;
+  color: #52534F;
+}
+.x-wizard-nav-item.active > .x-wizard-page-name,
+.x-wizard-nav-item.active:hover > .x-wizard-page-name {
+  border: 0;
+}
+/* Page navigation ("next" button) */
+.x-wizard-page-nav {
+  width: 100%;
+  background-color: transparent;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-bottom: 10px;
+}
+.x-wizard-page-nav:before,
+.x-wizard-page-nav:after {
+  display: table;
+  content: " ";
+}
+.x-wizard-page-nav:after {
+  clear: both;
+}

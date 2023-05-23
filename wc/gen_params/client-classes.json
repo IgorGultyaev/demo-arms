@@ -1,0 +1,9 @@
+{
+	"answers": {
+		"model": "src/app/domain/model-meta",
+		"typedMeta": true
+    	},
+    	"options": {
+        	"onconflict": "force"
+    	}
+}

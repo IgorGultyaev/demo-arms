@@ -1,0 +1,17 @@
+{{#if hasMoreItems}}
+	{{#compare list.state "===" list.states.loadingMore}}
+        <div class="x-list-paginator">{{waiting-icon}}</div>
+	{{/compare}}
+	{{#compare list.state "===" list.states.loaded}}
+        <div class="x-list-paginator">
+		{{#if message}}
+            <div class="text-info"><span class="x-icon x-icon-info"></span>{{message}}</div>
+		{{/if}}
+		{{#if-menu menu}}
+			<div id="{{push-id}}" class="x-menu-bar">
+				{{part class="ui.MenuPresenter" viewModel=menu target=":pop-id"}}
+			</div>
+		{{/if-menu}}
+		</div>
+	{{/compare}}
+{{/if}}

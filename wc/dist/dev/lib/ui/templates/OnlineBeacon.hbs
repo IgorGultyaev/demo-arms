@@ -1,0 +1,46 @@
+<div class="x-online-beacon" id="{{push-id}}">
+{{#observe this target=":pop-id" trackStatus="true"}}
+  {{#with dataFacade}}
+  {{#if manuallyDisconnected}}
+      <a href="#" id="{{push-id}}" class="dropdown-toggle">
+          <span class="x-icon x-icon-plug x-online-beacon-icon-clientoffline" title="Приложение в оффлайне (клик для меню)"></span>
+          {{part class="ui.DropDownMenuPresenter" viewModel=../menu target=":pop-id" }}
+      </a>
+  {{else}}
+    {{#if-not networkOnline}}
+        <span class="x-icon x-icon-circle x-online-beacon-icon-clientoffline" title="Сеть недоступна"></span>
+    {{else}}
+      {{#if-not serverOnline}}
+        {{#if isSynchronizing}}
+            <span class="x-icon x-icon-sync x-icon-anim-rotating x-online-beacon-icon-wait" title="Ожидание сервера"></span>
+        {{else}}
+            <a href="#" id="{{push-id}}" class="dropdown-toggle">
+                <span class="x-icon x-icon-circle x-online-beacon-icon-serveroffline" title="Сервер недоступен (клик для меню)"></span>
+                {{part class="ui.DropDownMenuPresenter" viewModel=../menu target=":pop-id"}}
+            </a>
+        {{/if}}
+      {{else}}
+        {{#if isSynchronizing}}
+            {{#if isSyncErrorProcessing}}
+                <a href="#" {{command-bind ../commands.resolve}}>
+                    <span class="x-icon x-icon-warning x-online-beacon-icon-error" title="Ошибка при синхронизации"></span>
+                </a>
+            {{else}}
+                <span class="x-icon x-icon-sync x-icon-anim-rotating x-online-beacon-icon-sync" title="Идет синхронизация"></span>
+            {{/if}}
+        {{else}}
+            {{#if-eq saveTarget "local"}}
+                <span class="x-icon x-icon-circle x-online-beacon-icon-localsave" title="Локальное сохранение"></span>
+            {{else}}
+                <a href="#" id="{{push-id}}" class="dropdown-toggle">
+                    <span class="x-icon x-icon-circle x-online-beacon-icon-online" title="Приложение онлайн (клик для меню)"></span>
+                    {{part class="ui.DropDownMenuPresenter" viewModel=../menu target=":pop-id"}}
+                </a>
+            {{/if-eq}}
+        {{/if}}
+      {{/if-not}}
+    {{/if-not}}
+  {{/if}}
+  {{/with}}
+{{/observe}}
+</div>

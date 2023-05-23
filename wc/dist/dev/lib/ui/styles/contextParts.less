@@ -1,0 +1,143 @@
+@import (reference) ".variables.less";
+@import (reference) ".mixins.less";
+
+@color-text-error: darken(@color-danger, 30%);
+
+/* abstract context part style */
+.x-context-part {
+  min-height: 75px;
+  padding: 8px 10px;
+  border-width: 2px 0;
+  border-style: solid;
+  background-color: @color-tone;
+
+  transition: background-color 0.5s linear;
+  -webkit-transition: background-color 0.5s linear;
+  -moz-transition: background-color 0.5s linear;
+  -o-transition: background-color 0.5s linear;
+}
+
+/* context parts carousel */
+.x-context-parts-carousel {
+  min-height: 75px; // the same as for .x-context-part
+  background-color: @color-tone;
+
+  &.active {
+    .x-context-part {
+      transition: none;
+      -webkit-transition: none;
+      -moz-transition: none;
+      -o-transition: none;
+    }
+
+    /* Info */
+    .x-context-part--info {
+      background-color: @color-main;
+    }
+
+    /* Warnings */
+    .x-context-part--warning {
+      background-color: @color-warning;
+    }
+
+    /* Errors */
+    .x-context-part--critical,
+    .x-context-part--error {
+      background-color: @color-danger;
+    }
+  }
+  .x-carousel-body {
+    cursor: pointer;
+  }
+}
+
+/* context parts carousel navigation buttons area */
+.x-context-part-nav {
+  clear: right;
+  margin-top: 8px;
+  margin-right: 5px;
+}
+
+/* context parts carousel buttons */
+.x-context-part-buttons {
+  margin-right: 2px;
+  margin-top: 2px;
+}
+
+.x-context-part-btn {
+  padding: 5px;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  color: @color-text;
+  &:hover {
+    color: @color-text;
+  }
+  &:active {
+    padding: 6px 3px 4px 7px;
+    color: @color-darkgray;
+  }
+  &.-off {
+    color: @color-darkgray;
+    &:active {
+      color: @color-text;
+    }
+  }
+}
+
+/* errors/infos/parts badges */
+.x-context-parts-badge {
+  height: 5px;
+}
+
+.x-context-parts-badge + .x-context-parts-carousel {
+  margin-top: -5px; // height of .x-context-parts-badge
+}
+
+/* Info */
+.x-context-parts-badge--info {
+  background-color: @color-main-dark;
+}
+
+.x-context-part--info {
+  border-color: @color-main-dark;
+}
+
+/* Warnings */
+.x-context-parts-badge--warning {
+  background-color: @color-warning;
+}
+
+.x-context-part--warning {
+  border-color: @color-warning;
+}
+
+/* Errors */
+.x-context-parts-badge--critical,
+.x-context-parts-badge--error {
+  background-color: @color-text-error;
+}
+
+.x-context-part--critical,
+.x-context-part--error {
+  color: @color-text-error;
+  border-color: @color-text-error;
+}
+
+
+/* concurency error resolving part */
+.x-context-part {
+  .x-menu-item {
+    &:hover,
+    &:focus {
+      background-color: @color-darkgray;
+    }
+  }
+}
+
+/* unpinned parts badge */
+.x-context-parts-badge {
+  &.affix-stuck--shadow {
+    .box-shadow(0px -1px 10px 0px @color-affix-shadow);
+  }
+}

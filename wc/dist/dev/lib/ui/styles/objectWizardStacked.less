@@ -1,0 +1,63 @@
+/* Stacked wizard styles */
+@import ".variables.less";
+
+.x-wizard-stacked {
+  .popover { /* page summary popover */
+	max-width: 400px;
+  }
+  .popover-content { /* page summary popover content */
+	margin-right: 14px;
+	overflow: hidden;
+  }
+  /* Stacked wizard navigation styles: begin */
+
+  /* top navigation (pass pages) */
+  > .x-wizard-top-nav {
+	&.list-group { /* no gap after past pages list */
+	  margin-bottom: 0;
+	}
+	> .x-wizard-nav-item {
+	  cursor: pointer;
+      z-index: auto;
+      &.active,
+      &.active:hover {
+        background-color: @color-tone;
+      }
+      &.active:hover {
+        cursor: default;
+      }
+	  &:hover {
+		/* overwrite bs style a.list-group-item:hover */
+		background-color: darken(@color-tone, 5%);
+        > .x-wizard-page-name {
+          border: 0;
+        }
+      }
+	}
+  }
+
+  /* bottom navigation (future pages) */
+  > .x-wizard-bottom-nav {
+	&.list-group { /* no gap after past pages list */
+	  margin-bottom: 0;
+	}
+    > .x-wizard-nav-item {
+      z-index: auto;
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+
+}
+
+
+/* Brief page data */
+.x-wizard-page-brief {
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  margin-left: 24px;
+}

@@ -1,0 +1,47 @@
+@import ".variables.less";
+
+.x-split {
+	.x-grid {
+		min-height: 32px;
+	}
+	.x-list-paging {
+		&.x-split-paging-bottom {
+			position: absolute;
+			z-index: 900;
+		}
+
+		& > .x-list-paginator {
+			border-top: 1px solid @color-border;
+		}
+		width: 100%;
+		bottom: 0px;
+		left: 0px;
+		background-color: white;
+	}
+	.x-list-paginator {
+		padding-bottom: 1px;
+		.x-menu-bar {
+			padding-bottom: 0px;
+		}
+	}
+	.hsplitter {
+		margin-top: 5px;
+	}
+	.x-split-data {
+		// height must be set after render
+		//height: calc(100% - 50px);
+		overflow: auto;
+	}
+	.top_panel > .x-split-data {
+		padding-bottom: 15px;
+	}
+	.bottom_panel > .x-split-data {
+		padding-top: 5px;
+	}
+	.left_panel > .x-split-data {
+		padding-right: 15px;
+	}
+	.right_panel > .x-split-data {
+		padding-left: 15px;
+	}
+}

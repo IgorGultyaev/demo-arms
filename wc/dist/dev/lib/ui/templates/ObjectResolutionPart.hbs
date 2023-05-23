@@ -1,0 +1,53 @@
+{{#if title}}
+    <div class="x-part-title">{{title}}</div>
+{{/if}}
+{{#if isLoading}}
+	{{waiting-large}}
+{{else}}
+	{{#unbound this tag="div"}}
+		{{#if hint}}
+            <div class="alert alert-{{hintSeverity}}">{{hint}}</div>
+		{{/if}}
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+            <tr>
+                <th>{{res "objectResolution.column.property"}}</th>
+                <th>{{targetColumnTitle}}</th>
+                <th>{{sourceColumnTitle}}</th>
+				{{#unless isLocalRemoved}}
+                    <th>
+                        <input type="checkbox" id="checkedAll" style="vertical-align: text-bottom" {{data-bind checked="checkedAll" target="#checkedAll"}}/>&nbsp;
+                        <label for="checkedAll" style="display: inline;vertical-align: middle; font-weight: normal">{{res "objectResolution.column.overwrite"}}</label>
+                    </th>
+				{{/unless}}
+            </tr>
+            </thead>
+            <tbody>
+			{{#each props}}
+                <tr>
+                    <td class="text-bold">{{meta.descr}}</td>
+
+					{{#if part.isLocalRemoved}}
+                        <td>{{{originalHtml}}}</td>
+                        <td class="text-strikethrough text-italic text-muted">{{res "objectResolution.removed_object"}}</td>
+					{{else}}
+						{{#if isPropEqual}}
+							<td class="text-muted text-center" colspan="3">{{{originalHtml}}}</td>
+						{{else}}
+                            <td {{toggleClass text-strikethrough="this.checked()"}}>{{{originalHtml}}}</td>
+                            <td {{toggleClass text-strikethrough="!this.checked()"}}>{{{localHtml}}}</td>
+                            <td><input type="checkbox" {{data-bind checked="checked"}}/></td>
+						{{/if}}
+					{{/if}}
+                </tr>
+			{{/each}}
+            </tbody>
+        </table>
+		{{#if-menu menu}}
+            <div class="x-menu-bar x-menu--contrast">
+				{{view class="ui.MenuPresenter" viewModel=menu tag="div" cssClass="pull-right"}}
+            </div>
+		{{/if-menu}}
+	{{/unbound}}
+{{/if}}
+

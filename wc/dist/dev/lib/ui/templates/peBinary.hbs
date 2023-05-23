@@ -1,0 +1,65 @@
+﻿<div class="x-pe-binary">
+	<form action="" method="POST" enctype="multipart/form-data">
+		{{#if-not isReadOnly}}
+			{{#if-not isUploading}}
+				<div class="btn btn-default x-pe-binary-button x-pe-binary-uploadbutton">
+					{{icon name="add"}}<span>{{res "peBinary.selectFile"}}</span>
+					<input type="file" name="file">
+				</div>
+				{{#if showPlaceholder}}
+					<div class="x-pe-binary-hint">{{placeholder}}</div>
+				{{/if}}
+			{{/if-not}}
+		{{/if-not}}
+
+		{{#if isFail}}
+			<div class="alert alert-danger">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+				<strong>{{res "error"}}: </strong>{{lastError}}
+			</div>
+		{{else}}
+			{{#if isUploading}}
+				<span class="fileupload-progress fade">
+					<div class="progress">
+                        <div class="progress-bar progress-bar-striped active progress-bar-success" role="progressbar"
+							 aria-valuemin="0" aria-valuemax="100" style="width: 0%;"/>
+                    </div>
+                </span>
+				<button type="reset" class="btn btn-default cancel x-pe-binary-button" {{command-bind
+					commands.UploadCancel}}>
+					{{icon name="stop"}}<span>{{res "peBinary.cancelUpload"}}</span>
+				</button>
+				<div class="alert alert-warning" role="alert">{{res "peBinary.alertOnUploading"}}</div>
+			{{else}}
+				{{#if isPropLoading}}
+					{{waiting-icon size=42}}
+				{{else}}
+					{{#if-not isEmpty}}
+						{{#if isImage}}
+							<div class="x-pe-binary-thumbnail-container">
+								<img class="x-pe-binary-thumbnail thumbnail"/>
+							</div>
+						{{/if}}
+						<span>
+							{{#if disabled}}
+								<span class='x-pe-binary-fileinfo'></span>
+							{{else}}
+								<a href="#" class="dropdown-toggle" id="{{push-id}}">
+                                <span class='x-pe-binary-fileinfo'></span>
+                                <span class='caret'></span>
+                            </a>
+								{{view class="ui.DropDownMenuPresenter" viewModel=menu target=":pop-id"}}
+							{{/if}}
+						</span>
+					{{else}}
+						{{#if isReadOnly}}
+							{{#if readOnlyEmptyText}}
+								<div class="x-pe-binary-hint">{{readOnlyEmptyText}}</div>
+							{{/if}}
+						{{/if}}
+					{{/if-not}}
+				{{/if}}
+			{{/if}}
+		{{/if}}
+	</form>
+</div>

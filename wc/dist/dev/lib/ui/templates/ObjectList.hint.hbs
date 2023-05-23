@@ -1,0 +1,10 @@
+<div class="x-list-hint-container" id="{{push-id}}">
+	{{#observe this target=":pop-id"}}
+		{{#if list.hintMessage}}
+            <div class='alert alert-info alert-dismissible fade in '>
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				{{{list.hintMessage}}}
+            </div>
+		{{/if}}
+	{{/observe}}
+</div>

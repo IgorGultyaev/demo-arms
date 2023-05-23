@@ -1,0 +1,583 @@
+/*
+IMPORTANT:
+In order to preserve the uniform grid appearance, all cell styles need to have padding, margin and border sizes.
+No built-in (selected, editable, highlight, flashing, invalid, loading, :focus) or user-specified CSS
+classes should alter those!
+*/
+
+.slick-header.ui-state-default, .slick-headerrow.ui-state-default {
+  width: 100%;
+  overflow: hidden;
+  border-left: 0px;
+}
+
+.slick-header-columns, .slick-headerrow-columns {
+  position: relative;
+  white-space: nowrap;
+  cursor: default;
+  overflow: hidden;
+}
+
+.slick-header-column.ui-state-default {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  height: 16px;
+  line-height: 16px;
+  margin: 0;
+  padding: 4px;
+  border-right: 1px solid silver;
+  border-left: 0px;
+  border-top: 0px;
+  border-bottom: 0px;
+  float: left;
+}
+
+.slick-headerrow-column.ui-state-default {
+  padding: 4px;
+}
+
+.slick-header-column-sorted {
+  font-style: italic;
+}
+
+.slick-sort-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 5px;
+  margin-left: 4px;
+  margin-top: 6px;
+  float: left;
+}
+
+.slick-sort-indicator-desc {
+  background: url(images/sort-desc.gif);
+}
+
+.slick-sort-indicator-asc {
+  background: url(images/sort-asc.gif);
+}
+
+.slick-resizable-handle {
+  position: absolute;
+  font-size: 0.1px;
+  display: block;
+  cursor: col-resize;
+  width: 4px;
+  right: 0px;
+  top: 0;
+  height: 100%;
+}
+
+.slick-sortable-placeholder {
+  background: silver;
+}
+
+.grid-canvas {
+  position: relative;
+  outline: 0;
+}
+
+.slick-row.ui-widget-content, .slick-row.ui-state-active {
+  position: absolute;
+  border: 0px;
+  width: 100%;
+}
+
+.slick-cell, .slick-headerrow-column {
+  position: absolute;
+  border: 1px solid transparent;
+  border-right: 1px dotted silver;
+  border-bottom-color: silver;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  z-index: 1;
+  padding: 1px 2px 2px 1px;
+  margin: 0;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.slick-group {
+}
+
+.slick-group-toggle {
+  display: inline-block;
+}
+
+.slick-cell.highlighted {
+  background: lightskyblue;
+  background: rgba(0, 0, 255, 0.2);
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.slick-cell.flashing {
+  border: 1px solid red !important;
+}
+
+.slick-cell.editable {
+  z-index: 11;
+  overflow: visible;
+  background: white;
+  border-color: black;
+  border-style: solid;
+}
+
+.slick-cell:focus {
+  outline: none;
+}
+
+.slick-reorder-proxy {
+  display: inline-block;
+  background: blue;
+  opacity: 0.15;
+  filter: alpha(opacity = 15);
+  cursor: move;
+}
+
+.slick-reorder-guide {
+  display: inline-block;
+  height: 2px;
+  background: blue;
+  opacity: 0.7;
+  filter: alpha(opacity = 70);
+}
+
+.slick-selection {
+  z-index: 10;
+  position: absolute;
+  border: 2px dashed black;
+}
+
+@media (min-width: 768px) {
+}
+.x-headless-compensate {
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+/*
+  Override common slick styles
+*/
+.slick-cell,
+.slick-header,
+.slick-header-column,
+.slick-row {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.slick-header,
+.slick-headerrow,
+.slick-viewport {
+  font-size: 13px;
+}
+.slick-viewport {
+  max-height: 100%;
+}
+.slick-viewport > .grid-canvas {
+  min-height: 0.1px;
+}
+.slick-cell {
+  padding: 7px;
+  border: 0;
+  border-right: 1px solid #ccc;
+}
+.slick-cell:last-child {
+  border: 0;
+}
+.slick-cell.active {
+  border: 1px dotted #fff;
+  margin: 2px;
+  padding: 4px;
+}
+.slick-row {
+  background-image: none;
+}
+.slick-row.even,
+.slick-row.even > .slick-cell {
+  background-color: #fff;
+}
+.slick-row.even > .slick-cell.selected {
+  background-color: #ffeccd;
+}
+.slick-row.odd,
+.slick-row.odd > .slick-cell {
+  background-color: #F4F3F3;
+}
+.slick-row.odd > .slick-cell.selected {
+  background-color: #fee3b4;
+}
+.slick-row.active,
+.slick-row.active.even > .slick-cell,
+.slick-row.active.odd > .slick-cell {
+  color: #fff;
+  background-color: #fdab1c;
+}
+.slick-row.active > .slick-cell.editable {
+  color: #52534F;
+}
+.slick-header {
+  border: 0;
+  background: #52534F;
+}
+.slick-header-column,
+.slick-header-column.ui-state-default {
+  color: #fff;
+  background: #52534F;
+  border: 0;
+  border-right: 1px solid #ccc;
+  padding: 5px 7px;
+}
+.slick-header-column:last-child {
+  border-right-color: transparent;
+}
+.slick-header-column.ui-state-hover {
+  background: #454643;
+}
+.slick-header-column.slick-sortable-placeholder {
+  background: #ccc;
+}
+.slick-sort-indicator {
+  width: auto;
+  margin: -2px 0 0 0;
+  background: #52534F;
+  position: absolute;
+  left: 7px;
+}
+.slick-sort-indicator-asc:after {
+  content: '\2191';
+}
+.slick-sort-indicator-desc:after {
+  content: '\2193';
+}
+.slick-header-column.slick-header-column-sorted > .slick-column-name {
+  margin-left: 0.6em;
+}
+.slick-header-column.ui-state-hover > .slick-sort-indicator {
+  background: #454643;
+}
+/* Grouping */
+.slick-group-title {
+  display: block;
+}
+.slick-group > .slick-cell {
+  cursor: auto;
+}
+.slick-group-toggle {
+  cursor: pointer;
+  width: 10px;
+  height: 100%;
+  margin-right: 5px;
+  display: block;
+  float: left;
+}
+.slick-group-toggle.expanded {
+  background: url(../../../vendor/slick/content/images/collapse.gif) no-repeat center center;
+}
+.slick-group-toggle.collapsed {
+  background: url(../../../vendor/slick/content/images/expand.gif) no-repeat center center;
+}
+.slick-group-toggle.expanded.loading,
+.slick-group-toggle.collapsed.loading,
+.slick-group-toggle.loading {
+  background: url(../../../content/images/waiting_8.gif) no-repeat center center;
+}
+/* Inline edit */
+.slick-cell.active.editable {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+.x-pe-inline-container {
+  border: 0;
+}
+/* Validation */
+.slick-cell.-invalid:after {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 16px;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\e01e";
+  color: #f26a60;
+  font-size: 12px;
+  position: absolute;
+  right: 2px;
+  top: 3px;
+}
+.slick-cell.-invalid.active:after {
+  right: 0;
+  top: 0;
+}
+.slick-cell.-warning:after {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 16px;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\e01e";
+  color: #fdab1c;
+  font-size: 12px;
+  position: absolute;
+  right: 2px;
+  top: 3px;
+}
+.slick-cell.-warning.active:after {
+  right: 0;
+  top: 0;
+}
+.slick-row.active .slick-cell.-warning:after {
+  color: #ffeccc;
+}
+/*
+  CROC specific classes
+*/
+.x-grid {
+  background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.5) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(135deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.5) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.5) 75%, transparent 75%, transparent);
+  background-color: #fafafa;
+  background-size: 40px 40px;
+  overflow: visible !important;
+  min-height: 186px;
+}
+.x-grid .x-cmd-link {
+  color: #0088cc;
+  text-decoration: none;
+}
+.x-grid .x-cmd-link:hover {
+  color: #f36700;
+  text-decoration: none;
+}
+.x-grid-miltiline-rows .slick-cell {
+  white-space: normal;
+}
+.modal-body .x-grid {
+  height: 346px;
+}
+.x-grid.x-pe-object-list-grid {
+  height: 186px;
+}
+.slick-row.-modified-item > .x-slick-cell-iconic:before,
+.slick-row.-new-item > .x-slick-cell-iconic:before,
+.slick-row.-removed-item > .x-slick-cell-iconic:before,
+.slick-row.-disabled-item > .x-slick-cell-iconic:before {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 16px;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 2px;
+  display: inline;
+  vertical-align: text-top;
+  margin-left: -2px;
+  margin-right: 3px;
+}
+.slick-row.-modified-item > .x-slick-cell-iconic:before {
+  content: "\e011";
+  color: #0068b4;
+}
+.slick-row.-new-item > .x-slick-cell-iconic:before {
+  content: "\e001";
+  color: #7ab800;
+}
+.slick-row.-removed-item > .slick-cell {
+  color: #777777 !important;
+}
+.slick-row.-removed-item > .x-slick-cell-iconic:before {
+  content: "\e012";
+  color: #c2102e;
+}
+.slick-row.-disabled-item > .slick-cell {
+  color: #777777 !important;
+}
+.slick-row.-invalid > .x-slick-cell-iconic:before {
+  color: #c2102e;
+}
+.slick-row.-warning > .x-slick-cell-iconic:before {
+  color: #fdab1c;
+}
+.slick-row.active.-warning > .x-slick-cell-iconic:before {
+  color: #ffeccc;
+}
+.slick-row.-nonselectable > .slick-cell {
+  color: #777777 !important;
+}
+.slick-row.-nonselectable > .x-slick-cell-checkbox {
+  cursor: default;
+}
+.slick-row.-nonselectable > .x-slick-cell-checkbox > input[type=checkbox] {
+  color: #ccc;
+}
+.slick-row > .x-slick-cell-iconic.editable:before {
+  content: none !important;
+}
+.x-slick-cell-reorder {
+  cursor: move;
+  background-image: url("../../../vendor/slick/content/images/drag-handle.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.x-slick-cell-checkbox {
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  cursor: pointer;
+}
+.x-slick-cell-checkbox > input[type="checkbox"],
+.slick-column-name > input[type="checkbox"] {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  margin: 0;
+  vertical-align: middle;
+}
+.slick-column-filter {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 16px;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: absolute;
+  right: 3px;
+  width: auto;
+  height: auto;
+  line-height: inherit;
+  margin: 0;
+  background: #52534F;
+  cursor: pointer;
+  display: none;
+}
+.slick-column-filter:after {
+  /*display: inline-block; */
+  /* Fix for clickability issue in WebKit */
+  content: ' ';
+}
+.slick-column-filter:after {
+  content: none;
+}
+.slick-column-filter:before {
+  content: "\e02e";
+  /* "filter" */
+}
+.slick-header-column-active > .slick-column-filter {
+  display: inline;
+}
+.slick-header-column.ui-state-hover > .slick-column-filter {
+  display: inline;
+  background: #454643;
+}
+.slick-header-column-filtered > .slick-column-filter {
+  display: inline;
+  color: #fdab1c;
+}
+.x-grid-column-filter.popup {
+  min-width: 150px;
+  max-width: 300px;
+}
+.x-grid-column-filter.popup > .x-pe {
+  margin: 5px;
+  padding: 0;
+}
+.x-grid-column-filter.popup > .x-menu-bar {
+  padding: 5px;
+}
+.x-grid-column-filter.popup > .x-menu-bar > .x-menu {
+  float: right;
+}
+.x-grid-column-filter.popup.x-column-filter-condition-vert > .x-pe-enum-dropdown-select2 {
+  padding: 5px;
+}
+.x-grid-column-filter.popup.x-column-filter-condition-vert > .x-pe-enum-dropdown-select2 .select2-selection__rendered {
+  padding-left: 6px;
+  padding-right: 26px;
+}
+.x-grid-column-filter.popup.x-column-filter-condition-vert > .x-pe {
+  margin: 0;
+  padding: 5px;
+}
+.x-grid-column-filter.popup.x-column-filter-condition-hor {
+  max-width: 380px;
+  display: table;
+}
+.x-grid-column-filter.popup.x-column-filter-condition-hor > .x-pe {
+  float: left;
+  max-width: 180px;
+}
+.x-grid-column-filter.popup.x-column-filter-condition-hor > .x-pe > .x-pe-enum.x-pe-enum-dropdown {
+  width: inherit;
+  margin: 0;
+  padding: 0;
+  max-width: 180px;
+}
+.x-grid-column-filter.popup.x-column-filter-condition-hor .x-pe-enum-dropdown {
+  padding: 5px;
+  float: left;
+  width: 166px;
+}
+.x-grid-column-filter.popup.x-column-filter-condition-hor .x-pe-enum-dropdown .select2-selection__rendered {
+  padding-left: 6px;
+  padding-right: 26px;
+}
+.slick-header.affix-stuck ~ .x-grid-column-filter.popup {
+  position: fixed;
+}
+.slick-range-decorator {
+  border: 2px solid #699906 !important;
+}
+.x-list-slick > .x-list-paging > .x-list-paginator {
+  border-top: 1px solid #ccc;
+}
+.x-empty-list .x-list-state-message {
+  text-align: center;
+  width: 100%;
+  top: 100px;
+  z-index: 1;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+.x-empty-list div.slick-viewport {
+  overflow-y: hidden;
+}
+.x-empty-list .x-grid {
+  background: white;
+}
+.x-empty-list .x-grid div.slick-viewport ~ div[hideFocus] + div:not([class]),
+.x-empty-list .x-grid div.slick-viewport ~ div[hideFocus] + div[class=""],
+.x-empty-list .x-grid div.slick-viewport ~ div[hideFocus] + div[class="affix-stuck--shadow"] {
+  bottom: 0px;
+  position: absolute;
+}
+.x-column-filter-dropdown .select2-search {
+  display: none;
+}
