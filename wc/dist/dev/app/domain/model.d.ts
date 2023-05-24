@@ -16,8 +16,15 @@ export const factory: any;
 
 export class UnitOfWork extends _UnitOfWork {
 	constructor(dataFacade: IDataFacade, options: _UnitOfWork.Options);
+	createAddress(props?: lang.Map<any>): Address;
+	createPost(props?: lang.Map<any>): Post;
+	createFilm(props?: lang.Map<any>): Film;
 	createGroup(props?: lang.Map<any>): Group;
+	createCity(props?: lang.Map<any>): City;
+	createEmployee(props?: lang.Map<any>): Employee;
+	createCountry(props?: lang.Map<any>): Country;
 	createUser(props?: lang.Map<any>): User;
+	createFilmCompany(props?: lang.Map<any>): FilmCompany;
 
 }
 
@@ -41,6 +48,65 @@ export namespace UserRole {
 	export const meta: UserRoleMeta;
 }
 
+export interface AddressMeta extends metadata.EntityMeta {
+	props: {
+		"addressName": metadata.PropertyMeta;
+		"city": metadata.PropertyMeta;
+		"employee": metadata.PropertyMeta;
+	};
+}
+export type AddressNames = {
+	readonly [P in keyof AddressMeta["props"] | keyof AddressMeta["complex"]]: string;
+};
+
+export class Address extends DomainObject {
+	static meta: AddressMeta;
+	static NAMES: AddressNames;
+	meta: AddressMeta;
+	init(): void;
+	"addressName": lang.ObservableProperty<string>;
+	"city": lang.ObservableProperty<City>;
+	"employee": lang.ObservableProperty<Employee>;
+}
+
+export interface PostMeta extends metadata.EntityMeta {
+	props: {
+		"postName": metadata.PropertyMeta;
+	};
+}
+export type PostNames = {
+	readonly [P in keyof PostMeta["props"] | keyof PostMeta["complex"]]: string;
+};
+
+export class Post extends DomainObject {
+	static meta: PostMeta;
+	static NAMES: PostNames;
+	meta: PostMeta;
+	init(): void;
+	"postName": lang.ObservableProperty<string>;
+}
+
+export interface FilmMeta extends metadata.EntityMeta {
+	props: {
+		"filmName": metadata.PropertyMeta;
+		"employee": metadata.PropertyMeta;
+		"filmCompany": metadata.PropertyMeta;
+	};
+}
+export type FilmNames = {
+	readonly [P in keyof FilmMeta["props"] | keyof FilmMeta["complex"]]: string;
+};
+
+export class Film extends DomainObject {
+	static meta: FilmMeta;
+	static NAMES: FilmNames;
+	meta: FilmMeta;
+	init(): void;
+	"filmName": lang.ObservableProperty<string>;
+	"employee": lang.ObservableGetter<IDomainCollection<Employee>>;
+	"filmCompany": lang.ObservableProperty<FilmCompany>;
+}
+
 export interface GroupMeta extends metadata.EntityMeta {
 	props: {
 		"name": metadata.PropertyMeta;
@@ -62,10 +128,71 @@ export class Group extends DomainObject {
 	"roles": lang.ObservableProperty<UserRole>;
 }
 
-export interface UserMeta extends metadata.EntityMeta {
+export interface CityMeta extends metadata.EntityMeta {
+	props: {
+		"cityName": metadata.PropertyMeta;
+		"country": metadata.PropertyMeta;
+		"address": metadata.PropertyMeta;
+	};
+}
+export type CityNames = {
+	readonly [P in keyof CityMeta["props"] | keyof CityMeta["complex"]]: string;
+};
+
+export class City extends DomainObject {
+	static meta: CityMeta;
+	static NAMES: CityNames;
+	meta: CityMeta;
+	init(): void;
+	"cityName": lang.ObservableProperty<string>;
+	"country": lang.ObservableProperty<Country>;
+	"address": lang.ObservableGetter<IDomainCollection<Address>>;
+}
+
+export interface EmployeeMeta extends metadata.EntityMeta {
 	props: {
 		"firstName": metadata.PropertyMeta;
 		"lastName": metadata.PropertyMeta;
+		"user": metadata.PropertyMeta;
+		"fired": metadata.PropertyMeta;
+	};
+}
+export type EmployeeNames = {
+	readonly [P in keyof EmployeeMeta["props"] | keyof EmployeeMeta["complex"]]: string;
+};
+
+export class Employee extends DomainObject {
+	static meta: EmployeeMeta;
+	static NAMES: EmployeeNames;
+	meta: EmployeeMeta;
+	init(): void;
+	"firstName": lang.ObservableProperty<string>;
+	"lastName": lang.ObservableProperty<string>;
+	"user": lang.ObservableGetter<IDomainCollection<User>>;
+	"fired": lang.ObservableProperty<boolean>;
+}
+
+export interface CountryMeta extends metadata.EntityMeta {
+	props: {
+		"countryName": metadata.PropertyMeta;
+		"city": metadata.PropertyMeta;
+	};
+}
+export type CountryNames = {
+	readonly [P in keyof CountryMeta["props"] | keyof CountryMeta["complex"]]: string;
+};
+
+export class Country extends DomainObject {
+	static meta: CountryMeta;
+	static NAMES: CountryNames;
+	meta: CountryMeta;
+	init(): void;
+	"countryName": lang.ObservableProperty<string>;
+	"city": lang.ObservableGetter<IDomainCollection<City>>;
+}
+
+export interface UserMeta extends metadata.EntityMeta {
+	props: {
 		"login": metadata.PropertyMeta;
 		"role": metadata.PropertyMeta;
 		"avatar": metadata.PropertyMeta;
@@ -84,8 +211,6 @@ export class User extends DomainObject {
 	static NAMES: UserNames;
 	meta: UserMeta;
 	init(): void;
-	"firstName": lang.ObservableProperty<string>;
-	"lastName": lang.ObservableProperty<string>;
 	"login": lang.ObservableProperty<string>;
 	"role": lang.ObservableProperty<UserRole>;
 	"avatar": lang.ObservableProperty<LobPropValue>;
@@ -95,6 +220,23 @@ export class User extends DomainObject {
 	"groups": lang.ObservableGetter<IDomainCollection<Group>>;
 }
 
+export interface FilmCompanyMeta extends metadata.EntityMeta {
+	props: {
+		"filmCompany": metadata.PropertyMeta;
+	};
+}
+export type FilmCompanyNames = {
+	readonly [P in keyof FilmCompanyMeta["props"] | keyof FilmCompanyMeta["complex"]]: string;
+};
+
+export class FilmCompany extends DomainObject {
+	static meta: FilmCompanyMeta;
+	static NAMES: FilmCompanyNames;
+	meta: FilmCompanyMeta;
+	init(): void;
+	"filmCompany": lang.ObservableProperty<string>;
+}
+
 export interface ModelMeta extends metadata.ModelMeta {
 	enums: {
 		UserRole: UserRoleMeta;
@@ -102,8 +244,15 @@ export interface ModelMeta extends metadata.ModelMeta {
 	complex: {
 	};
 	entities: {
+		Address: AddressMeta;
+		Post: PostMeta;
+		Film: FilmMeta;
 		Group: GroupMeta;
+		City: CityMeta;
+		Employee: EmployeeMeta;
+		Country: CountryMeta;
 		User: UserMeta;
+		FilmCompany: FilmCompanyMeta;
 	};
 }
 export const meta: ModelMeta;

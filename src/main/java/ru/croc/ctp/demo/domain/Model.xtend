@@ -17,18 +17,129 @@ import ru.croc.ctp.jxfw.core.domain.meta.XFWEnumId;
 import ru.croc.ctp.jxfw.core.generator.meta.XFWEnum
 import ru.croc.ctp.jxfw.core.generator.meta.XFWProtected
 import ru.croc.ctp.jxfw.core.domain.meta.persistence.XFWManyToMany
+import ru.croc.ctp.jxfw.core.domain.meta.persistence.XFWOneToMany
+import ru.croc.ctp.jxfw.core.domain.meta.persistence.XFWManyToOne
+import ru.croc.ctp.jxfw.core.domain.meta.persistence.XFWOneToOne
+
+
 import ru.croc.ctp.jxfw.core.domain.meta.persistence.XFWBasic
 
 @XFWObject
-@XFWElementLabel("Пользователь")
-@Table(name = "user_table")
-class User {
-
+@XFWElementLabel("Cотрудник")
+@Table(name = "employee_table")
+class Employee {
     @XFWElementLabel("Имя")
     String firstName
 
     @XFWElementLabel("Фамилия")
     String lastName
+
+    @XFWElementLabel("Пользователь")
+    @XFWManyToMany(fetch=FetchType.LAZY)
+    Set<User> user
+
+    @XFWElementLabel("уволен")
+    boolean fired
+
+//    @XFWElementLabel("Адрес")
+//    @XFWOneToMany(fetch=FetchType.LAZY)
+//    Address address
+
+
+}
+
+
+@XFWObject
+@XFWElementLabel("Должность")
+@Table(name = "post")
+class Post {
+    @XFWElementLabel ("Название должности")
+    String postName
+}
+
+@XFWObject
+@XFWElementLabel("Страна")
+@Table(name = "country")
+class Country {
+    @XFWElementLabel ("Страна")
+    String countryName
+
+    @XFWElementLabel("Город")
+    @XFWOneToMany(fetch=FetchType.LAZY)
+    Set<City> city
+}
+
+@XFWObject
+@XFWElementLabel("Город")
+@Table(name = "city")
+class City {
+    @XFWElementLabel ("Город")
+    String cityName
+
+    @XFWElementLabel("Страна")
+    @XFWManyToOne(fetch=FetchType.LAZY)
+    Country country
+
+    @XFWElementLabel("Адрес")
+    @XFWOneToMany(fetch=FetchType.LAZY)
+    Set<Address> address
+
+}
+
+
+@XFWObject
+@XFWElementLabel("Адрес")
+@Table(name = "address")
+class Address {
+
+    @XFWElementLabel ("адрес")
+    String addressName
+
+    @XFWElementLabel("Город")
+    @XFWManyToOne(fetch=FetchType.LAZY)
+    City city
+
+    @XFWElementLabel("Сотрудник")
+    @XFWManyToOne(fetch=FetchType.LAZY)
+    Employee employee
+}
+
+
+//Film Company
+
+@XFWObject
+@XFWElementLabel("Кинокомпания")
+@Table(name = "filmCompany")
+class FilmCompany {
+
+    @XFWElementLabel ("Кинокомпания")
+    String filmCompany
+}
+
+@XFWObject
+@XFWElementLabel("Фильм")
+@Table(name = "film")
+class Film {
+
+    @XFWElementLabel ("Фильм")
+    String filmName
+
+    @XFWElementLabel("Сотрудник")
+    @XFWManyToMany(fetch=FetchType.LAZY)
+    Set <Employee> employee
+
+    @XFWElementLabel("Кинокомпания")
+    @XFWManyToOne(fetch=FetchType.LAZY)
+    FilmCompany filmCompany
+}
+
+
+
+
+@XFWObject
+@XFWElementLabel("Пользователь")
+@Table(name = "user_table")
+class User {
 
     @XFWElementLabel("Логин")
     String login
@@ -86,3 +197,4 @@ enum UserRole {
     @XFWEnumId(4)
     User
 }
+
