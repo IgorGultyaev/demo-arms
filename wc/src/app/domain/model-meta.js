@@ -27,44 +27,6 @@ define(["i18n!./nls/resources"], function (resources) {
 		complex: {
 		},
 		entities: {
-			Address: {
-				descr: resources["model.Address"],
-				props: {
-					addressName: {descr: resources["model.Address.addressName"], vt: "string" , nullable: true, maxLen: 255},
-					city: {descr: resources["model.Address.city"], vt: "object" , nullable: true, ref: "City", lazyLoad: true},
-					employee: {descr: resources["model.Address.employee"], vt: "object" , nullable: true, ref: "Employee", lazyLoad: true}
-				}
-			},
-			Post: {
-				descr: resources["model.Post"],
-				props: {
-					postName: {descr: resources["model.Post.postName"], vt: "string" , nullable: true, maxLen: 255}
-				}
-			},
-			Film: {
-				descr: resources["model.Film"],
-				props: {
-					filmName: {descr: resources["model.Film.filmName"], vt: "string" , nullable: true, maxLen: 255},
-					employee: {descr: resources["model.Film.employee"], vt: "object" , nullable: true, ref: "Employee", many: true, lazyLoad: true},
-					filmCompany: {descr: resources["model.Film.filmCompany"], vt: "object" , nullable: true, ref: "FilmCompany", lazyLoad: true}
-				}
-			},
-			Group: {
-				descr: resources["model.Group"],
-				props: {
-					name: {descr: resources["model.Group.name"], vt: "string" , nullable: false, maxLen: 255},
-					users: {descr: resources["model.Group.users"], vt: "object" , nullable: true, ref: "User", many: true, lazyLoad: true},
-					roles: {descr: resources["model.Group.roles"], vt: "enum", flags: true  , nullable: true, ref: "UserRole"}
-				}
-			},
-			City: {
-				descr: resources["model.City"],
-				props: {
-					cityName: {descr: resources["model.City.cityName"], vt: "string" , nullable: true, maxLen: 255},
-					country: {descr: resources["model.City.country"], vt: "object" , nullable: true, ref: "Country", lazyLoad: true},
-					address: {descr: resources["model.City.address"], vt: "object" , nullable: true, ref: "Address", many: true, lazyLoad: true}
-				}
-			},
 			Employee: {
 				descr: resources["model.Employee"],
 				props: {
@@ -72,6 +34,14 @@ define(["i18n!./nls/resources"], function (resources) {
 					lastName: {descr: resources["model.Employee.lastName"], vt: "string" , nullable: true, maxLen: 255},
 					user: {descr: resources["model.Employee.user"], vt: "object" , nullable: true, ref: "User", many: true, lazyLoad: true},
 					fired: {descr: resources["model.Employee.fired"], vt: "boolean" , nullable: true}
+				}
+			},
+			Address: {
+				descr: resources["model.Address"],
+				props: {
+					addressName: {descr: resources["model.Address.addressName"], vt: "string" , nullable: true, maxLen: 255},
+					city: {descr: resources["model.Address.city"], vt: "object" , nullable: true, ref: "City", lazyLoad: true},
+					employee: {descr: resources["model.Address.employee"], vt: "object" , nullable: true, ref: "Employee", lazyLoad: true}
 				}
 			},
 			Country: {
@@ -93,10 +63,40 @@ define(["i18n!./nls/resources"], function (resources) {
 					groups: {descr: resources["model.User.groups"], vt: "object" , nullable: true, ref: "Group", many: true, lazyLoad: true}
 				}
 			},
+			Group: {
+				descr: resources["model.Group"],
+				props: {
+					name: {descr: resources["model.Group.name"], vt: "string" , nullable: false, maxLen: 255},
+					users: {descr: resources["model.Group.users"], vt: "object" , nullable: true, ref: "User", many: true, lazyLoad: true},
+					roles: {descr: resources["model.Group.roles"], vt: "enum", flags: true  , nullable: true, ref: "UserRole"}
+				}
+			},
 			FilmCompany: {
 				descr: resources["model.FilmCompany"],
 				props: {
 					filmCompany: {descr: resources["model.FilmCompany.filmCompany"], vt: "string" , nullable: true, maxLen: 255}
+				}
+			},
+			Post: {
+				descr: resources["model.Post"],
+				props: {
+					postName: {descr: resources["model.Post.postName"], vt: "string" , nullable: true, maxLen: 255}
+				}
+			},
+			City: {
+				descr: resources["model.City"],
+				props: {
+					cityName: {descr: resources["model.City.cityName"], vt: "string" , nullable: true, maxLen: 255},
+					country: {descr: resources["model.City.country"], vt: "object" , nullable: true, ref: "Country", lazyLoad: true},
+					address: {descr: resources["model.City.address"], vt: "object" , nullable: true, ref: "Address", many: true, lazyLoad: true}
+				}
+			},
+			Film: {
+				descr: resources["model.Film"],
+				props: {
+					filmName: {descr: resources["model.Film.filmName"], vt: "string" , nullable: true, maxLen: 255},
+					employee: {descr: resources["model.Film.employee"], vt: "object" , nullable: true, ref: "Employee", many: true, lazyLoad: true},
+					filmCompany: {descr: resources["model.Film.filmCompany"], vt: "object" , nullable: true, ref: "FilmCompany", lazyLoad: true}
 				}
 			}
 		}
